@@ -26,11 +26,11 @@ const Button = ({
 
 Button.defaultProps = {
   className: '',
-  variant: 'primary',
-  onClick: () => {},
-  label: '',
   iconLeft: undefined,
-  iconRight: undefined
+  iconRight: undefined,
+  label: '',
+  onClick: () => {},
+  variant: 'primary'
 };
 
 Button.propTypes = {
