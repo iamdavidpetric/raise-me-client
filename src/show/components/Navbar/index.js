@@ -1,11 +1,11 @@
-import { Button } from '../';
-
 import { BiSearch } from 'react-icons/bi';
 import { FiUnlock } from 'react-icons/fi';
 import { TbStairsUp } from 'react-icons/tb';
 import { GiTreeGrowth } from 'react-icons/gi';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
+
+import { Button } from '../';
 
 const Navbar = () => {
   return (
@@ -15,7 +15,7 @@ const Navbar = () => {
           <Button
             variant='secondary'
             iconLeft={<MdOutlineExplore className='mx-1' size='1.5rem' />}
-            label={'explore'}
+            label='explore'
           />
         </div>
 
@@ -23,7 +23,7 @@ const Navbar = () => {
           <Button
             variant='secondary'
             iconLeft={<BiSearch className='mx-1' size='1.5rem' />}
-            label={'search'}
+            label='search'
           />
         </div>
       </div>
@@ -37,7 +37,7 @@ const Navbar = () => {
           <Button
             variant='secondary'
             iconLeft={<IoConstructOutline className='mx-1' size='1.5rem' />}
-            label={'how it works'}
+            label='how it works'
           />
         </div>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
           <Button
             variant='secondary'
             iconLeft={<FiUnlock className='mx-1' size='1.5rem' />}
-            label={'sign in'}
+            label='sign in'
           />
         </div>
 
@@ -53,7 +53,7 @@ const Navbar = () => {
           <Button
             variant='secondary'
             iconLeft={<TbStairsUp className='px-0 mx-0 ' size='1.5rem' />}
-            label={'raise it'}
+            label='raise it'
           />
         </div>
       </div>

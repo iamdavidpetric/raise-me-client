@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 
 const Button = ({
   className,
-  variant,
   iconLeft,
   iconRight,
   label,
-  onClick
+  onClick,
+  variant
 }) => {
   const buttonColor = {
     primary: 'text-primary hover:text-primary-700',
@@ -28,16 +28,18 @@ Button.defaultProps = {
   className: '',
   variant: 'primary',
   onClick: () => {},
-  label: ''
+  label: '',
+  iconLeft: undefined,
+  iconRight: undefined
 };
 
 Button.propTypes = {
   className: PropTypes.string,
-  variant: PropTypes.string,
-  onClick: PropTypes.func,
-  label: PropTypes.string,
   iconLeft: PropTypes.any,
-  iconRight: PropTypes.any
+  iconRight: PropTypes.any,
+  label: PropTypes.string,
+  onClick: PropTypes.func,
+  variant: PropTypes.string
 };
 
 export default Button;
