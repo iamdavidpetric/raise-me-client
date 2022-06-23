@@ -1,7 +1,5 @@
-import { Navbar, Button } from '../show/components';
-
 const Application = () => {
-  return <Navbar />;
+  return <div className="text-secondary-500"> ceva</div>;
 };
 
 export default Application;
