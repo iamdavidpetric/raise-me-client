@@ -25,17 +25,13 @@ const Home = () => {
             <img
               src='https://i.imgur.com/kHgmAGw.jpg'
               alt='backpack'
-              className='w-full h-full object-center object-cover rounded-t-lg'
+              className='w-full h-full object-cover rounded-t-lg'
             />
           </div>
           <div className='bg-white h-full ml-5 rounded-b-lg text-gray-500 text-lg text-center'>
             <div>All Access | Outdoor Leisure Backpac</div>
             <div className='flex justify-center'>
-              <Button
-                className='border-2 rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white'
-                variant='secondary'
-                label='49 $'
-              />
+              <Button variant='outline' label='49 $' />
             </div>
             <div className='flex items-center justify-center mb-2 mt-2'>
               <ProgressBar percentage={25} />
