@@ -1,5 +1,5 @@
-import { Navbar } from '../show/components';
 import { Home } from './pages';
+import { Navbar } from '../show/components';
 
 const Application = () => {
   return (
