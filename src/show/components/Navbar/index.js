@@ -9,7 +9,7 @@ import { Button } from '../';
 
 const Navbar = () => {
   return (
-    <div className='flex flex-row h-12 justify-between bg-primary-50 '>
+    <div className='flex flex-row h-12 justify-between bg-primary-50'>
       <div className='flex flex-row mx-2 items-center w-1/3'>
         <div className='flex text-white transition duration-200 items-center'>
           <Button
@@ -29,7 +29,7 @@ const Navbar = () => {
       </div>
 
       <div className='text-white flex items-center text-2xl cursor-pointer'>
-        <GiTreeGrowth className='items-start' /> raise.me
+        <GiTreeGrowth /> raise.me
       </div>
 
       <div className='flex flex-row items-center justify-end mx-2 w-1/3'>

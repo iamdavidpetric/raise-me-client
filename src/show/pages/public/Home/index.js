@@ -29,50 +29,48 @@ const Home = () => {
             />
           </div>
           <div className='bg-white h-full ml-5 rounded-b-lg text-gray-500 text-lg text-center'>
-            <div>All Access | Outdoor Leisure Backpac</div>
-            <div className='flex justify-center'>
-              <Button variant='outline' label='49 $' />
-            </div>
-            <div className='flex items-center justify-center mb-2 mt-2'>
+            <div>All Access | Outdoor Leisure Backpack</div>
+            <div className='flex items-center justify-center'>
               <ProgressBar percentage={25} />
+            </div>
+            <div className='flex justify-center mt-1 mb-2'>
+              <Button variant='outline' label='49 $' />
             </div>
           </div>
         </div>
         <div className='w-full h-128 mr-5 mt-5'>
           <div className='flex flex-col content-start h-full'>
-            <div className='h-1/4'>
-              <Card
-                src='https://i.imgur.com/O4vo5Uf.jpg'
-                reversed={true}
-                title='All Access | Outdoor Leisure Backpack'
-                price={'49$'}
-                percentage={30}
-              />
-            </div>
-            <div className='h-1/4 mt-2'>
+            <Card
+              src='https://i.imgur.com/O4vo5Uf.jpg'
+              reversed={true}
+              title='All Access | Outdoor Leisure Backpack'
+              price='49$'
+              percentage={30}
+            />
+            <div className='mt-2'>
               <Card
                 src='https://i.imgur.com/HJcS8Xc.jpg'
                 reversed={true}
                 title='All Access | Outdoor Leisure Backpac'
-                price={'49$'}
+                price='49$'
                 percentage={89}
               />
             </div>
-            <div className='h-1/4 mt-2 mr-2'>
+            <div className='mt-2 mr-2'>
               <Card
                 src='https://i.imgur.com/O4vo5Uf.jpg'
                 reversed={false}
                 title='All Access | Outdoor Leisure Backpac'
-                price={'49$'}
+                price='49$'
                 percentage={40}
               />
             </div>
-            <div className='h-1/4 mt-2 mr-2'>
+            <div className='mt-2 mr-2'>
               <Card
                 src='https://i.imgur.com/HJcS8Xc.jpg'
                 reversed={false}
                 title='All Access | Outdoor Leisure Backpac'
-                price={'49$'}
+                price='49$'
                 percentage={99}
               />
             </div>
