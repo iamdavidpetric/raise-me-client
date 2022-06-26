@@ -9,7 +9,7 @@ const Card = ({ percentage, price, reversed, src, title }) => {
 
   return (
     <div className='flex flex-col w-full h-32 rounded-lg ml-2 mr-5'>
-      <div className={`flex flex-row w-full h-32 ${ifReversed}`}>
+      <div className={`flex flex-row w-full h-full ${ifReversed}`}>
         <div className='w-full rounded-lg'>
           <img
             src={src}
@@ -21,10 +21,10 @@ const Card = ({ percentage, price, reversed, src, title }) => {
         <div
           className={`w-full rounded-lg bg-white text-center flex flex-col justify-center ${ifTextMargin}`}>
           <div>{title}</div>
-          <div className='flex items-center justify-center w-1/9 mt-2'>
+          <div className='flex items-center justify-center mt-2'>
             <Button variant='outline' label={price} />
           </div>
-          <div className='flex items-center justify-center mt-3'>
+          <div className='flex items-center justify-center mt-3 px-5'>
             <ProgressBar percentage={percentage} />
           </div>
         </div>

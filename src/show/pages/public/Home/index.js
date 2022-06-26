@@ -30,7 +30,7 @@ const Home = () => {
           </div>
           <div className='bg-white h-full ml-5 rounded-b-lg text-gray-500 text-lg text-center'>
             <div>All Access | Outdoor Leisure Backpack</div>
-            <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-center px-5'>
               <ProgressBar percentage={25} />
             </div>
             <div className='flex justify-center mt-1 mb-2'>
@@ -38,7 +38,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className='w-full h-128 mr-5 mt-5'>
+        <div className='w-full mr-5 mt-5'>
           <div className='flex flex-col content-start h-full'>
             <Card
               src='https://i.imgur.com/O4vo5Uf.jpg'
