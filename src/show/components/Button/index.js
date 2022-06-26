@@ -10,12 +10,14 @@ const Button = ({
 }) => {
   const buttonColor = {
     primary: 'text-primary hover:text-primary-700',
-    secondary: 'text-white hover:text-secondary-200'
+    secondary: 'text-white hover:text-secondary-200',
+    outline:
+      'border-2 rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white'
   };
 
   return (
     <button
-      className={`${buttonColor[variant]} ${className} flex px-2 rounded transition-all duration-300`}
+      className={`flex px-2 transition-all duration-300 ${buttonColor[variant]} ${className}`}
       onClick={onClick}>
       {iconLeft}
       {label}

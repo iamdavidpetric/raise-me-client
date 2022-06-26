@@ -28,8 +28,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className=' text-white flex items-center text-2xl cursor-pointer'>
-        <GiTreeGrowth className='itmes-start' /> raise.me
+      <div className='text-white flex items-center text-2xl cursor-pointer'>
+        <GiTreeGrowth /> raise.me
       </div>
 
       <div className='flex flex-row items-center justify-end mx-2 w-1/3'>
@@ -49,10 +49,10 @@ const Navbar = () => {
           />
         </div>
 
-        <div className='flex  border-2 border-primary-50 items-center hover:border-2 hover:rounded-full hover:border-white transition-all duration-300 hover:px-2 hover:py-1 '>
+        <div className='flex border-2 border-primary-50 items-center hover:border-2 hover:rounded-full hover:border-white transition-all duration-300 hover:px-2 hover:py-1'>
           <Button
             variant='secondary'
-            iconLeft={<TbStairsUp className='px-0 mx-0 ' size='1.5rem' />}
+            iconLeft={<TbStairsUp className='px-0 mx-0' size='1.5rem' />}
             label='raise it'
           />
         </div>
