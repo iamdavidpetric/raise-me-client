@@ -9,7 +9,7 @@ import { Button } from '../';
 
 const Navbar = () => {
   return (
-    <div className='flex flex-row h-12 justify-between bg-primary-50'>
+    <div className='flex flex-row h-12 justify-between bg-primary-50 sticky top-0'>
       <div className='flex flex-row mx-2 items-center w-1/3'>
         <div className='flex text-white transition duration-200 items-center'>
           <Button
