@@ -17,7 +17,15 @@ const project_details = {
   images: [
     'https://i.imgur.com/O4vo5Uf.jpg',
     'https://i.imgur.com/HJcS8Xc.jpg',
-    'https://i.imgur.com/kHgmAGw.jpg'
+    'https://i.imgur.com/kHgmAGw.jpg',
+    'https://i.imgur.com/O4vo5Uf.jpg',
+    'https://i.imgur.com/HJcS8Xc.jpg',
+    'https://i.imgur.com/O4vo5Uf.jpg',
+    'https://i.imgur.com/kHgmAGw.jpg',
+    'https://i.imgur.com/O4vo5Uf.jpg',
+    'https://i.imgur.com/HJcS8Xc.jpg',
+    'https://i.imgur.com/O4vo5Uf.jpg',
+    'https://i.imgur.com/HJcS8Xc.jpg'
   ],
   team_members_pictures: [
     'https://upload.wikimedia.org/wikipedia/commons/d/d8/Elon_Musk_Royal_Society_%28cropped%29.jpg',
@@ -56,10 +64,10 @@ const Project = () => {
 
           <div className='mr-5 h-28 mt-5'>
             <div className='no-scrollbar flex ml-4 h-[112px] no-scrollbar overflow-x-scroll'>
-              {[...Array(40)].map(item => (
+              {project_details.images.map(item => (
                 <img
                   key={item}
-                  src={project_details.images[1]}
+                  src={item}
                   alt='bacpack'
                   className='h-28 mx-2 rounded-lg'
                 />
