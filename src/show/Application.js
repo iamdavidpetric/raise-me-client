@@ -1,19 +1,18 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { Home, Project } from './pages';
 import { Navbar } from '../show/components';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const Application = () => {
   return (
     <div className='flex flex-col justify-between min-h-screen h-screen w-screen'>
-      <div>
-        <Navbar />
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/project' element={<Project />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/project' element={<Project />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
