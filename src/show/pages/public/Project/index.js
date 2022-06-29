@@ -21,9 +21,19 @@ const projectDetails = {
         'https://upload.wikimedia.org/wikipedia/commons/d/d8/Elon_Musk_Royal_Society_%28cropped%29.jpg'
     },
     {
-      name: 'Alecs',
+      name: 'Alin',
       avatar_url:
         'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80'
+    },
+    {
+      name: 'Adrian',
+      avatar_url:
+        'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80'
+    },
+    {
+      name: 'Cristina',
+      avatar_url:
+        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80'
     }
   ],
   goal: 100000,
@@ -44,6 +54,10 @@ const projectDetails = {
     'https://i.imgur.com/HJcS8Xc.jpg'
   ]
 };
+const firstMember = projectDetails.team_members[0];
+const firstPicture = projectDetails.images[0];
+const restPictures = projectDetails.images.slice(1);
+const restMembers = projectDetails.team_members.slice(1);
 
 const Project = () => {
   return (
@@ -52,8 +66,8 @@ const Project = () => {
         <div className='flex h-20 w-20 justify-center items-center'>
           <div className='flex items-center justify-center w-16 h-16 rounded-full ml-5'>
             <img
-              src={projectDetails.team_members[0].avatar_url}
-              alt={projectDetails.team_members[0].name}
+              src={firstMember.avatar_url}
+              alt={firstMember.name}
               className='rounded-full object-cover h-14 w-14'
             />
           </div>
@@ -67,7 +81,7 @@ const Project = () => {
         <div className='flex flex-col h-112 w-3/5'>
           <div className='flex justify-center items-center h-full w-full'>
             <img
-              src={projectDetails.images[0]}
+              src={firstPicture}
               alt='bacpack'
               className='object-cover rounded-lg h-full w-full mx-5 my-5'
             />
@@ -75,9 +89,9 @@ const Project = () => {
 
           <div className='mr-5 h-28 mt-5'>
             <div className='no-scrollbar flex ml-4 h-[112px] no-scrollbar overflow-x-scroll'>
-              {projectDetails.images.map(item => (
+              {restPictures.map((item, index) => (
                 <img
-                  key={item}
+                  key={index}
                   src={item}
                   alt='bacpack'
                   className='h-28 mx-2 rounded-lg'
@@ -147,21 +161,24 @@ const Project = () => {
                 <div className='flex justify-center'>
                   <div className='flex h-20 w-20 justify-center items-center'>
                     <div className='flex items-center justify-center w-16 h-16 rounded-full'>
-                      {projectDetails.team_members.slice(2, 3).map()}
+                      <img
+                        src={firstMember.avatar_url}
+                        alt={firstMember.name}
+                        className='rounded-full object-cover h-14 w-14'
+                      />
                     </div>
                   </div>
                   <div className='flex justify-center items-center'>
-                    {projectDetails.team_members
-                      .slice(2, 3)
-                      .map(member => member.name)}
+                    {firstMember.name}
                   </div>
                 </div>
                 <div className='flex'>
                   <div>
                     <div className='flex h-20 w-20 justify-center items-center'>
                       <div className='flex items-center justify-center w-16 h-16 rounded-full'>
-                        {projectDetails.team_members.slice(1, 2).map(member => (
+                        {restMembers.slice(1, 2).map((member, index) => (
                           <img
+                            key={index}
                             src={member.avatar_url}
                             alt={member.name}
                             className='rounded-full object-cover h-14 w-14'
@@ -170,16 +187,15 @@ const Project = () => {
                       </div>
                     </div>
                     <div className='flex justify-center'>
-                      {projectDetails.team_members
-                        .slice(1, 2)
-                        .map(member => member.name)}
+                      {restMembers.slice(1, 2).map(member => member.name)}
                     </div>
                   </div>
                   <div>
                     <div className='flex h-20 w-20 justify-center items-center'>
                       <div className='flex items-center justify-center w-16 h-16 rounded-full'>
-                        {projectDetails.team_members.slice(0, 1).map(member => (
+                        {restMembers.slice(2, 3).map((member, index) => (
                           <img
+                            key={index}
                             src={member.avatar_url}
                             alt={member.name}
                             className='rounded-full object-cover h-14 w-14'
@@ -188,16 +204,15 @@ const Project = () => {
                       </div>
                     </div>
                     <div className='flex justify-center'>
-                      {projectDetails.team_members
-                        .slice(0, 1)
-                        .map(member => member.name)}
+                      {restMembers.slice(2, 3).map(member => member.name)}
                     </div>
                   </div>
                   <div>
                     <div className='flex h-20 w-20 justify-center items-center'>
                       <div className='flex items-center justify-center w-16 h-16 rounded-full'>
-                        {projectDetails.team_members.slice(1, 2).map(member => (
+                        {restMembers.slice(3, 4).map((member, index) => (
                           <img
+                            key={index}
                             src={member.avatar_url}
                             alt={member.name}
                             className='rounded-full object-cover h-14 w-14'
@@ -206,9 +221,7 @@ const Project = () => {
                       </div>
                     </div>
                     <div className='flex justify-center'>
-                      {projectDetails.team_members
-                        .slice(1, 2)
-                        .map(member => member.name)}
+                      {restMembers.slice(3, 4).map(member => member.name)}
                     </div>
                   </div>
                 </div>
