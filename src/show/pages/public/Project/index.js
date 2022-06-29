@@ -56,7 +56,8 @@ const projectDetails = {
 };
 const firstMember = projectDetails.team_members[0];
 const firstPicture = projectDetails.images[0];
-const restPictures = projectDetails.images.slice(1);
+const secondaryPicture = projectDetails.images[1];
+const restPictures = projectDetails.images.slice(2);
 const restMembers = projectDetails.team_members.slice(1);
 
 const Project = () => {
@@ -118,7 +119,7 @@ const Project = () => {
             <div className='flex items-center justify-center mt-5'>
               <Button
                 className='flex w-1/6 justify-center'
-                variant='invertoutline'
+                variant='invert-outline'
                 label={`${projectDetails.fee} $`}
               />
             </div>
@@ -175,9 +176,8 @@ const Project = () => {
                 <div className='flex flex-col w-96 px-0 mx-0'>
                   <div className='flex justify-center items-center'>
                     {restMembers.map((member, index) => (
-                      <div className='flex flex-col items-center'>
+                      <div className='flex flex-col items-center' key={index}>
                         <img
-                          key={index}
                           src={member.avatar_url}
                           alt={member.name}
                           className='rounded-full object-cover h-14 w-14 mx-2'
@@ -194,8 +194,8 @@ const Project = () => {
         <div className='flex w-2/5'>
           <div className='mx-5 w-full'>
             <img
-              src={projectDetails.images[1]}
-              alt='bacpack'
+              src={secondaryPicture}
+              alt='backpack'
               className='rounded-lg h-128 object-cover w-full'
             />
           </div>
