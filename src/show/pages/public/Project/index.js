@@ -11,7 +11,7 @@ const projectDetails = {
   statement: 'Hai jupana in hora',
   team_members: [
     {
-      name: 'Eugen',
+      name: 'Eugenenia',
       avatar_url:
         'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
     },
@@ -172,57 +172,19 @@ const Project = () => {
                     {firstMember.name}
                   </div>
                 </div>
-                <div className='flex'>
-                  <div>
-                    <div className='flex h-20 w-20 justify-center items-center'>
-                      <div className='flex items-center justify-center w-16 h-16 rounded-full'>
-                        {restMembers.slice(1, 2).map((member, index) => (
-                          <img
-                            key={index}
-                            src={member.avatar_url}
-                            alt={member.name}
-                            className='rounded-full object-cover h-14 w-14'
-                          />
-                        ))}
+                <div className='flex flex-col w-96 px-0 mx-0'>
+                  <div className='flex justify-center items-center'>
+                    {restMembers.map((member, index) => (
+                      <div className='flex flex-col items-center'>
+                        <img
+                          key={index}
+                          src={member.avatar_url}
+                          alt={member.name}
+                          className='rounded-full object-cover h-14 w-14 mx-2'
+                        />
+                        {member.name}
                       </div>
-                    </div>
-                    <div className='flex justify-center'>
-                      {restMembers.slice(1, 2).map(member => member.name)}
-                    </div>
-                  </div>
-                  <div>
-                    <div className='flex h-20 w-20 justify-center items-center'>
-                      <div className='flex items-center justify-center w-16 h-16 rounded-full'>
-                        {restMembers.slice(2, 3).map((member, index) => (
-                          <img
-                            key={index}
-                            src={member.avatar_url}
-                            alt={member.name}
-                            className='rounded-full object-cover h-14 w-14'
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className='flex justify-center'>
-                      {restMembers.slice(2, 3).map(member => member.name)}
-                    </div>
-                  </div>
-                  <div>
-                    <div className='flex h-20 w-20 justify-center items-center'>
-                      <div className='flex items-center justify-center w-16 h-16 rounded-full'>
-                        {restMembers.slice(3, 4).map((member, index) => (
-                          <img
-                            key={index}
-                            src={member.avatar_url}
-                            alt={member.name}
-                            className='rounded-full object-cover h-14 w-14'
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className='flex justify-center'>
-                      {restMembers.slice(3, 4).map(member => member.name)}
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>

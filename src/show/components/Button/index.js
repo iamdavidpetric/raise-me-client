@@ -13,7 +13,7 @@ const Button = ({
     secondary: 'text-white hover:text-secondary-200',
     outline:
       'border-2 rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white',
-    invertoutline:
+    'invert-outline':
       'border-2 rounded-full border-green-500 text-greeen-500 border-white bg-green-500 py-1 text-white hover:bg-green-600'
   };
 
