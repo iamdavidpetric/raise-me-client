@@ -47,7 +47,7 @@ const Project = () => {
           <div className='flex justify-center items-center h-full w-full'>
             <img
               src={firstPicture}
-              alt='bacpack'
+              alt='main'
               className='object-cover rounded-lg h-full w-full mx-5 my-5'
             />
           </div>
@@ -59,7 +59,7 @@ const Project = () => {
                   <img
                     key={index}
                     src={item}
-                    alt='bacpack'
+                    alt='...'
                     className='h-28 mx-2 rounded-lg'
                   />
                 ))}
@@ -167,7 +167,7 @@ const Project = () => {
           <div className='mx-5 w-full'>
             <img
               src={secondaryPicture}
-              alt='backpack'
+              alt='secondary'
               className='rounded-lg h-128 object-cover w-full'
             />
           </div>
