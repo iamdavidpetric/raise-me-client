@@ -9,6 +9,7 @@ import { Button, ProgressBar } from '../../../components';
 
 const Project = () => {
   const [project, setProject] = useState({});
+
   const { id } = useParams();
 
   useEffect(() => {
