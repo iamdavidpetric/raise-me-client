@@ -1,6 +1,26 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 import { Button, Card, ProgressBar } from '../../../components';
 
 const Home = () => {
+  const [featuredProject, setFeaturedProject] = useState({});
+  const [mostInvested, setMostInvested] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/v1/todays_project/null`)
+      .then(res => setFeaturedProject(res.data))
+      .catch(err => err);
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/v1/todays_project/`)
+      .then(res => setMostInvested(res.data))
+      .catch(err => err);
+  }, []);
+
   return (
     <div className='bg-primary-50 flex flex-col h-full w-full'>
       <div className='bg-white'>
@@ -22,59 +42,46 @@ const Home = () => {
       <div className='flex'>
         <div className='flex flex-col w-1/3 h-128 mt-5 mr-2'>
           <div className='h-112 ml-5'>
-            <img
-              src='https://i.imgur.com/kHgmAGw.jpg'
-              alt='backpack'
-              className='w-full h-full object-cover rounded-t-lg'
-            />
+            {featuredProject?.images &&
+              featuredProject?.images.length &&
+              featuredProject?.images[0] && (
+                <img
+                  src={featuredProject?.images[0]}
+                  alt='backpack'
+                  className='w-full h-full object-cover rounded-t-lg'
+                />
+              )}
           </div>
           <div className='bg-white h-full ml-5 rounded-b-lg text-gray-500 text-lg text-center'>
-            <div>All Access | Outdoor Leisure Backpack</div>
+            <div>{featuredProject.name}</div>
             <div className='flex items-center justify-center px-5'>
-              <ProgressBar percentage={25} />
+              <ProgressBar
+                percentage={featuredProject.achieved_goal_percentage}
+              />
             </div>
             <div className='flex justify-center mt-1 mb-2'>
-              <Button variant='outline' label='49 $' />
+              <Button
+                variant='outline'
+                label={`${featuredProject.fee}$`}
+                disabled={featuredProject.achieved_goal_percentage === 100}
+              />
             </div>
           </div>
         </div>
         <div className='w-full mr-5 mt-5'>
-          <div className='flex flex-col content-start h-full'>
-            <Card
-              src='https://i.imgur.com/O4vo5Uf.jpg'
-              reversed={true}
-              title='All Access | Outdoor Leisure Backpack'
-              price='49$'
-              percentage={30}
-            />
-            <div className='mt-2'>
+          {mostInvested.map((project, index) => (
+            <div
+              className={`mb-2 flex flex-col content-start ${''} `}
+              key={index}>
               <Card
-                src='https://i.imgur.com/HJcS8Xc.jpg'
-                reversed={true}
-                title='All Access | Outdoor Leisure Backpac'
-                price='49$'
-                percentage={89}
-              />
-            </div>
-            <div className='mt-2 mr-2'>
-              <Card
+                reversed={index > 1}
                 src='https://i.imgur.com/O4vo5Uf.jpg'
-                reversed={false}
-                title='All Access | Outdoor Leisure Backpac'
-                price='49$'
-                percentage={40}
+                title={project.name}
+                price={`${project.fee}$`}
+                percentage={project.achieved_goal_percentage}
               />
             </div>
-            <div className='mt-2 mr-2'>
-              <Card
-                src='https://i.imgur.com/HJcS8Xc.jpg'
-                reversed={false}
-                title='All Access | Outdoor Leisure Backpac'
-                price='49$'
-                percentage={99}
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

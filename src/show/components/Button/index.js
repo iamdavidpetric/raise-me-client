@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 const Button = ({
   className,
+  disabled,
   iconLeft,
   iconRight,
   label,
@@ -20,7 +21,8 @@ const Button = ({
   return (
     <button
       className={`flex px-2 transition-all duration-300 ${buttonColor[variant]} ${className}`}
-      onClick={onClick}>
+      onClick={onClick}
+      disabled={disabled}>
       {iconLeft}
       {label}
       {iconRight}
@@ -30,6 +32,7 @@ const Button = ({
 
 Button.defaultProps = {
   className: '',
+  disabled: false,
   iconLeft: undefined,
   iconRight: undefined,
   label: '',
@@ -39,6 +42,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   iconLeft: PropTypes.any,
   iconRight: PropTypes.any,
   label: PropTypes.string,

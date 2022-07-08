@@ -80,11 +80,7 @@ const Project = () => {
               {project?.amount_invested}$ / {project?.goal}$
             </div>
             <div className='px-5'>
-              <ProgressBar
-                percentage={
-                  (`${project?.amount_invested}` / `${project?.goal}`) * `100`
-                }
-              />
+              <ProgressBar percentage={project.achieved_goal_percentage} />
             </div>
             <div className='flex items-center justify-center mt-5'>
               <Button
