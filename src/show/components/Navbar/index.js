@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
 
-import { HOME_PATH } from '../../../process/routes/paths';
 import { Button } from '../';
+import { HOME_PATH } from '../../../process/routes/paths';
 
 const Navbar = () => {
   const navigate = useNavigate();
