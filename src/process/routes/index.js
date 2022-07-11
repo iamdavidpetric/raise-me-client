@@ -1,5 +1,5 @@
-import Pages from '../../show/pages';
 import * as Paths from './paths';
+import Pages from '../../show/pages';
 
 const Home = {
   element: Pages.Home,
