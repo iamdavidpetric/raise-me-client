@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Card, ProgressBar } from '../../../components';
 
 const Home = () => {
+  const [allStatsProject, setAllStatsProject] = useState({});
   const [featuredProject, setFeaturedProject] = useState({});
   const [mostInvested, setMostInvested] = useState([]);
 
@@ -14,6 +15,11 @@ const Home = () => {
     axios
       .get(`http://localhost:3000/v1/todays_project/null`)
       .then(res => setFeaturedProject(res.data))
+      .catch(err => err);
+
+    axios
+      .get(`http://localhost:3000/v1/todays_project/quick_info`)
+      .then(res => setAllStatsProject(res.data))
       .catch(err => err);
 
     axios
@@ -27,15 +33,15 @@ const Home = () => {
       <div className='bg-white'>
         <div className='bg-white flex items-center justify-between w-full h-24 text-4xl'>
           <div className='w-1/4 flex flex-col items-center justify-start border-r-4'>
-            222,301
+            {allStatsProject.projects}
             <div className='text-sm'>projects funded</div>
           </div>
           <div className='w-1/4 flex flex-col items-center justify-center'>
-            $6,103,555,942
+            {allStatsProject.total_ammount}$
             <div className='text-sm'>towards creative work</div>
           </div>
           <div className='w-1/4 flex flex-col items-center justify-end border-l-4'>
-            68,319,962
+            {allStatsProject.total_investors}
             <div className='text-sm'>pledges</div>
           </div>
         </div>
