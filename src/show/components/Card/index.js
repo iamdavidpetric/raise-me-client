@@ -14,7 +14,7 @@ const Card = ({ percentage, price, reversed, src, title }) => {
           <img
             src={src}
             alt='Backpack'
-            className={`w-full h-full object-center object-cover rounded-lg`}
+            className='w-full h-full object-center object-cover rounded-lg'
           />
         </div>
 

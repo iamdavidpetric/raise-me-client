@@ -85,7 +85,7 @@ const Project = () => {
             <div className='flex items-center justify-center mt-5'>
               <Button
                 className='flex w-1/6 justify-center'
-                variant='invertoutline'
+                variant='invert-outline'
                 label={`${project?.fee} $`}
                 disabled={project.achieved_goal_percentage >= 100}
               />
