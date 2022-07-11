@@ -2,11 +2,11 @@ import { BiSearch } from 'react-icons/bi';
 import { FiUnlock } from 'react-icons/fi';
 import { TbStairsUp } from 'react-icons/tb';
 import { GiTreeGrowth } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
 
 import { HOME_PATH } from '../../../process/routes/paths';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '../';
 
 const Navbar = () => {

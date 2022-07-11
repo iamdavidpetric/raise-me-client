@@ -13,7 +13,7 @@ const Card = ({ percentage, price, reversed, src, title }) => {
         <div className={`w-full rounded-lg ${reversedMargin}`}>
           <img
             src={src}
-            alt='Backpack'
+            alt='main'
             className='w-full h-full object-center object-cover rounded-lg'
           />
         </div>
