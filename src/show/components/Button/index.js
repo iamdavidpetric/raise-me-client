@@ -10,10 +10,10 @@ const Button = ({
   variant
 }) => {
   const buttonColor = {
-    primary: disabled ? `text-primar` : `text-primary hover:text-primary-700 `,
+    primary: disabled ? `text-primary` : `text-primary hover:text-primary-700 `,
     secondary: disabled ? `text-white` : `text-white hover:text-secondary-200`,
     outline: disabled
-      ? `hidden`
+      ? `border-none rounded-full text-white `
       : `border-2 rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white`,
     invertoutline: disabled
       ? `border-2 rounded-full border-green-300 text-greeen-300 border-white bg-green-300 py-1 text-white`

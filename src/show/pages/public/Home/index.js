@@ -7,6 +7,7 @@ import { Button, Card, ProgressBar } from '../../../components';
 const Home = () => {
   const [featuredProject, setFeaturedProject] = useState({});
   const [mostInvested, setMostInvested] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,9 +15,7 @@ const Home = () => {
       .get(`http://localhost:3000/v1/todays_project/null`)
       .then(res => setFeaturedProject(res.data))
       .catch(err => err);
-  }, []);
 
-  useEffect(() => {
     axios
       .get(`http://localhost:3000/v1/todays_project/`)
       .then(res => setMostInvested(res.data))
@@ -51,7 +50,7 @@ const Home = () => {
               featuredProject?.images[0] && (
                 <img
                   src={featuredProject?.images[0]}
-                  alt='backpack'
+                  alt='main'
                   className='w-full h-full object-cover rounded-t-lg'
                 />
               )}
@@ -77,7 +76,7 @@ const Home = () => {
             <div
               onClick={() => navigate('/project/' + project.id)}
               className={`mb-2 flex flex-col content-start cursor-pointer `}
-              key={index}>
+              key={project.id}>
               <Card
                 reversed={index > 1}
                 src={project?.images && project?.images[0]}
