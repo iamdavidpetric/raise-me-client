@@ -75,7 +75,7 @@ const Home = () => {
           {mostInvested.map((project, index) => (
             <div
               onClick={() => navigate('/project/' + project.id)}
-              className={`mb-2 flex flex-col content-start cursor-pointer `}
+              className='mb-2 flex flex-col content-start cursor-pointer'
               key={project.id}>
               <Card
                 reversed={index > 1}
