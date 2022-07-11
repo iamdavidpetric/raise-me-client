@@ -1,19 +1,24 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { Home, Project } from './pages';
 import { Navbar } from '../show/components';
+import routes from '../process/routes/index';
 
 const Application = () => {
   return (
-    <div className='flex flex-col justify-between min-h-screen h-screen w-screen'>
-      <Navbar />
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className='flex flex-col justify-between min-h-screen h-screen w-screen'>
+        <Navbar />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/project/:id' element={<Project />} />
+          {routes.map(route => (
+            <Route
+              path={route.path}
+              key={route.path}
+              element={<route.element />}
+            />
+          ))}
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 };
 

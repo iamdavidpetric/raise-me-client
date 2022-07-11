@@ -4,26 +4,31 @@ import { Button, ProgressBar } from '../../components';
 
 const Card = ({ percentage, price, reversed, src, title }) => {
   const ifReversed = reversed ? 'flex-row' : 'flex-row-reverse';
-  const ifImageMargin = reversed ? 'mr-2' : 'ml-2';
-  const ifTextMargin = reversed ? 'ml-2' : 'ml-0';
+  const reversedMargin = reversed ? 'mr-2' : 'ml-2';
+  const disabledCard = percentage >= 100 ? 'bg-white opacity-75' : '';
 
   return (
-    <div className='flex flex-col w-full h-32 rounded-lg ml-2 mr-5'>
+    <div className='flex flex-col w-full h-32 rounded-lg mx-2'>
       <div className={`flex flex-row w-full h-full ${ifReversed}`}>
-        <div className='w-full rounded-lg'>
+        <div className={`w-full rounded-lg ${reversedMargin}`}>
           <img
             src={src}
-            alt='Backpack'
-            className={`w-full h-full object-center object-cover rounded-lg ${ifImageMargin}`}
+            alt='main'
+            className='w-full h-full object-center object-cover rounded-lg'
           />
         </div>
 
         <div
-          className={`w-full rounded-lg bg-white text-center flex flex-col justify-center ${ifTextMargin}`}>
+          className={`w-full h-full rounded-lg bg-white text-center flex flex-col justify-center ${disabledCard}`}>
           <div>{title}</div>
           <div className='flex items-center justify-center mt-2'>
-            <Button variant='outline' label={price} />
+            <Button
+              variant='outline'
+              label={price}
+              disabled={percentage >= 100}
+            />
           </div>
+
           <div className='flex items-center justify-center mt-3 px-5'>
             <ProgressBar percentage={percentage} />
           </div>
