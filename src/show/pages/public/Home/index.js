@@ -33,15 +33,15 @@ const Home = () => {
       <div className='bg-white'>
         <div className='bg-white flex items-center justify-between w-full h-24 text-4xl'>
           <div className='w-1/4 flex flex-col items-center justify-start border-r-4'>
-            {allStatsProject.projects}
+            {allStatsProject.total_projects_count}
             <div className='text-sm'>projects funded</div>
           </div>
           <div className='w-1/4 flex flex-col items-center justify-center'>
-            {allStatsProject.total_ammount}$
+            {allStatsProject.total_ammount_invested}$
             <div className='text-sm'>towards creative work</div>
           </div>
           <div className='w-1/4 flex flex-col items-center justify-end border-l-4'>
-            {allStatsProject.total_investors}
+            {allStatsProject.total_investors_count}
             <div className='text-sm'>pledges</div>
           </div>
         </div>
