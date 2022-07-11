@@ -10,12 +10,14 @@ const Button = ({
   variant
 }) => {
   const buttonColor = {
-    primary: 'text-primary hover:text-primary-700',
-    secondary: 'text-white hover:text-secondary-200',
-    outline:
-      'border-2 rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white',
-    'invert-outline':
-      'border-2 rounded-full border-green-500 text-greeen-500 border-white bg-green-500 py-1 text-white hover:bg-green-600'
+    primary: disabled ? `text-primar` : `text-primary hover:text-primary-700 `,
+    secondary: disabled ? `text-white` : `text-white hover:text-secondary-200`,
+    outline: disabled
+      ? `hidden`
+      : `border-2 rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white`,
+    invertoutline: disabled
+      ? `border-2 rounded-full border-green-300 text-greeen-300 border-white bg-green-300 py-1 text-white`
+      : `border-2 rounded-full border-green-500 text-greeen-500 border-white bg-green-500 py-1 text-white hover:bg-green-600`
   };
 
   return (

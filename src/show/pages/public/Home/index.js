@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, Card, ProgressBar } from '../../../components';
 
 const Home = () => {
   const [featuredProject, setFeaturedProject] = useState({});
   const [mostInvested, setMostInvested] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -40,7 +42,9 @@ const Home = () => {
         </div>
       </div>
       <div className='flex'>
-        <div className='flex flex-col w-1/3 h-128 mt-5 mr-2'>
+        <div
+          onClick={() => navigate('/project/' + featuredProject.id)}
+          className='flex flex-col w-1/3 h-128 mt-5 mr-2 cursor-pointer'>
           <div className='h-112 ml-5'>
             {featuredProject?.images &&
               featuredProject?.images.length &&
@@ -63,7 +67,7 @@ const Home = () => {
               <Button
                 variant='outline'
                 label={`${featuredProject.fee}$`}
-                disabled={featuredProject.achieved_goal_percentage === 100}
+                disabled={featuredProject.achieved_goal_percentage >= 100}
               />
             </div>
           </div>
@@ -71,11 +75,12 @@ const Home = () => {
         <div className='w-full mr-5 mt-5'>
           {mostInvested.map((project, index) => (
             <div
-              className={`mb-2 flex flex-col content-start ${''} `}
+              onClick={() => navigate('/project/' + project.id)}
+              className={`mb-2 flex flex-col content-start cursor-pointer `}
               key={index}>
               <Card
                 reversed={index > 1}
-                src='https://i.imgur.com/O4vo5Uf.jpg'
+                src={project?.images && project?.images[0]}
                 title={project.name}
                 price={`${project.fee}$`}
                 percentage={project.achieved_goal_percentage}
