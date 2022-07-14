@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { Button, ProgressBar } from '../../../components';
 
 const Explore = () => {
@@ -31,7 +32,11 @@ const Explore = () => {
       <div className='flex justify-center items-center bg-white h-12'>
         {categories.map((category, index) => (
           <div
-            onClick={() => setSelectedCategory(category)}
+            onClick={() =>
+              selectedCategory === category
+                ? setSelectedCategory('')
+                : setSelectedCategory(category)
+            }
             className={
               selectedCategory === category
                 ? 'bg-primary-50 text-white mx-1 rounded-full px-2 transition-all duration-300 cursor-pointer'
@@ -43,14 +48,14 @@ const Explore = () => {
         ))}
       </div>
       {projectCard.length > 0 ? (
-        <div className='grid grid-cols-3 '>
+        <div className='grid grid-cols-3'>
           {projectCard.map((project, index) => (
             <div
               onClick={() => navigate('/project/' + project.id)}
               className='rounded-lg h-96 mt-5 ml-5 mr-5 cursor-pointer'
               key={index}>
               <div className='bg-primary-600 rounded-lg border shadow-md'>
-                <div className='relative '>
+                <div className='relative'>
                   <img
                     src={project.images[0]}
                     alt='main'
@@ -63,10 +68,10 @@ const Explore = () => {
                     />
                   </div>
                 </div>
-                <div className='ml-3 mb-2 text-2xl font-bold text-white'>
+                <div className='ml-3 mb-2 text-2xl text-white'>
                   {project.name}
                 </div>
-                <div className='flex items-center w-full justify-center px-5 pb-4 '>
+                <div className='flex items-center w-full justify-center px-5 pb-4'>
                   <ProgressBar percentage={project.achieved_goal_percentage} />
                 </div>
               </div>
@@ -74,7 +79,9 @@ const Explore = () => {
           ))}
         </div>
       ) : (
-        <div className='bg-red-500'>dshjdhjksbadsa</div>
+        <div className='flex text-center justify-center text-2xl text-gray-500'>
+          There are currently no projects in this category
+        </div>
       )}
     </div>
   );

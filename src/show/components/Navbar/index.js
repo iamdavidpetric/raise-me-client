@@ -13,7 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='flex flex-row h-12 justify-between bg-primary-50 sticky top-0 py-2'>
+    <div className='flex flex-row h-12 justify-between bg-primary-50 sticky top-0 py-2 z-10'>
       <div className='flex flex-row mx-2 items-center w-1/3'>
         <div
           onClick={() => navigate(EXPLORE_PATH)}
