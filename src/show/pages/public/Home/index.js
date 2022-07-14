@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, Card, ProgressBar } from '../../../components';
-
 import { PROJECT_PATH } from '../../../../process/routes/paths';
 
 const Home = () => {

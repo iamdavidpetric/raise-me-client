@@ -2,16 +2,25 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { PROJECT_PATH } from '../../../../process/routes/paths';
-
 import categories from '../../../../process/constants';
 import { Button, ProgressBar } from '../../../components';
+import { PROJECT_PATH } from '../../../../process/routes/paths';
 
 const Explore = () => {
   const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const navigate = useNavigate();
+
+  const toggleSelectedCategoryStyle = category =>
+    selectedCategory === category
+      ? 'bg-primary-50 text-white'
+      : 'border-2 border-primary-50 text-primary-50';
+
+  const toggleSelectedCategory = category =>
+    selectedCategory === category
+      ? setSelectedCategory('')
+      : setSelectedCategory(category);
 
   useEffect(() => {
     axios
@@ -25,16 +34,9 @@ const Explore = () => {
       <div className='flex justify-center items-center bg-white h-12'>
         {categories.map((category, index) => (
           <div
-            onClick={() =>
-              selectedCategory === category
-                ? setSelectedCategory('')
-                : setSelectedCategory(category)
-            }
-            className={
-              selectedCategory === category
-                ? 'bg-primary-50 text-white mx-1 rounded-full px-2 transition-all duration-300 cursor-pointer'
-                : 'border-2 border-primary-50 rounded-full mx-1 px-2 text-primary-50 transition-all duration-300 cursor-pointer'
-            }
+            onClick={() => toggleSelectedCategory(category)}
+            className={`rounded-full mx-1 px-2 transition-all duration-300 cursor-pointer
+              ${toggleSelectedCategoryStyle(category)}`}
             key={index}>
             {category}
           </div>
