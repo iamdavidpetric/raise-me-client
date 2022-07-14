@@ -3,9 +3,9 @@ import Explore from './public/Explore';
 import Project from './public/Project';
 
 const pages = {
+  Explore,
   Home,
-  Project,
-  Explore
+  Project
 };
 
 export default pages;

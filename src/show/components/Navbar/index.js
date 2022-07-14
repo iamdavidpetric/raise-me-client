@@ -7,7 +7,7 @@ import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
 
 import { Button } from '../';
-import { HOME_PATH, EXPLORE_PATH } from '../../../process/routes/paths';
+import { EXPLORE_PATH, HOME_PATH } from '../../../process/routes/paths';
 
 const Navbar = () => {
   const navigate = useNavigate();
