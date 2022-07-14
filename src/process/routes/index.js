@@ -11,6 +11,11 @@ const Project = {
   path: Paths.PROJECT_PATH
 };
 
-const routes = [Home, Project];
+const Explore = {
+  element: Pages.Explore,
+  path: Paths.EXPLORE_PATH
+};
+
+const routes = [Home, Project, Explore];
 
 export default routes;

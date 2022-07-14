@@ -7,7 +7,7 @@ import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
 
 import { Button } from '../';
-import { HOME_PATH } from '../../../process/routes/paths';
+import { HOME_PATH, EXPLORE_PATH } from '../../../process/routes/paths';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,7 +15,9 @@ const Navbar = () => {
   return (
     <div className='flex flex-row h-12 justify-between bg-primary-50 sticky top-0 py-2'>
       <div className='flex flex-row mx-2 items-center w-1/3'>
-        <div className='flex text-white transition duration-200 items-center'>
+        <div
+          onClick={() => navigate(EXPLORE_PATH)}
+          className='flex text-white transition duration-200 items-center'>
           <Button
             variant='secondary'
             iconLeft={<MdOutlineExplore className='mx-1' size='1.5rem' />}
