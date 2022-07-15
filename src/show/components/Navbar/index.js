@@ -24,14 +24,6 @@ const Navbar = () => {
             label='explore'
           />
         </div>
-
-        <div className='flex transition duration-200 items-center'>
-          <Button
-            variant='secondary'
-            iconLeft={<BiSearch className='mx-1' size='1.5rem' />}
-            label='search'
-          />
-        </div>
       </div>
 
       <div
