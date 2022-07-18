@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import categories from '../../../../process/constants';
-import { Button, ProgressBar, TextField } from '../../../components';
 import { PROJECT_PATH } from '../../../../process/routes/paths';
+import { Button, ProgressBar, TextField } from '../../../components';
 
 const Explore = () => {
+  const [search, setSearch] = useState('');
   const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
 
@@ -32,15 +32,14 @@ const Explore = () => {
       .catch(err => err);
   }, [selectedCategory, search]);
 
-  // className='flex justify-end items-center border border-white hover:border-primary-100 hover:px-3 w-64 h-8 rounded-full mr-5'
-
   return (
     <div className='h-full w-full mt-2'>
       <div className='flex items-end justify-end'>
         <TextField
           placeholder='Search'
           value={search}
-          onChange={event => setSearch(event.target.value)}
+          onChange={e => setSearch(e.target.value)}
+          className='placeholder-gray-500 flex text-end justify-end transition-all duration-300 border border-white hover:border-primary-100 outline-none hover:px-3 w-64 h-8 rounded-full mr-5'
         />
       </div>
       <div className='flex justify-center items-center bg-white h-12'>
