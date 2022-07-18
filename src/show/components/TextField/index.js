@@ -5,7 +5,7 @@ const TextField = ({ className, onChange, placeholder, value }) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={className}
+        className={`flex transition-all duration-300 ${className}`}
       />
     </div>
   );
