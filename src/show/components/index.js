@@ -5,4 +5,4 @@ import Button from './Button';
 import TextField from './TextField';
 import ProgressBar from './ProgressBar';
 
-export { Button, Card, Navbar, ProgressBar, TextField, Modal };
+export { Button, Card, Modal, Navbar, ProgressBar, TextField };

@@ -39,11 +39,7 @@ const Explore = () => {
           placeholder='Search'
           value={search}
           onChange={e => setSearch(e.target.value)}
-<<<<<<< task/modal
-          className='placeholder-gray-500 flex text-end justify-end transition-all duration-300 border border-white hover:border-primary-100 outline-none hover:px-3 w-64 h-8 rounded-full mr-5'
-=======
-          className='placeholder-gray-500 text-end justify-end border-2 border-white hover:border-primary-100 outline-none hover:px-1 w-64 h-8 rounded-full mr-5'
->>>>>>> local
+          className='placeholder-gray-500 text-end justify-end border border-white hover:border-primary-100 outline-none hover:px-1 w-64 h-8 rounded-full mr-5'
         />
       </div>
       <div className='flex justify-center items-center bg-white h-12'>
