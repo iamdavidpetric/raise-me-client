@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import categories from '../../../../process/constants';
-import { Button, ProgressBar } from '../../../components';
 import { PROJECT_PATH } from '../../../../process/routes/paths';
+import { Button, ProgressBar, TextField } from '../../../components';
 
 const Explore = () => {
+  const [search, setSearch] = useState('');
   const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -15,7 +16,7 @@ const Explore = () => {
   const toggleSelectedCategoryStyle = category =>
     selectedCategory === category
       ? 'bg-primary-50 text-white'
-      : 'border-2 border-primary-50 text-primary-50';
+      : 'border border-primary-50 text-primary-50';
 
   const toggleSelectedCategory = category =>
     selectedCategory === category
@@ -24,13 +25,23 @@ const Explore = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/v1/projects?category=${selectedCategory}`)
+      .get(
+        `http://localhost:3000/v1/projects?category=${selectedCategory}&search=${search}`
+      )
       .then(res => setProjects(res.data))
       .catch(err => err);
-  }, [selectedCategory]);
+  }, [selectedCategory, search]);
 
   return (
-    <div className='h-full w-full mt-10'>
+    <div className='h-full w-full mt-2'>
+      <div className='flex items-end justify-end'>
+        <TextField
+          placeholder='Search'
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className='placeholder-gray-500 text-end justify-end border border-white hover:border-primary-100 outline-none hover:px-1 w-64 h-8 rounded-full mr-5'
+        />
+      </div>
       <div className='flex justify-center items-center bg-white h-12'>
         {categories.map((category, index) => (
           <div
@@ -54,7 +65,7 @@ const Explore = () => {
                   <img
                     src={project.images[0]}
                     alt='main'
-                    className='object-cover h-72 w-full'
+                    className='object-cover rounded-t-lg h-72 w-full'
                   />
                   <div className='flex items-center bg-green-500 w-14 h-14 rounded-full absolute -top-5 -right-6'>
                     <Button
