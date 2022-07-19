@@ -40,17 +40,17 @@ const Modal = ({ children, setVisible, title, visible }) => {
 
 Modal.defaultProps = {
   children: undefined,
-  setVisible: false,
+  setVisible: () => {},
   title: '',
   visible: false
 };
 
-Modal.dPropTypes = {
+Modal.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  setVisible: PropTypes.bool,
+  setVisible: PropTypes.func,
   title: PropTypes.string,
   visible: PropTypes.bool
 };
