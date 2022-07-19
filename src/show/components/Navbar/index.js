@@ -6,7 +6,11 @@ import { GiTreeGrowth } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
-import { BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
+import {
+  BsArrowBarLeft,
+  BsFillPersonLinesFill,
+  BsPersonCircle
+} from 'react-icons/bs';
 import { EXPLORE_PATH, HOME_PATH } from '../../../process/routes/paths';
 
 import { Fragment, useState } from 'react';
@@ -17,6 +21,8 @@ const Navbar = () => {
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
   const [openLogInModal, setOpenLogInModal] = useState(false);
   const [openLogOutModal, setOpenLogOutModal] = useState(false);
+
+  const isLogin = true;
 
   return (
     <Fragment>
@@ -48,15 +54,25 @@ const Navbar = () => {
             />
           </div>
 
-          <div className='flex transition-all duration-300 items-center hover:px-2 hover:py-1'>
-            <Button
-              onClick={() => setOpenSignUpModal(true)}
-              // onClick={() => setOpenLogOutModal(true)}
-              variant='secondary'
-              iconLeft={<FiUnlock className='mx-1' size='1.5rem' />}
-              label='sign in'
-            />
-          </div>
+          {isLogin ? (
+            <div className='flex transition-all duration-300 items-center hover:px-2 hover:py-1'>
+              <Button
+                onClick={() => setOpenLogOutModal(true)}
+                variant='secondary'
+                iconLeft={<BsArrowBarLeft className='mx-1' size='1.5rem' />}
+                label='Log out'
+              />
+            </div>
+          ) : (
+            <div className='flex transition-all duration-300 items-center hover:px-2 hover:py-1'>
+              <Button
+                onClick={() => setOpenSignUpModal(true)}
+                variant='secondary'
+                iconLeft={<FiUnlock className='mx-1' size='1.5rem' />}
+                label='sign in'
+              />
+            </div>
+          )}
 
           <div className='flex border-2 border-primary-50 items-center hover:border-2 hover:rounded-full hover:border-white transition-all duration-300 hover:px-2 hover:py-1'>
             <Button
@@ -173,7 +189,7 @@ const Navbar = () => {
           </div>
         </div>
       </Modal>
-      {/* <Modal setVisible={setOpenLogOutModal} visible={openLogOutModal}>
+      <Modal setVisible={setOpenLogOutModal} visible={openLogOutModal}>
         <div className='min-h-full flex items-center justify-center py-12 px-6'>
           <div className='max-w-md w-full space-y-8'>
             <div className='flex flex-col justify-center items-center'>
@@ -198,7 +214,7 @@ const Navbar = () => {
             </form>
           </div>
         </div>
-      </Modal> */}
+      </Modal>
     </Fragment>
   );
 };
