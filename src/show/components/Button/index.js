@@ -17,7 +17,10 @@ const Button = ({
       : 'border rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white',
     'invert-outline': disabled
       ? 'border rounded-full border-green-300 text-greeen-300 border-white bg-green-300 py-1 text-white'
-      : 'border rounded-full border-green-500 text-greeen-500 border-white bg-green-500 py-1 text-white hover:bg-green-600'
+      : 'border rounded-full border-green-500 text-greeen-500 border-white bg-green-500 py-1 text-white hover:bg-green-600',
+    tertiary: disabled
+      ? 'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white opacity-50'
+      : 'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white hover:text-white'
   };
 
   return (
