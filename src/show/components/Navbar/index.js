@@ -3,7 +3,6 @@ import { FiUnlock } from 'react-icons/fi';
 import { Fragment, useState } from 'react';
 import { TbStairsUp } from 'react-icons/tb';
 import { GiTreeGrowth } from 'react-icons/gi';
-import { Button, Modal, TextField } from '../';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
@@ -12,6 +11,8 @@ import {
   BsFillPersonLinesFill,
   BsPersonCircle
 } from 'react-icons/bs';
+
+import { Button, Modal, TextField } from '../';
 import { EXPLORE_PATH, HOME_PATH } from '../../../process/routes/paths';
 
 const Navbar = () => {
@@ -95,7 +96,7 @@ const Navbar = () => {
               <div className='rounded-md shadow-sm -space-y-px'>
                 <TextField
                   required
-                  type='username'
+                  type='text'
                   placeholder='Username'
                   className='rounded-t-md'
                 />
@@ -114,13 +115,13 @@ const Navbar = () => {
                   <Button
                     type='submit'
                     label='Sign Up'
-                    variant='modal-button'
+                    variant='tertiary'
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
                     onClick={() => setOpenSignUpModal(false)}
                     label='Close'
-                    variant='modal-button'
+                    variant='tertiary'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
                   />
                 </div>
@@ -154,13 +155,13 @@ const Navbar = () => {
                   required
                   type='email'
                   placeholder='Email'
-                  className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 text-sm'
+                  className='rounded-t-md'
                 />
                 <TextField
                   required
                   type='password'
                   placeholder='Confirm Password'
-                  className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-sm'
+                  className='rounded-b-md'
                 />
               </div>
 
@@ -168,13 +169,13 @@ const Navbar = () => {
                 <div className='w-full'>
                   <Button
                     type='submit'
-                    variant='modal-button'
+                    variant='tertiary'
                     label='Sign In'
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
                     onClick={() => setOpenLogInModal(false)}
-                    variant='modal-button'
+                    variant='tertiary'
                     label='Close'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
                   />
@@ -199,13 +200,13 @@ const Navbar = () => {
                 <div className='w-full'>
                   <Button
                     type='submit'
-                    variant='modal-button'
+                    variant='tertiary'
                     label='Log Out'
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
                     onClick={() => setOpenLogOutModal(false)}
-                    variant='modal-button'
+                    variant='tertiary'
                     label='Close'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
                   />

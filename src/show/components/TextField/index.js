@@ -26,7 +26,7 @@ TextField.defaultProps = {
   className: '',
   onChange: () => {},
   placeholder: '',
-  required: true,
+  required: false,
   type: 'text',
   value: ''
 };
