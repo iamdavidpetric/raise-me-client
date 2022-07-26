@@ -2,10 +2,10 @@ import { ImExit } from 'react-icons/im';
 import { FiUnlock } from 'react-icons/fi';
 import { Fragment, useState } from 'react';
 import { TbStairsUp } from 'react-icons/tb';
-import { CgArrowsExpandRight } from 'react-icons/cg';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
+import { CgArrowsExpandRight } from 'react-icons/cg';
 import {
   BsArrowBarLeft,
   BsFillPersonLinesFill,
@@ -14,13 +14,14 @@ import {
 
 import { Button, Modal, TextField } from '../';
 import {
+  CREATEPROJECT_PATH,
   EXPLORE_PATH,
-  HOME_PATH,
-  CREATEPROJECT_PATH
+  HOME_PATH
 } from '../../../process/routes/paths';
 
 const Navbar = () => {
   const navigate = useNavigate();
+
   const [openLogInModal, setOpenLogInModal] = useState(false);
   const [openLogOutModal, setOpenLogOutModal] = useState(false);
   const [openSignUpModal, setOpenSignUpModal] = useState(false);

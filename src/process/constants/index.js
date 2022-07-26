@@ -1,13 +1,13 @@
-import {
-  MdOutlineHeadset,
-  MdBackpack,
-  MdOutlineYard,
-  MdOtherHouses,
-  MdComputer
-} from 'react-icons/md';
+import { ImOffice } from 'react-icons/im';
 import { AiFillCar } from 'react-icons/ai';
 import { GiClothes } from 'react-icons/gi';
-import { ImOffice } from 'react-icons/im';
+import {
+  MdBackpack,
+  MdComputer,
+  MdOtherHouses,
+  MdOutlineHeadset,
+  MdOutlineYard
+} from 'react-icons/md';
 
 export const categories = [
   { name: 'audio', icon: <MdOutlineHeadset size='5rem' /> },
