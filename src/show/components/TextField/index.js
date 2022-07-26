@@ -5,19 +5,31 @@ const TextField = ({
   onChange,
   placeholder,
   required,
+  area,
   type,
   value
 }) => {
   return (
     <div>
-      <input
-        type={type}
-        value={value}
-        onChange={onChange}
-        required={required}
-        placeholder={placeholder}
-        className={`appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-sm focus:z-10 transition-all duration-300 ${className}`}
-      />
+      {area ? (
+        <textarea
+          type={type}
+          value={value}
+          onChange={onChange}
+          required={required}
+          placeholder={placeholder}
+          className={`appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-sm focus:z-10 transition-all duration-300 ${className}`}
+        />
+      ) : (
+        <input
+          type={type}
+          value={value}
+          onChange={onChange}
+          required={required}
+          placeholder={placeholder}
+          className={`appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-sm focus:z-10 transition-all duration-300 ${className}`}
+        />
+      )}
     </div>
   );
 };
@@ -37,7 +49,7 @@ TextField.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
-  value: PropTypes.string
+  value: PropTypes.any
 };
 
 export default TextField;

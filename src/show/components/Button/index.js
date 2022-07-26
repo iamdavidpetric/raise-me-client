@@ -14,7 +14,7 @@ const Button = ({
     secondary: disabled ? 'text-white' : 'text-white hover:text-secondary-200',
     outline: disabled
       ? 'border-none rounded-full text-white'
-      : 'border rounded-full border-primary-50 text-primary-50 hover:border-white hover:bg-primary-50 hover:text-white',
+      : 'border rounded-full border-primary-600 text-primary-600 hover:border-white hover:bg-primary-600 hover:text-white',
     'invert-outline': disabled
       ? 'border rounded-full border-green-300 text-greeen-300 border-white bg-green-300 py-1 text-white'
       : 'border rounded-full border-green-500 text-greeen-500 border-white bg-green-500 py-1 text-white hover:bg-green-600',

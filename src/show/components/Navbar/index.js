@@ -2,7 +2,7 @@ import { ImExit } from 'react-icons/im';
 import { FiUnlock } from 'react-icons/fi';
 import { Fragment, useState } from 'react';
 import { TbStairsUp } from 'react-icons/tb';
-import { GiTreeGrowth } from 'react-icons/gi';
+import { CgArrowsExpandRight } from 'react-icons/cg';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
@@ -13,7 +13,11 @@ import {
 } from 'react-icons/bs';
 
 import { Button, Modal, TextField } from '../';
-import { EXPLORE_PATH, HOME_PATH } from '../../../process/routes/paths';
+import {
+  EXPLORE_PATH,
+  HOME_PATH,
+  CREATEPROJECT_PATH
+} from '../../../process/routes/paths';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,7 +29,7 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <div className='flex flex-row h-12 justify-between bg-primary-50 sticky top-0 py-2 z-10'>
+      <div className='flex flex-row h-12 justify-between bg-primary-600 sticky top-0 py-2 z-10'>
         <div className='flex flex-row mx-2 items-center w-1/3'>
           <div
             onClick={() => navigate(EXPLORE_PATH)}
@@ -41,7 +45,7 @@ const Navbar = () => {
         <div
           onClick={() => navigate(HOME_PATH)}
           className='text-white flex items-center text-2xl cursor-pointer'>
-          <GiTreeGrowth /> raise.me
+          <CgArrowsExpandRight /> raise.me
         </div>
 
         <div className='flex flex-row items-center justify-end mx-2 w-1/3'>
@@ -73,8 +77,9 @@ const Navbar = () => {
             </div>
           )}
 
-          <div className='flex border-2 border-primary-50 items-center hover:border-2 hover:rounded-full hover:border-white transition-all duration-300 hover:px-2 hover:py-1'>
+          <div className='flex border-2 border-primary-600 items-center hover:border-2 hover:rounded-full hover:border-white transition-all duration-300 hover:px-2 hover:py-1'>
             <Button
+              onClick={() => navigate(CREATEPROJECT_PATH)}
               variant='secondary'
               iconLeft={<TbStairsUp className='px-0 mx-0' size='1.5rem' />}
               label='raise it'

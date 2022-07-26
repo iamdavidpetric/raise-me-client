@@ -1,6 +1,11 @@
 import * as Paths from './paths';
 import Pages from '../../show/pages';
 
+const CreateProject = {
+  element: Pages.CreateProject,
+  path: Paths.CREATEPROJECT_PATH
+};
+
 const Explore = {
   element: Pages.Explore,
   path: Paths.EXPLORE_PATH
@@ -16,6 +21,6 @@ const Project = {
   path: Paths.PROJECT_PATH
 };
 
-const routes = [Explore, Home, Project];
+const routes = [CreateProject, Explore, Home, Project];
 
 export default routes;
