@@ -13,6 +13,7 @@ const GoalStep = ({ nextStep, previousStep, project, setProject }) => {
           ? 999999
           : e.target.value
     });
+
   return (
     <div className='mt-20 px-20'>
       <div className='mt-60'>

@@ -11,8 +11,8 @@ const Button = ({
 }) => {
   const buttonColor = {
     primary: disabled
-      ? 'text-primary-300'
-      : 'text-primary-600 hover:text-primary-700 hover:scale-110',
+      ? 'text-gray-400'
+      : 'text-primary-400 hover:text-primary-500 hover:scale-110',
     secondary: disabled ? 'text-white' : 'text-white hover:text-secondary-200',
     outline: disabled
       ? 'border-none rounded-full text-white'
