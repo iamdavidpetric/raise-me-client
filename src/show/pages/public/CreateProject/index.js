@@ -3,29 +3,36 @@ import { useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { useNavigate } from 'react-router-dom';
 import { PROJECT_PATH } from '../../../../process/routes/paths';
-
 import {
+  CategoryStep,
+  DeadlineStep,
+  DescriptionStep,
   FeeStep,
   GoalStep,
-  TitleStep,
   ImagesStep,
   PublishStep,
-  CategoryStep,
-  DatelineStep,
   StatementStep,
-  DescriptionStep,
-  TeamMembersStep
-} from '../CreateProject/Subviews';
+  TeamMembersStep,
+  TitleStep
+} from './Subviews';
 
 const CreateProject = () => {
   const navigate = useNavigate();
+
   const [project, setProject] = useState({
+    category: '',
+    name: '',
+    description: '',
+    goal: undefined,
+    fee: undefined,
+    deadline: '',
     images: ['', '', '', '', '', '', '', ''],
     team_members: [{}, {}, {}, {}, {}, {}, {}],
     user_id: 1
   });
 
-  const postData = e => {
+  const createNewProject = e => {
+    e?.preventDefault();
     const formData = new FormData();
     project.images.forEach(image => {
       if (image.length !== 0) {
@@ -49,7 +56,7 @@ const CreateProject = () => {
     formData.append('category', project.category);
     formData.append('statement', project.statement);
     formData.append('user_id', project.user_id);
-    e?.preventDefault();
+
     axios
       .post('http://localhost:3000/v1/projects/', formData)
       .then(res => navigate(PROJECT_PATH.replace(':id', res.data.id)))
@@ -64,14 +71,14 @@ const CreateProject = () => {
         <DescriptionStep project={project} setProject={setProject} />
         <GoalStep project={project} setProject={setProject} />
         <FeeStep project={project} setProject={setProject} />
-        <DatelineStep project={project} setProject={setProject} />
+        <DeadlineStep project={project} setProject={setProject} />
         <StatementStep project={project} setProject={setProject} />
         <ImagesStep project={project} setProject={setProject} />
         <TeamMembersStep project={project} setProject={setProject} />
         <PublishStep
           project={project}
           setProject={setProject}
-          postData={postData}
+          createNewProject={createNewProject}
         />
       </StepWizard>
     </div>

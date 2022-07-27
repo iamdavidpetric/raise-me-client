@@ -3,7 +3,7 @@ import Pages from '../../show/pages';
 
 const CreateProject = {
   element: Pages.CreateProject,
-  path: Paths.CREATEPROJECT_PATH
+  path: Paths.CREATE_PROJECT_PATH
 };
 
 const Explore = {

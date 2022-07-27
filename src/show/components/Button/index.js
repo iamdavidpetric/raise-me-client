@@ -10,7 +10,9 @@ const Button = ({
   variant
 }) => {
   const buttonColor = {
-    primary: disabled ? 'text-primary' : 'text-primary hover:text-primary-700',
+    primary: disabled
+      ? 'text-primary-300'
+      : 'text-primary-600 hover:text-primary-700 hover:scale-110',
     secondary: disabled ? 'text-white' : 'text-white hover:text-secondary-200',
     outline: disabled
       ? 'border-none rounded-full text-white'
@@ -25,7 +27,7 @@ const Button = ({
 
   return (
     <button
-      className={`flex px-2 transition-all duration-300 ${buttonColor[variant]} ${className}`}
+      className={`flex items-center px-2 transition-all duration-300 ${buttonColor[variant]} ${className}`}
       onClick={onClick}
       disabled={disabled}>
       {iconLeft}

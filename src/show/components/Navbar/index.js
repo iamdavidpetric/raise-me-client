@@ -14,7 +14,7 @@ import {
 
 import { Button, Modal, TextField } from '../';
 import {
-  CREATEPROJECT_PATH,
+  CREATE_PROJECT_PATH,
   EXPLORE_PATH,
   HOME_PATH
 } from '../../../process/routes/paths';
@@ -80,7 +80,7 @@ const Navbar = () => {
 
           <div className='flex border-2 border-primary-600 items-center hover:border-2 hover:rounded-full hover:border-white transition-all duration-300 hover:px-2 hover:py-1'>
             <Button
-              onClick={() => navigate(CREATEPROJECT_PATH)}
+              onClick={() => navigate(CREATE_PROJECT_PATH)}
               variant='secondary'
               iconLeft={<TbStairsUp className='px-0 mx-0' size='1.5rem' />}
               label='raise it'

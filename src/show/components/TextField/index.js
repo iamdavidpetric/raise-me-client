@@ -1,16 +1,18 @@
 import PropTypes from 'prop-types';
 
 const TextField = ({
+  area,
   className,
+  label,
   onChange,
   placeholder,
   required,
-  area,
   type,
   value
 }) => {
   return (
     <div>
+      {label && <label>{label}</label>}
       {area ? (
         <textarea
           type={type}
@@ -49,7 +51,7 @@ TextField.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
-  value: PropTypes.any
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default TextField;
