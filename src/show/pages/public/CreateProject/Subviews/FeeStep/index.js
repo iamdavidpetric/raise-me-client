@@ -3,6 +3,17 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 import { Button, ProgressBar, TextField } from '../../../../../components';
 
 const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
+  const setFee = e =>
+    setProject({
+      ...project,
+      fee:
+        e.target.value < 0
+          ? Math.abs(e.target.value)
+          : e.target.value > 999999
+          ? 999999
+          : e.target.value
+    });
+
   return (
     <div className='mt-18 px-20'>
       <div className='mt-60'>
@@ -15,21 +26,11 @@ const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
             type='number'
             value={project.fee}
             className='flex rounded-2xl mt-2 items-center text-center w-36'
-            onChange={e =>
-              setProject({
-                ...project,
-                fee:
-                  e.target.value < 0
-                    ? Math.abs(e.target.value)
-                    : e.target.value > 999999
-                    ? 999999
-                    : e.target.value
-              })
-            }
+            onChange={e => setFee(e)}
           />
         </div>
       </div>
-      <div className='flex justify-between cursor-pointer'>
+      <div className='flex justify-between'>
         <Button
           onClick={() => previousStep()}
           iconLeft={<BsArrowBarLeft size='2rem' />}

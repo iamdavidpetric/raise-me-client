@@ -38,6 +38,7 @@ const TextField = ({
 
 TextField.defaultProps = {
   className: '',
+  label: '',
   onChange: () => {},
   placeholder: '',
   required: false,
@@ -47,6 +48,7 @@ TextField.defaultProps = {
 
 TextField.propTypes = {
   className: PropTypes.string,
+  label: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   required: PropTypes.bool,

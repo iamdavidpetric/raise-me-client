@@ -15,7 +15,7 @@ const StatementStep = ({ nextStep, previousStep, project, setProject }) => {
           onChange={e => setProject({ ...project, statement: e.target.value })}
         />
       </div>
-      <div className='flex mt-20 justify-between cursor-pointer'>
+      <div className='flex mt-20 justify-between'>
         <Button
           onClick={() => previousStep()}
           iconLeft={<BsArrowBarLeft size='2rem' />}

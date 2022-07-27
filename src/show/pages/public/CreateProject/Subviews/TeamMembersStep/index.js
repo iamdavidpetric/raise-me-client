@@ -12,10 +12,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
 
   const setAvatarURL = (e, index, member) => {
     let newTeamMembers = project.team_members;
-    newTeamMembers[index] = {
-      ...member,
-      avatar_url: e.target.value
-    };
+    newTeamMembers[index] = { ...member, avatar_url: e.target.value };
     setProject({ ...project, team_members: newTeamMembers });
   };
 
@@ -24,11 +21,11 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
   ).length;
 
   return (
-    <div className='mt-12 px-20'>
+    <div className='mt-8 px-20'>
       <div className='text-center text-3xl text-gray-500'>
         Enter your project members
       </div>
-      <div className='flex w-full mt-10'>
+      <div className='flex w-full mt-4'>
         <div className='flex w-1/2 h-full'>
           <div className='w-3/4 px-2'>
             {project.team_members.map((member, index) => (
@@ -36,7 +33,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
                 label={teamMembersLabels[index].name}
                 key={index}
                 value={member.name}
-                className='rounded-2xl mt-2 items-center text-center'
+                className='rounded-2xl mt-1 items-center text-center'
                 onChange={e => setName(e, index, member)}
               />
             ))}
@@ -49,21 +46,19 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
                 label={teamMembersLabels[index].avatar}
                 key={index}
                 value={member.avatar_url}
-                className='rounded-2xl mt-2 items-center text-center'
+                className='rounded-2xl mt-1 items-center text-center'
                 onChange={e => setAvatarURL(e, index, member)}
               />
             ))}
           </div>
         </div>
       </div>
-
-      <div className='flex mt-20 justify-between cursor-pointer'>
+      <div className='flex mt-10 justify-between'>
         <Button
           onClick={() => previousStep()}
           iconLeft={<BsArrowBarLeft size='2rem' />}
           label='Back'
         />
-
         <Button
           disabled={disableNext}
           onClick={() => nextStep()}
@@ -71,7 +66,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Next'
         />
       </div>
-      <div className='mt-20 px-60'>
+      <div className='mt-10 px-60'>
         <ProgressBar percentage={90} color='bg-primary-600' />
       </div>
     </div>

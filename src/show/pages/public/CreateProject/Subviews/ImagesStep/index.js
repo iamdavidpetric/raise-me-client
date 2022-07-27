@@ -24,7 +24,7 @@ const ImagesStep = ({ nextStep, previousStep, project, setProject }) => {
           />
         ))}
       </div>
-      <div className='flex mt-14 justify-between cursor-pointer'>
+      <div className='flex mt-14 justify-between'>
         <Button
           onClick={() => previousStep()}
           iconLeft={<BsArrowBarLeft size='2rem' />}

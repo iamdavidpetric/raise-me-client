@@ -19,7 +19,7 @@ const DescriptionStep = ({ nextStep, previousStep, project, setProject }) => {
           }
         />
       </div>
-      <div className='flex mt-28 justify-between cursor-pointer'>
+      <div className='flex mt-28 justify-between'>
         <Button
           onClick={() => previousStep()}
           iconLeft={<BsArrowBarLeft size='2rem' />}

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { useNavigate } from 'react-router-dom';
+
 import { PROJECT_PATH } from '../../../../process/routes/paths';
 import {
   CategoryStep,

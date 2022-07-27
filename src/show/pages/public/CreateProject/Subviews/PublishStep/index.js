@@ -19,7 +19,7 @@ const PublishStep = ({ createNewProject, previousStep }) => {
           </div>
         </div>
       </div>
-      <div className='flex justify-between cursor-pointe mt-52'>
+      <div className='flex justify-between mt-52'>
         <Button
           onClick={() => previousStep()}
           iconLeft={<BsArrowBarLeft size='2rem' />}
