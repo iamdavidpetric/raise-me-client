@@ -5,3 +5,23 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+textarea {
+  resize: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rsw_2f {
+  display: none;
+  transition: all;
+  animation-duration: 350ms;
+}
+
+.rsw_3G {
+  display: block;
+}

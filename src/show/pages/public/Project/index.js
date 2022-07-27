@@ -80,7 +80,10 @@ const Project = () => {
               {project?.amount_invested}$ / {project?.goal}$
             </div>
             <div className='px-5'>
-              <ProgressBar percentage={project.achieved_goal_percentage} />
+              <ProgressBar
+                percentage={project.achieved_goal_percentage}
+                color='bg-primary-600'
+              />
             </div>
             <div className='flex items-center justify-center mt-5'>
               <Button
@@ -95,19 +98,19 @@ const Project = () => {
             </div>
             <div className='flex px-5 mt-3 justify-center '>
               <Button
-                className='text-primary-50 hover:text-primary-300'
+                className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FaFacebook size='2rem' />}
               />
               <Button
-                className='text-primary-50 hover:text-primary-300'
+                className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FaInstagram size='2rem' />}
               />
               <Button
-                className='text-primary-50 hover:text-primary-300'
+                className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FiTwitter size='2rem' />}
               />
               <Button
-                className='text-primary-50 hover:text-primary-300'
+                className='text-primary-600 hover:text-primary-300'
                 iconLeft={<AiOutlineLink size='2rem' />}
               />
             </div>

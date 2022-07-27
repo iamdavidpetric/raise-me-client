@@ -30,7 +30,7 @@ const Card = ({ percentage, price, reversed, src, title }) => {
           </div>
 
           <div className='flex items-center justify-center mt-3 px-5'>
-            <ProgressBar percentage={percentage} />
+            <ProgressBar percentage={percentage} color='bg-primary-600' />
           </div>
         </div>
       </div>

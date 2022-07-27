@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='bg-primary-50 flex flex-col h-full w-full'>
+    <div className='bg-primary-600 flex flex-col h-full w-full'>
       <div className='bg-white'>
         <div className='bg-white flex items-center justify-between w-full h-24 text-4xl'>
           <div className='w-1/4 flex flex-col items-center justify-start border-r-4'>
@@ -68,6 +68,7 @@ const Home = () => {
             <div>{featuredProject.name}</div>
             <div className='flex items-center justify-center px-5'>
               <ProgressBar
+                color='bg-primary-600'
                 percentage={featuredProject.achieved_goal_percentage}
               />
             </div>

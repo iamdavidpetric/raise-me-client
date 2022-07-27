@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import categories from '../../../../process/constants';
+import { categories } from '../../../../process/constants';
 import { PROJECT_PATH } from '../../../../process/routes/paths';
 import { Button, ProgressBar, TextField } from '../../../components';
 
@@ -43,13 +43,13 @@ const Explore = () => {
         />
       </div>
       <div className='flex justify-center items-center bg-white h-12'>
-        {categories.map((category, index) => (
+        {categories?.map((category, index) => (
           <div
-            onClick={() => toggleSelectedCategory(category)}
+            onClick={() => toggleSelectedCategory(category.name)}
             className={`rounded-full mx-1 px-2 transition-all duration-300 cursor-pointer
-              ${toggleSelectedCategoryStyle(category)}`}
+              ${toggleSelectedCategoryStyle(category.name)}`}
             key={index}>
-            {category}
+            {category.name}
           </div>
         ))}
       </div>
