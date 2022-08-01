@@ -12,7 +12,7 @@ import { Button, ProgressBar, Modal } from '../../../components';
 const MyProjects = () => {
   const [projectId, setProjectId] = useState(null);
   const [myProjects, setMyProjects] = useState([]);
-  const [projectModal, setProjectModal] = useState(false);
+  const [deleteProjectModal, setDeleteProjectModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,13 +30,14 @@ const MyProjects = () => {
       .then(() => {
         const filterProject = object => projectId !== object.id;
         const filteredProjects = myProjects.filter(filterProject);
-        setProjectModal(false);
+        setDeleteProjectModal(false);
         setMyProjects(filteredProjects);
       })
       .catch(err => err);
   };
-  const getProjectId = project => {
-    setProjectModal(true);
+
+  const prepareToDelete = project => {
+    setDeleteProjectModal(true);
     setProjectId(project.id);
   };
 
@@ -70,7 +71,7 @@ const MyProjects = () => {
                     </div>
                     <div className='flex items-center bg-red-500 w-10 h-10 rounded-full absolute -top-5 -left-4 hover:scale-110 transition-all duration-300'>
                       <Button
-                        onClick={() => getProjectId(project)}
+                        onClick={() => prepareToDelete(project)}
                         label={<FaTrash size='1.5rem' />}
                         className='flex items-center justify-center w-16 h-16 text-white hover:text-red-900 hover:scale-110'
                       />
@@ -95,7 +96,7 @@ const MyProjects = () => {
         )}
       </div>
 
-      <Modal setVisible={setProjectModal} visible={projectModal}>
+      <Modal setVisible={setDeleteProjectModal} visible={deleteProjectModal}>
         <div className='min-h-full flex items-center justify-center py-12 px-6'>
           <div className='max-w-md w-full space-y-8'>
             <div className='flex flex-col justify-center items-center'>
@@ -114,7 +115,7 @@ const MyProjects = () => {
                     className='bg-primary-200 hover:bg-primary-400'
                   />
                   <Button
-                    onClick={() => setProjectModal(false)}
+                    onClick={() => setDeleteProjectModal(false)}
                     variant='tertiary'
                     label='No'
                     className='bg-primary-500 hover:bg-primary-600 mt-2'
