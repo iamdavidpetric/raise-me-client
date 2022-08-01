@@ -17,7 +17,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
   };
 
   const disableNext = !project.team_members.filter(
-    member => Object.entries(member).length === 2
+    member => Object.entries(member).length >= 2
   ).length;
 
   return (

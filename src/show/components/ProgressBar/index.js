@@ -9,7 +9,7 @@ const ProgressBar = ({ color, percentage }) => {
         style={{
           width: percentage >= 100 ? `100%` : `${percentage}%`
         }}>
-        {percentage >= 100 ? 100 : percentage}%
+        {parseFloat(percentage >= 100 ? 100 : percentage?.toFixed(2))}%
       </div>
     </div>
   );

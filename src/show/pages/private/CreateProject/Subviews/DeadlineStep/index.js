@@ -17,7 +17,7 @@ const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
             <ReactDatePicker
               required
               className='flex justify-center text-center w-full '
-              selected={project.deadline}
+              selected={project?.deadline}
               onChange={deadline =>
                 setProject({ ...project, deadline: deadline })
               }

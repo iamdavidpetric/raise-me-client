@@ -45,7 +45,7 @@ const Navbar = () => {
 
         <div
           onClick={() => navigate(HOME_PATH)}
-          className='text-white flex items-center text-2xl cursor-pointer'>
+          className='text-white flex items-center text-2xl cursor-pointer hover:hover:scale-110 transition-all duration-300'>
           <CgArrowsExpandRight /> raise.me
         </div>
 
