@@ -2,15 +2,15 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Fragment, useState, useEffect } from 'react';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
-import { Button, ProgressBar, Modal } from '../../../components';
 
 import {
   EDIT_PROJECT_PATH,
   PROJECT_PATH
 } from '../../../../process/routes/paths';
+import { Button, ProgressBar, Modal } from '../../../components';
 
-const MyProject = () => {
-  const [projectId, setSetProjectId] = useState();
+const MyProjects = () => {
+  const [projectId, setProjectId] = useState();
   const [myProjects, setMyProjects] = useState([]);
   const [projectModal, setProjectModal] = useState(false);
 
@@ -18,7 +18,7 @@ const MyProject = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/v1/projects/get_project`)
+      .get(`http://localhost:3000/v1/projects/my_projects`)
       .then(res => setMyProjects(res.data))
       .catch(err => err);
   }, []);
@@ -29,9 +29,9 @@ const MyProject = () => {
       .delete(`http://localhost:3000/v1/projects/${projectId}`)
       .then(() => {
         const filterProject = object => projectId !== object.id;
-        const filteredConstructors = myProjects.filter(filterProject);
+        const filteredProjects = myProjects.filter(filterProject);
         setProjectModal(false);
-        setMyProjects(filteredConstructors);
+        setMyProjects(filteredProjects);
       })
       .catch(err => err);
   };
@@ -68,7 +68,7 @@ const MyProject = () => {
                       <Button
                         onClick={() => {
                           setProjectModal(true);
-                          setSetProjectId(project.id);
+                          setProjectId(project.id);
                         }}
                         label={<FaTrash size='1.5rem' />}
                         className='flex items-center justify-center w-16 h-16 text-white hover:text-red-900 hover:scale-110'
@@ -128,4 +128,4 @@ const MyProject = () => {
   );
 };
 
-export default MyProject;
+export default MyProjects;

@@ -21,15 +21,15 @@ const Home = {
   path: Paths.HOME_PATH
 };
 
-const MyProject = {
-  element: Pages.MyProject,
-  path: Paths.MY_PROJECT_PATH
+const MyProjects = {
+  element: Pages.MyProjects,
+  path: Paths.MY_PROJECTS_PATH
 };
 const Project = {
   element: Pages.Project,
   path: Paths.PROJECT_PATH
 };
 
-const routes = [CreateProject, EditProject, Explore, Home, MyProject, Project];
+const routes = [CreateProject, EditProject, Explore, Home, MyProjects, Project];
 
 export default routes;

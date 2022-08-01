@@ -3,7 +3,6 @@ import StepWizard from 'react-step-wizard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { PROJECT_PATH } from '../../../../process/routes/paths';
 
 import {
   CategoryStep,
@@ -17,6 +16,7 @@ import {
   TeamMembersStep,
   TitleStep
 } from '../CreateProject/Subviews';
+import { PROJECT_PATH } from '../../../../process/routes/paths';
 
 const EditProject = () => {
   const { id } = useParams();
