@@ -10,7 +10,7 @@ import {
 import { Button, ProgressBar, Modal } from '../../../components';
 
 const MyProjects = () => {
-  const [projectId, setProjectId] = useState();
+  const [projectId, setProjectId] = useState(null);
   const [myProjects, setMyProjects] = useState([]);
   const [projectModal, setProjectModal] = useState(false);
 
@@ -34,6 +34,10 @@ const MyProjects = () => {
         setMyProjects(filteredProjects);
       })
       .catch(err => err);
+  };
+  const getProjectId = project => {
+    setProjectModal(true);
+    setProjectId(project.id);
   };
 
   return (
@@ -66,10 +70,7 @@ const MyProjects = () => {
                     </div>
                     <div className='flex items-center bg-red-500 w-10 h-10 rounded-full absolute -top-5 -left-4 hover:scale-110 transition-all duration-300'>
                       <Button
-                        onClick={() => {
-                          setProjectModal(true);
-                          setProjectId(project.id);
-                        }}
+                        onClick={() => getProjectId(project)}
                         label={<FaTrash size='1.5rem' />}
                         className='flex items-center justify-center w-16 h-16 text-white hover:text-red-900 hover:scale-110'
                       />
