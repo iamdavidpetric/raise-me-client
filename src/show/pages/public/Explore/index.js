@@ -74,9 +74,7 @@ const Explore = () => {
                     />
                   </div>
                 </div>
-                <div className='ml-3 mb-2 text-2xl text-white'>
-                  {project.name}
-                </div>
+                <div className='ml-3 mb-2 text-2xl text-white'>{project.name}</div>
                 <div className='flex items-center w-full justify-center px-5 pb-4'>
                   <ProgressBar percentage={project.achieved_goal_percentage} />
                 </div>

@@ -5,13 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   deleteProjectAsync,
-  getProjectAsync
+  getMyProjectsAsync
 } from '../../../../process/redux/projectSlice';
-
-import {
-  EDIT_PROJECT_PATH,
-  PROJECT_PATH
-} from '../../../../process/routes/paths';
+import { EDIT_PROJECT_PATH, PROJECT_PATH } from '../../../../process/routes/paths';
 import { Button, ProgressBar, Modal } from '../../../components';
 
 const MyProjects = () => {
@@ -21,7 +17,7 @@ const MyProjects = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const projects = useSelector(state => state.projects.projects);
+  const { projects } = useSelector(state => state.projects);
 
   const handleDeleteClick = e => {
     e.preventDefault();
@@ -29,7 +25,7 @@ const MyProjects = () => {
   };
 
   useEffect(() => {
-    dispatch(getProjectAsync());
+    dispatch(getMyProjectsAsync());
   }, [dispatch]);
 
   const prepareToDelete = project => {
@@ -40,9 +36,9 @@ const MyProjects = () => {
   return (
     <Fragment>
       <div className='h-full w-full'>
-        {projects ? (
+        {projects.length > 0 ? (
           <div className='grid grid-cols-3 mt-5'>
-            {projects.map(project => (
+            {projects?.map(project => (
               <div
                 className='rounded-lg h-96 mt-5 ml-5 mr-5 cursor-pointer'
                 key={project.id}
@@ -50,9 +46,7 @@ const MyProjects = () => {
                 <div className='bg-primary-600 rounded-lg border shadow-md'>
                   <div className='relative'>
                     <img
-                      onClick={() =>
-                        navigate(PROJECT_PATH.replace(':id', project.id))
-                      }
+                      onClick={() => navigate(PROJECT_PATH.replace(':id', project.id))}
                       src={project.images[0]}
                       alt='main'
                       className='object-cover rounded-t-lg h-72 w-full'
@@ -74,13 +68,9 @@ const MyProjects = () => {
                       />
                     </div>
                   </div>
-                  <div className='ml-3 mb-2 text-2xl text-white'>
-                    {project.name}
-                  </div>
+                  <div className='ml-3 mb-2 text-2xl text-white'>{project.name}</div>
                   <div className='flex items-center w-full justify-center px-5 pb-4'>
-                    <ProgressBar
-                      percentage={project.achieved_goal_percentage}
-                    />
+                    <ProgressBar percentage={project.achieved_goal_percentage} />
                   </div>
                 </div>
               </div>

@@ -5,9 +5,7 @@ import { Button, ProgressBar, TextField } from '../../../../../components';
 const TitleStep = ({ nextStep, previousStep, project, setProject }) => {
   return (
     <div className='mt-36 px-20'>
-      <div className='text-center text-3xl text-gray-500'>
-        Name your project
-      </div>
+      <div className='text-center text-3xl text-gray-500'>Name your project</div>
       <div className='h-64'>
         <TextField
           required

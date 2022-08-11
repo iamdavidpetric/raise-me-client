@@ -22,11 +22,7 @@ const Card = ({ percentage, price, reversed, src, title }) => {
           className={`w-full h-full rounded-lg bg-white text-center flex flex-col justify-center ${disabledCard}`}>
           <div>{title}</div>
           <div className='flex items-center justify-center mt-2'>
-            <Button
-              variant='outline'
-              label={price}
-              disabled={percentage >= 100}
-            />
+            <Button variant='outline' label={price} disabled={percentage >= 100} />
           </div>
 
           <div className='flex items-center justify-center mt-3 px-5'>

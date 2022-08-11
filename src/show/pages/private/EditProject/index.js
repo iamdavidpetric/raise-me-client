@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import StepWizard from 'react-step-wizard';
-
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   setSelectedProject,
@@ -53,8 +52,8 @@ const EditProject = () => {
         <FeeStep project={selectedProject} setProject={setProject} />
         {/* <DeadlineStep project={selectedProject} setProject={setProject} /> */}
         <StatementStep project={selectedProject} setProject={setProject} />
-        {/* <ImagesStep project={selectedProject} setProject={setProject} /> */}
-        {/* <TeamMembersStep project={selectedProject} setProject={setProject} /> */}
+        <ImagesStep project={selectedProject} setProject={setProject} />
+        <TeamMembersStep project={selectedProject} setProject={setProject} />
         <PublishStep
           project={selectedProject}
           setProject={setProject}

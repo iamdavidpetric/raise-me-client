@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button, Card, ProgressBar } from '../../../components';
 import { PROJECT_PATH } from '../../../../process/routes/paths';
-
 import {
   getFeaturedProjectAsync,
   getMostInvestedAsync,
@@ -30,24 +29,22 @@ const Home = () => {
       <div className='bg-white'>
         <div className='bg-white flex items-center justify-between w-full h-24 text-4xl'>
           <div className='w-1/4 flex flex-col items-center justify-start border-r-4'>
-            {quickInfo.total_projects_count}
+            {quickInfo?.total_projects_count}
             <div className='text-sm'>projects funded</div>
           </div>
           <div className='w-1/4 flex flex-col items-center justify-center'>
-            {quickInfo.total_ammount_invested}$
+            {quickInfo?.total_ammount_invested}$
             <div className='text-sm'>towards creative work</div>
           </div>
           <div className='w-1/4 flex flex-col items-center justify-end border-l-4'>
-            {quickInfo.total_investors_count}
+            {quickInfo?.total_investors_count}
             <div className='text-sm'>pledges</div>
           </div>
         </div>
       </div>
       <div className='flex'>
         <div
-          onClick={() =>
-            navigate(PROJECT_PATH.replace(':id', featuredProject.id))
-          }
+          onClick={() => navigate(PROJECT_PATH.replace(':id', featuredProject.id))}
           className='flex flex-col w-1/3 h-128 mt-5 mr-2 cursor-pointer'>
           <div className='h-112 ml-5'>
             {featuredProject?.images &&

@@ -22,9 +22,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
 
   return (
     <div className='mt-8 px-20'>
-      <div className='text-center text-3xl text-gray-500'>
-        Enter your project members
-      </div>
+      <div className='text-center text-3xl text-gray-500'>Enter your project members</div>
       <div className='flex w-full mt-4'>
         <div className='flex w-1/2 h-full'>
           <div className='w-3/4 px-2'>

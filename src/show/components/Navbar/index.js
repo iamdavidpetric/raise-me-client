@@ -6,17 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import { MdOutlineExplore } from 'react-icons/md';
 import { IoConstructOutline } from 'react-icons/io5';
 import { CgArrowsExpandRight } from 'react-icons/cg';
-import {
-  BsArrowBarLeft,
-  BsFillPersonLinesFill,
-  BsPersonCircle
-} from 'react-icons/bs';
+import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
 import { Button, Modal, TextField } from '../';
 import {
   CREATE_PROJECT_PATH,
   EXPLORE_PATH,
-  HOME_PATH
+  HOME_PATH,
+  MY_PROJECTS_PATH
 } from '../../../process/routes/paths';
 
 const Navbar = () => {
@@ -39,6 +36,14 @@ const Navbar = () => {
               variant='secondary'
               iconLeft={<MdOutlineExplore className='mx-1' size='1.5rem' />}
               label='explore'
+            />
+          </div>
+          <div onClick={() => navigate(MY_PROJECTS_PATH)}>
+            {' '}
+            <Button
+              variant='secondary'
+              iconLeft={<TbStairsUp className='mx-1' size='1.5rem' />}
+              label='MyProjects'
             />
           </div>
         </div>

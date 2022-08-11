@@ -21,9 +21,7 @@ const CategoryStep = ({ nextStep, project, setProject }) => {
             <div className='flex justify-evenly bg-white mt-5 text-primary-600'>
               {category?.icon}
             </div>
-            <div className='text-center mt-2 text-gray-500'>
-              {category?.name}
-            </div>
+            <div className='text-center mt-2 text-gray-500'>{category?.name}</div>
           </div>
         ))}
       </div>

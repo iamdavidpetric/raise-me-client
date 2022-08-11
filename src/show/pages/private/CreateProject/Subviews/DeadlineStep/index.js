@@ -17,13 +17,8 @@ const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
             <ReactDatePicker
               required
               className='flex justify-center text-center w-full '
-              selected={
-                project.deadline ? new Date(project.deadline) : new Date()
-              }
-              onChange={deadline => {
-                setProject({ ...project, deadline: deadline });
-                console.log(deadline);
-              }}
+              selected={project.deadline ? new Date(project.deadline) : new Date()}
+              onChange={deadline => setProject({ ...project, deadline: deadline })}
               dateFormat='dd/MM/yyyy'
               minDate={new Date()}
               withPortal
