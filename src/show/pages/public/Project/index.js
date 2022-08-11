@@ -1,30 +1,34 @@
-import axios from 'axios';
+import { useEffect } from 'react';
 import { FiTwitter } from 'react-icons/fi';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AiOutlineLink } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import { Button, ProgressBar } from '../../../components';
+import { getProjectProjectAsync } from '../../../../process/redux/projectSlice';
 
 const Project = () => {
-  const [project, setProject] = useState({});
-
   const { id } = useParams();
 
+  const dispatch = useDispatch();
+
+  const { selectedProject } = useSelector(state => state.projects);
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/v1/projects/${id}`)
-      .then(res => setProject(res.data))
-      .catch(err => err);
-  }, [id]);
+    dispatch(getProjectProjectAsync({ id }));
+  }, [dispatch, id]);
 
-  const firstPicture = project?.images && project?.images[0];
-  const secondaryPicture = project?.images && project?.images[1];
-  const restPictures = project?.images && project?.images.slice(2);
+  const firstPicture = selectedProject?.images && selectedProject?.images[0];
+  const secondaryPicture =
+    selectedProject?.images && selectedProject?.images[1];
+  const restPictures =
+    selectedProject?.images && selectedProject?.images.slice(2);
 
-  const firstMember = project?.team_members && project?.team_members[0];
-  const restMembers = project?.team_members && project?.team_members.slice(1);
+  const firstMember =
+    selectedProject?.team_members && selectedProject?.team_members[0];
+  const restMembers =
+    selectedProject?.team_members && selectedProject?.team_members.slice(1);
 
   return (
     <div className='flex flex-col bg-white h-full w-full'>
@@ -39,7 +43,7 @@ const Project = () => {
           </div>
         </div>
         <div className='flex flex-col justify-center ml-2 w-full text-2xl'>
-          {project?.statement}
+          {selectedProject?.statement}
         </div>
       </div>
 
@@ -71,17 +75,17 @@ const Project = () => {
         <div className='flex flex-col w-2/5 h-112 mx-10'>
           <div>
             <div className='flex flex-row h-12 text-2xl items-center justify-center'>
-              {project?.name}
+              {selectedProject?.name}
             </div>
             <div className='px-5 mt-2 text-gray-500'>
-              {project?.description}
+              {selectedProject?.description}
             </div>
             <div className='mt-5 px-5 text-lg text-center'>
-              {project?.amount_invested}$ / {project?.goal}$
+              {selectedProject?.amount_invested}$ / {selectedProject?.goal}$
             </div>
             <div className='px-5'>
               <ProgressBar
-                percentage={project.achieved_goal_percentage}
+                percentage={selectedProject?.achieved_goal_percentage}
                 color='bg-primary-600'
               />
             </div>
@@ -89,8 +93,8 @@ const Project = () => {
               <Button
                 className='flex w-1/6 justify-center'
                 variant='invert-outline'
-                label={`${project?.fee} $`}
-                disabled={project.achieved_goal_percentage >= 100}
+                label={`${selectedProject?.fee} $`}
+                disabled={selectedProject?.achieved_goal_percentage >= 100}
               />
             </div>
             <div className='flex px-5 justify-center mt-5'>
@@ -121,7 +125,7 @@ const Project = () => {
       <div className='flex h-128 px-10 mt-32'>
         <div className='flex flex-col justify-center w-3/5'>
           <div className='flex mt-5 mx-5 text-gray-500 '>
-            {project?.description}
+            {selectedProject?.description}
           </div>
           <div className='flex justify-center'>
             <div className='flex flex-col'>

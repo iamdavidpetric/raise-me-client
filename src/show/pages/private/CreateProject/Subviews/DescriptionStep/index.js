@@ -12,7 +12,7 @@ const DescriptionStep = ({ nextStep, previousStep, project, setProject }) => {
         <TextField
           required
           area={true}
-          value={project.description}
+          value={project?.description}
           className='flex items-start rounded-2xl mt-2 text-start h-72'
           onChange={e =>
             setProject({ ...project, description: e.target.value })
@@ -26,7 +26,7 @@ const DescriptionStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project.description}
+          disabled={!project?.description}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'

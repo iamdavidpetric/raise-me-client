@@ -1,8 +1,14 @@
-import axios from 'axios';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import StepWizard from 'react-step-wizard';
-import { useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
+import {
+  setSelectedProject,
+  editProjectAsync,
+  getProjectProjectAsync
+} from '../../../../process/redux/projectSlice';
 
 import {
   CategoryStep,
@@ -16,79 +22,41 @@ import {
   TeamMembersStep,
   TitleStep
 } from '../CreateProject/Subviews';
-import { PROJECT_PATH } from '../../../../process/routes/paths';
 
 const EditProject = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3000/v1/projects/${id}`)
-      .then(res =>
-        setProject({ ...res.data, deadline: new Date(res.data.deadline) })
-      )
-      .catch(err => console.log(err));
-  }, [id]);
+  const { selectedProject } = useSelector(state => state.projects);
 
-  const [project, setProject] = useState({
-    category: '',
-    name: '',
-    description: '',
-    goal: undefined,
-    fee: undefined,
-    deadline: '',
-    images: ['', '', '', '', '', '', '', ''],
-    team_members: [{}, {}, {}, {}, {}, {}, {}],
-    user_id: 1
-  });
+  const dispatch = useDispatch();
 
   const createNewProject = e => {
     e?.preventDefault();
-    const formData = new FormData();
-    project.images.forEach(image => {
-      if (image.length !== 0) {
-        formData.append('images[]', image);
-      }
-    });
-    formData.append('name', project.name);
-    formData.append('description', project.description);
-    formData.append('goal', project.goal);
-    formData.append('fee', project.fee);
-    formData.append('deadline', project.deadline);
-    project.team_members.forEach(member => {
-      if (Object.entries(member).length) {
-        formData.append('team_members_attributes[][name]', member.name);
-        formData.append(
-          'team_members_attributes[][avatar_url]',
-          member.avatar_url
-        );
-      }
-    });
-    formData.append('category', project.category);
-    formData.append('statement', project.statement);
-    formData.append('user_id', project.user_id);
+    dispatch(editProjectAsync(selectedProject));
+  };
 
-    axios
-      .put(`http://localhost:3000/v1/projects/${id}`, project)
-      .then(res => navigate(PROJECT_PATH.replace(':id', res.data.id)))
-      .catch(err => console.log(err));
+  useEffect(() => {
+    dispatch(getProjectProjectAsync({ id }));
+  }, [dispatch, id]);
+
+  const setProject = payload => {
+    dispatch(setSelectedProject(payload));
   };
 
   return (
     <div className='h-full w-full'>
       <StepWizard>
-        <CategoryStep project={project} setProject={setProject} />
-        <TitleStep project={project} setProject={setProject} />
-        <DescriptionStep project={project} setProject={setProject} />
-        <GoalStep project={project} setProject={setProject} />
-        <FeeStep project={project} setProject={setProject} />
-        <DeadlineStep project={project} setProject={setProject} />
-        <StatementStep project={project} setProject={setProject} />
-        <ImagesStep project={project} setProject={setProject} />
-        <TeamMembersStep project={project} setProject={setProject} />
+        <CategoryStep project={selectedProject} setProject={setProject} />
+        <TitleStep project={selectedProject} setProject={setProject} />
+        <DescriptionStep project={selectedProject} setProject={setProject} />
+        <GoalStep project={selectedProject} setProject={setProject} />
+        <FeeStep project={selectedProject} setProject={setProject} />
+        {/* <DeadlineStep project={selectedProject} setProject={setProject} /> */}
+        <StatementStep project={selectedProject} setProject={setProject} />
+        {/* <ImagesStep project={selectedProject} setProject={setProject} /> */}
+        {/* <TeamMembersStep project={selectedProject} setProject={setProject} /> */}
         <PublishStep
-          project={project}
+          project={selectedProject}
           setProject={setProject}
           createNewProject={createNewProject}
         />

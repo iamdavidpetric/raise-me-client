@@ -15,7 +15,7 @@ const ImagesStep = ({ nextStep, previousStep, project, setProject }) => {
         Enter your project photos URL
       </div>
       <div className='h-full mt-6'>
-        {project.images.map((image, index) => (
+        {project?.images?.map((image, index) => (
           <TextField
             key={index}
             value={image}
@@ -31,7 +31,7 @@ const ImagesStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project.images.filter(image => image.length > 0).length}
+          disabled={!project?.images?.filter(image => image.length > 0).length}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'

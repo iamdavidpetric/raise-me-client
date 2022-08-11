@@ -11,7 +11,7 @@ const TitleStep = ({ nextStep, previousStep, project, setProject }) => {
       <div className='h-64'>
         <TextField
           required
-          value={project.name}
+          value={project?.name}
           className='rounded-2xl mt-2 items-center text-center'
           onChange={e => setProject({ ...project, name: e.target.value })}
         />
@@ -23,7 +23,7 @@ const TitleStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project.name}
+          disabled={!project?.name}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'

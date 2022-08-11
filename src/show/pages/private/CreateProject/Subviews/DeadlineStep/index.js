@@ -17,10 +17,13 @@ const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
             <ReactDatePicker
               required
               className='flex justify-center text-center w-full '
-              selected={project?.deadline}
-              onChange={deadline =>
-                setProject({ ...project, deadline: deadline })
+              selected={
+                project.deadline ? new Date(project.deadline) : new Date()
               }
+              onChange={deadline => {
+                setProject({ ...project, deadline: deadline });
+                console.log(deadline);
+              }}
               dateFormat='dd/MM/yyyy'
               minDate={new Date()}
               withPortal
@@ -35,7 +38,7 @@ const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project.deadline}
+          disabled={!project?.deadline}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'

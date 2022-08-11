@@ -1,33 +1,29 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Button, Card, ProgressBar } from '../../../components';
 import { PROJECT_PATH } from '../../../../process/routes/paths';
 
-const Home = () => {
-  const [featuredProject, setFeaturedProject] = useState({});
-  const [mostInvested, setMostInvested] = useState([]);
-  const [quickInfo, setQuickInfo] = useState({});
+import {
+  getFeaturedProjectAsync,
+  getMostInvestedAsync,
+  getQuickInfoAsync
+} from '../../../../process/redux/projectSlice';
 
+const Home = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { quickInfo, mostInvested, featuredProject } = useSelector(
+    state => state.projects
+  );
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/v1/todays_project/null`)
-      .then(res => setFeaturedProject(res.data))
-      .catch(err => err);
-
-    axios
-      .get(`http://localhost:3000/v1/todays_project/quick_info`)
-      .then(res => setQuickInfo(res.data))
-      .catch(err => err);
-
-    axios
-      .get(`http://localhost:3000/v1/todays_project/`)
-      .then(res => setMostInvested(res.data))
-      .catch(err => err);
-  }, []);
+    dispatch(getFeaturedProjectAsync());
+    dispatch(getMostInvestedAsync());
+    dispatch(getQuickInfoAsync());
+  }, [dispatch]);
 
   return (
     <div className='bg-primary-600 flex flex-col h-full w-full'>
@@ -64,7 +60,7 @@ const Home = () => {
                 />
               )}
           </div>
-          {mostInvested.length > 0 ? (
+          {mostInvested?.length > 0 ? (
             <div className='bg-white h-full ml-5 rounded-b-lg text-gray-500 text-lg text-center'>
               <div>{featuredProject?.name}</div>
               <div className='flex items-center justify-center px-5'>
@@ -89,11 +85,12 @@ const Home = () => {
         </div>
 
         <div className='w-full mr-5 mt-5'>
-          {mostInvested.map((project, index) => (
+          {mostInvested?.map((project, index) => (
             <div
               onClick={() => navigate(PROJECT_PATH.replace(':id', project.id))}
               className='mb-2 flex flex-col content-start cursor-pointer'
-              key={project.id}>
+              key={project.id}
+              id={project.id}>
               <Card
                 reversed={index > 1}
                 src={project?.images && project?.images[0]}

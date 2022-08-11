@@ -1,9 +1,8 @@
-import axios from 'axios';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import StepWizard from 'react-step-wizard';
-import { useNavigate } from 'react-router-dom';
+import { createProjectAsync } from '../../../../process/redux/projectSlice';
 
-import { PROJECT_PATH } from '../../../../process/routes/paths';
 import {
   CategoryStep,
   DeadlineStep,
@@ -18,8 +17,6 @@ import {
 } from './Subviews';
 
 const CreateProject = () => {
-  const navigate = useNavigate();
-
   const [project, setProject] = useState({
     category: '',
     name: '',
@@ -32,36 +29,11 @@ const CreateProject = () => {
     user_id: 1
   });
 
+  const dispatch = useDispatch();
+
   const createNewProject = e => {
     e?.preventDefault();
-    const formData = new FormData();
-    project.images.forEach(image => {
-      if (image.length !== 0) {
-        formData.append('images[]', image);
-      }
-    });
-    formData.append('name', project.name);
-    formData.append('description', project.description);
-    formData.append('goal', project.goal);
-    formData.append('fee', project.fee);
-    formData.append('deadline', project.deadline);
-    project.team_members.forEach(member => {
-      if (Object.entries(member).length) {
-        formData.append('team_members_attributes[][name]', member.name);
-        formData.append(
-          'team_members_attributes[][avatar_url]',
-          member.avatar_url
-        );
-      }
-    });
-    formData.append('category', project.category);
-    formData.append('statement', project.statement);
-    formData.append('user_id', project.user_id);
-
-    axios
-      .post('http://localhost:3000/v1/projects/', formData)
-      .then(res => navigate(PROJECT_PATH.replace(':id', res.data.id)))
-      .catch(err => console.log(err));
+    dispatch(createProjectAsync(project));
   };
 
   return (
