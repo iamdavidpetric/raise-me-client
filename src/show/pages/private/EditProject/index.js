@@ -8,7 +8,6 @@ import {
   editProjectAsync,
   getProjectProjectAsync
 } from '../../../../process/redux/projectSlice';
-
 import {
   CategoryStep,
   DeadlineStep,

@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import StepWizard from 'react-step-wizard';
-import { createProjectAsync } from '../../../../process/redux/projectSlice';
 
 import {
   CategoryStep,
@@ -16,6 +14,7 @@ import {
   TeamMembersStep,
   TitleStep
 } from './Subviews';
+import { createProjectAsync } from '../../../../process/redux/projectSlice';
 
 const CreateProject = () => {
   const [project, setProject] = useState({

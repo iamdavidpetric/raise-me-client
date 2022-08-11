@@ -7,8 +7,8 @@ import {
   deleteProjectAsync,
   getMyProjectsAsync
 } from '../../../../process/redux/projectSlice';
-import { EDIT_PROJECT_PATH, PROJECT_PATH } from '../../../../process/routes/paths';
 import { Button, ProgressBar, Modal } from '../../../components';
+import { EDIT_PROJECT_PATH, PROJECT_PATH } from '../../../../process/routes/paths';
 
 const MyProjects = () => {
   const [projectId, setProjectId] = useState(null);
@@ -21,6 +21,7 @@ const MyProjects = () => {
 
   const handleDeleteClick = e => {
     e.preventDefault();
+    setDeleteProjectModal(false);
     dispatch(deleteProjectAsync({ id: projectId }));
   };
 
@@ -96,10 +97,7 @@ const MyProjects = () => {
               <div className='flex items-center justify-between w-full'>
                 <div className='w-full'>
                   <Button
-                    onClick={e => {
-                      handleDeleteClick(e);
-                      setDeleteProjectModal(false);
-                    }}
+                    onClick={e => handleDeleteClick(e)}
                     variant='tertiary'
                     label='Yes'
                     className='bg-primary-200 hover:bg-primary-400'
