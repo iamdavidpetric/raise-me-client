@@ -28,7 +28,7 @@ const EditProject = () => {
 
   const dispatch = useDispatch();
 
-  const createNewProject = e => {
+  const editProject = e => {
     e?.preventDefault();
     dispatch(editProject(selectedProject));
   };
@@ -56,7 +56,7 @@ const EditProject = () => {
         <PublishStep
           project={selectedProject}
           setProject={setProject}
-          createNewProject={createNewProject}
+          createNewProject={editProject}
         />
       </StepWizard>
     </div>
