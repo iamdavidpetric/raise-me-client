@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setSelectedProject,
   editProjectAsync,
-  getProjectAsync
+  getProjectAsync,
+  setSelectedProject
 } from '../../../../process/redux/projectSlice';
 import {
   CategoryStep,
