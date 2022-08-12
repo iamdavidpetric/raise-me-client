@@ -14,7 +14,7 @@ import {
   TeamMembersStep,
   TitleStep
 } from './Subviews';
-import { createProjectAsync } from '../../../../process/redux/projectSlice';
+import { createProject } from '../../../../process/redux/projectSlice';
 
 const CreateProject = () => {
   const [project, setProject] = useState({
@@ -33,7 +33,7 @@ const CreateProject = () => {
 
   const createNewProject = e => {
     e?.preventDefault();
-    dispatch(createProjectAsync(project));
+    dispatch(createProject(project));
   };
 
   return (

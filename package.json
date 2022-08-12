@@ -8,6 +8,7 @@
     "@testing-library/react": "13.3.0",
     "@testing-library/user-event": "13.5.0",
     "axios": "0.27.2",
+    "env-cmd": "10.1.0",
     "react": "18.2.0",
     "react-datepicker": "4.8.0",
     "react-dom": "18.2.0",
@@ -17,11 +18,13 @@
     "react-scripts": "5.0.1",
     "react-step-wizard": "5.3.11",
     "redux": "4.2.0",
+    "redux-logger": "3.0.6",
     "web-vitals": "2.1.4"
   },
   "scripts": {
-    "start": "PORT=8080 react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd -f ./.env.development react-scripts start",
+    "build-s": "env-cmd -f ./.env.staging react-scripts build",
+    "build-p": "env-cmd -f ./.env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

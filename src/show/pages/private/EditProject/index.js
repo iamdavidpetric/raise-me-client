@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setSelectedProject,
-  editProjectAsync,
-  getProjectProjectAsync
+  editProject,
+  getProject,
+  setSelectedProject
 } from '../../../../process/redux/projectSlice';
 import {
   CategoryStep,
@@ -28,13 +28,13 @@ const EditProject = () => {
 
   const dispatch = useDispatch();
 
-  const createNewProject = e => {
+  const editProject = e => {
     e?.preventDefault();
-    dispatch(editProjectAsync(selectedProject));
+    dispatch(editProject(selectedProject));
   };
 
   useEffect(() => {
-    dispatch(getProjectProjectAsync({ id }));
+    dispatch(getProject({ id }));
   }, [dispatch, id]);
 
   const setProject = payload => {
@@ -56,7 +56,7 @@ const EditProject = () => {
         <PublishStep
           project={selectedProject}
           setProject={setProject}
-          createNewProject={createNewProject}
+          createNewProject={editProject}
         />
       </StepWizard>
     </div>

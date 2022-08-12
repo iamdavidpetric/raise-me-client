@@ -1,23 +1,31 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const getProjectProjectAsync = createAsyncThunk(
-  'projects/getProjectProjectAsync',
-  async payload => {
-    try {
-      const response = await axios.get(`http://localhost:3000/v1/projects/${payload.id}`);
-      return response.data;
-    } catch (err) {
-      return err.message;
-    }
-  }
-);
+import baseUrl from '../api/index';
 
-export const getMyProjectsAsync = createAsyncThunk(
-  'projects/getMyProjectsAsync',
+export const getProject = createAsyncThunk('projects/getProject', async payload => {
+  try {
+    const response = await axios.get(`${baseUrl}/projects/${payload.id}`);
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+});
+
+export const getMyProjects = createAsyncThunk('projects/getMyProjects', async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/projects/my_projects/`);
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+});
+
+export const getFeaturedProject = createAsyncThunk(
+  'projects/getFeaturedProject',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3000/v1/projects/my_projects/');
+      const response = await axios.get(`${baseUrl}/todays_project/null`);
       return response.data;
     } catch (err) {
       return err.message;
@@ -25,122 +33,90 @@ export const getMyProjectsAsync = createAsyncThunk(
   }
 );
 
-export const getFeaturedProjectAsync = createAsyncThunk(
-  'projects/getFeaturedProjectAsync',
-  async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/v1/todays_project/null');
-      return response.data;
-    } catch (err) {
-      return err.message;
-    }
+export const getMostInvested = createAsyncThunk('projects/getMostInvested', async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/todays_project/`);
+    return response.data;
+  } catch (err) {
+    return err.message;
   }
-);
+});
 
-export const getMostInvestedAsync = createAsyncThunk(
-  'projects/getMostInvestedAsync',
-  async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/v1/todays_project/');
-      return response.data;
-    } catch (err) {
-      return err.message;
-    }
+export const getQuickInfo = createAsyncThunk('projects/getQuickInfo', async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/todays_project/quick_info`);
+    return response.data;
+  } catch (err) {
+    return err.message;
   }
-);
+});
 
-export const getQuickInfoAsync = createAsyncThunk(
-  'projects/getQuickInfoAsync',
-  async () => {
-    try {
-      const response = await axios.get(
-        'http://localhost:3000/v1/todays_project/quick_info'
-      );
-      return response.data;
-    } catch (err) {
-      return err.message;
+export const createProject = createAsyncThunk('projects/createProject', async project => {
+  const formData = new FormData();
+  project.images.forEach(image => {
+    if (image.length !== 0) {
+      formData.append('images[]', image);
     }
+  });
+  formData.append('name', project.name);
+  formData.append('description', project.description);
+  formData.append('goal', project.goal);
+  formData.append('fee', project.fee);
+  formData.append('deadline', project.deadline);
+  project.team_members.forEach(member => {
+    if (Object.entries(member).length) {
+      formData.append('team_members_attributes[][name]', member.name);
+      formData.append('team_members_attributes[][avatar_url]', member.avatar_url);
+    }
+  });
+  formData.append('category', project.category);
+  formData.append('statement', project.statement);
+  formData.append('user_id', project.user_id);
+  try {
+    const resp = await axios.post(`${baseUrl}/projects/`, project);
+    return resp.data;
+  } catch (err) {
+    return err.message;
   }
-);
+});
 
-export const createProjectAsync = createAsyncThunk(
-  'projects/createProjectAsync',
-  async project => {
-    const formData = new FormData();
-    project.images.forEach(image => {
-      if (image.length !== 0) {
-        formData.append('images[]', image);
-      }
-    });
-    formData.append('name', project.name);
-    formData.append('description', project.description);
-    formData.append('goal', project.goal);
-    formData.append('fee', project.fee);
-    formData.append('deadline', project.deadline);
-    project.team_members.forEach(member => {
-      if (Object.entries(member).length) {
-        formData.append('team_members_attributes[][name]', member.name);
-        formData.append('team_members_attributes[][avatar_url]', member.avatar_url);
-      }
-    });
-    formData.append('category', project.category);
-    formData.append('statement', project.statement);
-    formData.append('user_id', project.user_id);
-    try {
-      const resp = await axios.post(`http://localhost:3000/v1/projects/`, project);
-      return resp.data;
-    } catch (err) {
-      return err.message;
+export const editProject = createAsyncThunk('projects/editProject', async project => {
+  const formData = new FormData();
+  project.images.forEach(image => {
+    if (image.length !== 0) {
+      formData.append('images[]', image);
     }
+  });
+  formData.append('name', project.name);
+  formData.append('description', project.description);
+  formData.append('goal', project.goal);
+  formData.append('fee', project.fee);
+  formData.append('deadline', project.deadline);
+  project.team_members.forEach(member => {
+    if (Object.entries(member).length) {
+      formData.append('team_members_attributes[][name]', member.name);
+      formData.append('team_members_attributes[][avatar_url]', member.avatar_url);
+    }
+  });
+  formData.append('category', project.category);
+  formData.append('statement', project.statement);
+  formData.append('user_id', 1);
+  try {
+    const resp = await axios.put(`${baseUrl}/projects/${project.id}`, project);
+    return resp.data;
+  } catch (err) {
+    return err.message;
   }
-);
+});
 
-export const editProjectAsync = createAsyncThunk(
-  'projects/editProjectAsync',
-  async project => {
-    const formData = new FormData();
-    project.images.forEach(image => {
-      if (image.length !== 0) {
-        formData.append('images[]', image);
-      }
-    });
-    formData.append('name', project.name);
-    formData.append('description', project.description);
-    formData.append('goal', project.goal);
-    formData.append('fee', project.fee);
-    formData.append('deadline', project.deadline);
-    project.team_members.forEach(member => {
-      if (Object.entries(member).length) {
-        formData.append('team_members_attributes[][name]', member.name);
-        formData.append('team_members_attributes[][avatar_url]', member.avatar_url);
-      }
-    });
-    formData.append('category', project.category);
-    formData.append('statement', project.statement);
-    formData.append('user_id', 1);
-    try {
-      const resp = await axios.put(
-        `http://localhost:3000/v1/projects/${project.id}`,
-        project
-      );
-      return resp.data;
-    } catch (err) {
-      return err.message;
-    }
+export const deleteProject = createAsyncThunk('projects/deleteProject', async payload => {
+  try {
+    await axios.delete(`${baseUrl}/projects/${payload.id}`);
+    return { id: payload.id };
+  } catch (err) {
+    return err.message;
   }
-);
-
-export const deleteProjectAsync = createAsyncThunk(
-  'projects/deleteProjectAsync',
-  async payload => {
-    try {
-      await axios.delete(`http://localhost:3000/v1/projects/${payload.id}`);
-      return { id: payload.id };
-    } catch (err) {
-      return err.message;
-    }
-  }
-);
+});
 
 const projectSlice = createSlice({
   name: 'projects',
@@ -159,31 +135,31 @@ const projectSlice = createSlice({
   },
 
   extraReducers: {
-    [getProjectProjectAsync.fulfilled]: (state, { payload }) => {
+    [getProject.fulfilled]: (state, { payload }) => {
       return { ...state, selectedProject: payload };
     },
 
-    [getMyProjectsAsync.fulfilled]: (state, { payload }) => {
+    [getMyProjects.fulfilled]: (state, { payload }) => {
       return { ...state, projects: payload };
     },
 
-    [getFeaturedProjectAsync.fulfilled]: (state, { payload }) => {
+    [getFeaturedProject.fulfilled]: (state, { payload }) => {
       return { ...state, featuredProject: payload };
     },
 
-    [getMostInvestedAsync.fulfilled]: (state, { payload }) => {
+    [getMostInvested.fulfilled]: (state, { payload }) => {
       return { ...state, mostInvested: payload };
     },
 
-    [getQuickInfoAsync.fulfilled]: (state, { payload }) => {
+    [getQuickInfo.fulfilled]: (state, { payload }) => {
       return { ...state, quickInfo: payload };
     },
 
-    [createProjectAsync.fulfilled]: (state, { payload }) => {
+    [createProject.fulfilled]: (state, { payload }) => {
       return { ...state, projects: [...state.projects, payload] };
     },
 
-    [editProjectAsync.fulfilled]: (state, { payload }) => {
+    [editProject.fulfilled]: (state, { payload }) => {
       const newProjects = [...state.projects];
       const index = project => project.id === payload.id;
       const selectedProject = newProjects.findIndex(index);
@@ -191,7 +167,7 @@ const projectSlice = createSlice({
       return { ...state, projects: newProjects };
     },
 
-    [deleteProjectAsync.fulfilled]: (state, { payload }) => {
+    [deleteProject.fulfilled]: (state, { payload }) => {
       const filter = project => project.id !== payload.id;
       const filteredProjects = state.projects.filter(filter);
       return { ...state, projects: filteredProjects };
