@@ -1,11 +1,12 @@
 import axios from 'axios';
+import baseUrl from '../api/index';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const getProjectProjectAsync = createAsyncThunk(
-  'projects/getProjectProjectAsync',
+export const getProjectAsync = createAsyncThunk(
+  'projects/getProjectAsync',
   async payload => {
     try {
-      const response = await axios.get(`http://localhost:3000/v1/projects/${payload.id}`);
+      const response = await axios.get(`${baseUrl}/projects/${payload.id}`);
       return response.data;
     } catch (err) {
       return err.message;
@@ -17,7 +18,7 @@ export const getMyProjectsAsync = createAsyncThunk(
   'projects/getMyProjectsAsync',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3000/v1/projects/my_projects/');
+      const response = await axios.get(`${baseUrl}/projects/my_projects/`);
       return response.data;
     } catch (err) {
       return err.message;
@@ -29,7 +30,7 @@ export const getFeaturedProjectAsync = createAsyncThunk(
   'projects/getFeaturedProjectAsync',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3000/v1/todays_project/null');
+      const response = await axios.get(`${baseUrl}/todays_project/null`);
       return response.data;
     } catch (err) {
       return err.message;
@@ -41,7 +42,7 @@ export const getMostInvestedAsync = createAsyncThunk(
   'projects/getMostInvestedAsync',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3000/v1/todays_project/');
+      const response = await axios.get(`${baseUrl}/todays_project/`);
       return response.data;
     } catch (err) {
       return err.message;
@@ -53,9 +54,7 @@ export const getQuickInfoAsync = createAsyncThunk(
   'projects/getQuickInfoAsync',
   async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:3000/v1/todays_project/quick_info'
-      );
+      const response = await axios.get(`${baseUrl}/todays_project/quick_info`);
       return response.data;
     } catch (err) {
       return err.message;
@@ -87,7 +86,7 @@ export const createProjectAsync = createAsyncThunk(
     formData.append('statement', project.statement);
     formData.append('user_id', project.user_id);
     try {
-      const resp = await axios.post(`http://localhost:3000/v1/projects/`, project);
+      const resp = await axios.post(`${baseUrl}/projects/`, project);
       return resp.data;
     } catch (err) {
       return err.message;
@@ -119,10 +118,7 @@ export const editProjectAsync = createAsyncThunk(
     formData.append('statement', project.statement);
     formData.append('user_id', 1);
     try {
-      const resp = await axios.put(
-        `http://localhost:3000/v1/projects/${project.id}`,
-        project
-      );
+      const resp = await axios.put(`${baseUrl}/projects/${project.id}`, project);
       return resp.data;
     } catch (err) {
       return err.message;
@@ -134,7 +130,7 @@ export const deleteProjectAsync = createAsyncThunk(
   'projects/deleteProjectAsync',
   async payload => {
     try {
-      await axios.delete(`http://localhost:3000/v1/projects/${payload.id}`);
+      await axios.delete(`${baseUrl}/projects/${payload.id}`);
       return { id: payload.id };
     } catch (err) {
       return err.message;
@@ -159,7 +155,7 @@ const projectSlice = createSlice({
   },
 
   extraReducers: {
-    [getProjectProjectAsync.fulfilled]: (state, { payload }) => {
+    [getProjectAsync.fulfilled]: (state, { payload }) => {
       return { ...state, selectedProject: payload };
     },
 

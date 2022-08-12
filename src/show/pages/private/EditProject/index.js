@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setSelectedProject,
   editProjectAsync,
-  getProjectProjectAsync
+  getProjectAsync
 } from '../../../../process/redux/projectSlice';
 import {
   CategoryStep,
@@ -34,7 +34,7 @@ const EditProject = () => {
   };
 
   useEffect(() => {
-    dispatch(getProjectProjectAsync({ id }));
+    dispatch(getProjectAsync({ id }));
   }, [dispatch, id]);
 
   const setProject = payload => {
