@@ -1,8 +1,19 @@
-import projectReducer from './projectSlice';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-export default configureStore({
-  reducer: {
-    projects: projectReducer
-  }
+import { createLogger } from 'redux-logger';
+import projectReducer from './projectSlice';
+
+const logger = createLogger({
+  collapsed: true
 });
+
+const reducer = combineReducers({
+  projects: projectReducer
+});
+
+const store = configureStore({
+  reducer,
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger)
+});
+
+export default store;
