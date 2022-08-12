@@ -24,7 +24,7 @@ const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
           <TextField
             required
             type='number'
-            value={project.fee}
+            value={project?.fee}
             className='flex rounded-2xl mt-2 items-center text-center w-36'
             onChange={e => setFee(e)}
           />
@@ -37,7 +37,7 @@ const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project.fee}
+          disabled={!project?.fee}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'

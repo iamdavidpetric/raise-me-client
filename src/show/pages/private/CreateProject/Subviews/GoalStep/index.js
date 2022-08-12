@@ -24,7 +24,7 @@ const GoalStep = ({ nextStep, previousStep, project, setProject }) => {
           <TextField
             required
             type='number'
-            value={project.goal}
+            value={project?.goal}
             className='flex rounded-2xl mt-2 items-center text-center w-36'
             onChange={e => setGoal(e)}
           />
@@ -37,7 +37,7 @@ const GoalStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project.goal}
+          disabled={!project?.goal}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'

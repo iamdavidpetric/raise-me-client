@@ -10,11 +10,7 @@ const Application = () => {
         <Navbar />
         <Routes>
           {routes.map(route => (
-            <Route
-              path={route.path}
-              key={route.path}
-              element={<route.element />}
-            />
+            <Route path={route.path} key={route.path} element={<route.element />} />
           ))}
         </Routes>
       </div>

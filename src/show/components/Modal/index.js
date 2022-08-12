@@ -24,9 +24,7 @@ const Modal = ({ children, setVisible, title, visible }) => {
             <div className='flex justify-center p-6 pb-4'>
               <div className='flex flex-col mt-3 text-center justify-center w-full'>
                 {title && (
-                  <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                    {title}
-                  </h3>
+                  <h3 className='text-lg leading-6 font-medium text-gray-900'>{title}</h3>
                 )}
                 {children}
               </div>
@@ -46,10 +44,8 @@ Modal.defaultProps = {
 };
 
 Modal.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    .isRequired,
   setVisible: PropTypes.func,
   title: PropTypes.string,
   visible: PropTypes.bool

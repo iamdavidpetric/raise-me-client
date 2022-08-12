@@ -10,7 +10,7 @@ const StatementStep = ({ nextStep, previousStep, project, setProject }) => {
       </div>
       <div className='h-64'>
         <TextField
-          value={project.statement}
+          value={project?.statement}
           className='rounded-2xl mt-2 items-center text-center'
           onChange={e => setProject({ ...project, statement: e.target.value })}
         />
@@ -22,7 +22,7 @@ const StatementStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project.statement}
+          disabled={!project?.statement}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'

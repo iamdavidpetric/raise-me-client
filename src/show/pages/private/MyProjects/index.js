@@ -1,40 +1,33 @@
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Fragment, useState, useEffect } from 'react';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  EDIT_PROJECT_PATH,
-  PROJECT_PATH
-} from '../../../../process/routes/paths';
+  deleteProjectAsync,
+  getMyProjectsAsync
+} from '../../../../process/redux/projectSlice';
 import { Button, ProgressBar, Modal } from '../../../components';
+import { EDIT_PROJECT_PATH, PROJECT_PATH } from '../../../../process/routes/paths';
 
 const MyProjects = () => {
   const [projectId, setProjectId] = useState(null);
-  const [myProjects, setMyProjects] = useState([]);
   const [deleteProjectModal, setDeleteProjectModal] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { projects } = useSelector(state => state.projects);
+
+  const handleDeleteClick = e => {
+    e.preventDefault();
+    setDeleteProjectModal(false);
+    dispatch(deleteProjectAsync({ id: projectId }));
+  };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/v1/projects/my_projects`)
-      .then(res => setMyProjects(res.data))
-      .catch(err => err);
-  }, []);
-
-  const deleteProject = e => {
-    e?.preventDefault();
-    axios
-      .delete(`http://localhost:3000/v1/projects/${projectId}`)
-      .then(() => {
-        const filterProject = object => projectId !== object.id;
-        const filteredProjects = myProjects.filter(filterProject);
-        setDeleteProjectModal(false);
-        setMyProjects(filteredProjects);
-      })
-      .catch(err => err);
-  };
+    dispatch(getMyProjectsAsync());
+  }, [dispatch]);
 
   const prepareToDelete = project => {
     setDeleteProjectModal(true);
@@ -44,18 +37,17 @@ const MyProjects = () => {
   return (
     <Fragment>
       <div className='h-full w-full'>
-        {myProjects.length > 0 ? (
+        {projects.length > 0 ? (
           <div className='grid grid-cols-3 mt-5'>
-            {myProjects.map(project => (
+            {projects?.map(project => (
               <div
                 className='rounded-lg h-96 mt-5 ml-5 mr-5 cursor-pointer'
-                key={project.id}>
+                key={project.id}
+                id={project.id}>
                 <div className='bg-primary-600 rounded-lg border shadow-md'>
                   <div className='relative'>
                     <img
-                      onClick={() =>
-                        navigate(PROJECT_PATH.replace(':id', project.id))
-                      }
+                      onClick={() => navigate(PROJECT_PATH.replace(':id', project.id))}
                       src={project.images[0]}
                       alt='main'
                       className='object-cover rounded-t-lg h-72 w-full'
@@ -77,13 +69,9 @@ const MyProjects = () => {
                       />
                     </div>
                   </div>
-                  <div className='ml-3 mb-2 text-2xl text-white'>
-                    {project.name}
-                  </div>
+                  <div className='ml-3 mb-2 text-2xl text-white'>{project.name}</div>
                   <div className='flex items-center w-full justify-center px-5 pb-4'>
-                    <ProgressBar
-                      percentage={project.achieved_goal_percentage}
-                    />
+                    <ProgressBar percentage={project.achieved_goal_percentage} />
                   </div>
                 </div>
               </div>
@@ -109,7 +97,7 @@ const MyProjects = () => {
               <div className='flex items-center justify-between w-full'>
                 <div className='w-full'>
                   <Button
-                    onClick={e => deleteProject(e)}
+                    onClick={e => handleDeleteClick(e)}
                     variant='tertiary'
                     label='Yes'
                     className='bg-primary-200 hover:bg-primary-400'

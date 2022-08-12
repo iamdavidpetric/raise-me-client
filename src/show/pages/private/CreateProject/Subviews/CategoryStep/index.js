@@ -4,7 +4,7 @@ import { categories } from '../../../../../../process/constants';
 const CategoryStep = ({ nextStep, project, setProject }) => {
   const setCategory = category => {
     nextStep();
-    setProject({ ...project, category: category.name });
+    setProject({ ...project, category: category?.name });
   };
 
   return (
@@ -19,11 +19,9 @@ const CategoryStep = ({ nextStep, project, setProject }) => {
             className='cursor-pointer hover:scale-110 transition-all duration-300'
             key={index}>
             <div className='flex justify-evenly bg-white mt-5 text-primary-600'>
-              {category.icon}
+              {category?.icon}
             </div>
-            <div className='text-center mt-2 text-gray-500'>
-              {category.name}
-            </div>
+            <div className='text-center mt-2 text-gray-500'>{category?.name}</div>
           </div>
         ))}
       </div>

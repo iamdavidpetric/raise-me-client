@@ -16,19 +16,17 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
     setProject({ ...project, team_members: newTeamMembers });
   };
 
-  const disableNext = !project.team_members.filter(
+  const disableNext = !project?.team_members?.filter(
     member => Object.entries(member).length >= 2
   ).length;
 
   return (
     <div className='mt-8 px-20'>
-      <div className='text-center text-3xl text-gray-500'>
-        Enter your project members
-      </div>
+      <div className='text-center text-3xl text-gray-500'>Enter your project members</div>
       <div className='flex w-full mt-4'>
         <div className='flex w-1/2 h-full'>
           <div className='w-3/4 px-2'>
-            {project.team_members.map((member, index) => (
+            {project?.team_members?.map((member, index) => (
               <TextField
                 label={teamMembersLabels[index].name}
                 key={index}
@@ -41,7 +39,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
         </div>
         <div className='flex w-1/2 h-full justify-end'>
           <div className='w-full px-2'>
-            {project.team_members.map((member, index) => (
+            {project?.team_members?.map((member, index) => (
               <TextField
                 label={teamMembersLabels[index].avatar}
                 key={index}
