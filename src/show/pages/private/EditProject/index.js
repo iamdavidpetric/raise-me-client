@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  editProjectAsync,
-  getProjectAsync,
+  editProject,
+  getProject,
   setSelectedProject
 } from '../../../../process/redux/projectSlice';
 import {
@@ -30,11 +30,11 @@ const EditProject = () => {
 
   const createNewProject = e => {
     e?.preventDefault();
-    dispatch(editProjectAsync(selectedProject));
+    dispatch(editProject(selectedProject));
   };
 
   useEffect(() => {
-    dispatch(getProjectAsync({ id }));
+    dispatch(getProject({ id }));
   }, [dispatch, id]);
 
   const setProject = payload => {

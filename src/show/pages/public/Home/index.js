@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Card, ProgressBar } from '../../../components';
 import { PROJECT_PATH } from '../../../../process/routes/paths';
 import {
-  getFeaturedProjectAsync,
-  getMostInvestedAsync,
-  getQuickInfoAsync
+  getFeaturedProject,
+  getMostInvested,
+  getQuickInfo
 } from '../../../../process/redux/projectSlice';
 
 const Home = () => {
@@ -19,9 +19,9 @@ const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(getFeaturedProjectAsync());
-    dispatch(getMostInvestedAsync());
-    dispatch(getQuickInfoAsync());
+    dispatch(getFeaturedProject());
+    dispatch(getMostInvested());
+    dispatch(getQuickInfo());
   }, [dispatch]);
 
   return (

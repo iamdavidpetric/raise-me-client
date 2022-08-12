@@ -3,10 +3,7 @@ import { Fragment, useState, useEffect } from 'react';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  deleteProjectAsync,
-  getMyProjectsAsync
-} from '../../../../process/redux/projectSlice';
+import { deleteProject, getMyProjects } from '../../../../process/redux/projectSlice';
 import { Button, ProgressBar, Modal } from '../../../components';
 import { EDIT_PROJECT_PATH, PROJECT_PATH } from '../../../../process/routes/paths';
 
@@ -22,11 +19,11 @@ const MyProjects = () => {
   const handleDeleteClick = e => {
     e.preventDefault();
     setDeleteProjectModal(false);
-    dispatch(deleteProjectAsync({ id: projectId }));
+    dispatch(deleteProject({ id: projectId }));
   };
 
   useEffect(() => {
-    dispatch(getMyProjectsAsync());
+    dispatch(getMyProjects());
   }, [dispatch]);
 
   const prepareToDelete = project => {

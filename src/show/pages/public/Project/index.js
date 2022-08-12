@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import { Button, ProgressBar } from '../../../components';
-import { getProjectAsync } from '../../../../process/redux/projectSlice';
+import { getProject } from '../../../../process/redux/projectSlice';
 
 const Project = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const Project = () => {
   const { selectedProject } = useSelector(state => state.projects);
 
   useEffect(() => {
-    dispatch(getProjectAsync({ id }));
+    dispatch(getProject({ id }));
   }, [dispatch, id]);
 
   const firstPicture = selectedProject?.images && selectedProject?.images[0];
