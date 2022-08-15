@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import api from '../api/index';
+import Api from '../api';
 
 export const getProject = createAsyncThunk('projects/getProject', async payload => {
   try {
-    const response = await api.get(`/projects/${payload.id}`);
+    const response = await Api.get(`/projects/${payload.id}`);
     return response.data;
   } catch (err) {
     return err.message;
@@ -13,7 +13,7 @@ export const getProject = createAsyncThunk('projects/getProject', async payload 
 
 export const getMyProjects = createAsyncThunk('projects/getMyProjects', async () => {
   try {
-    const response = await api.get(`/projects/my_projects/`);
+    const response = await Api.get(`/projects/my_projects/`);
     return response.data;
   } catch (err) {
     return err.message;
@@ -24,7 +24,7 @@ export const getFeaturedProject = createAsyncThunk(
   'projects/getFeaturedProject',
   async () => {
     try {
-      const response = await api.get(`/todays_project/null`);
+      const response = await Api.get(`/todays_project/null`);
       return response.data;
     } catch (err) {
       return err.message;
@@ -34,7 +34,7 @@ export const getFeaturedProject = createAsyncThunk(
 
 export const getMostInvested = createAsyncThunk('projects/getMostInvested', async () => {
   try {
-    const response = await api.get(`/todays_project/`);
+    const response = await Api.get(`/todays_project/`);
     return response.data;
   } catch (err) {
     return err.message;
@@ -43,7 +43,7 @@ export const getMostInvested = createAsyncThunk('projects/getMostInvested', asyn
 
 export const getQuickInfo = createAsyncThunk('projects/getQuickInfo', async () => {
   try {
-    const response = await api.get(`/todays_project/quick_info`);
+    const response = await Api.get(`/todays_project/quick_info`);
     return response.data;
   } catch (err) {
     return err.message;
@@ -72,7 +72,7 @@ export const createProject = createAsyncThunk('projects/createProject', async pr
   formData.append('statement', project.statement);
   formData.append('user_id', project.user_id);
   try {
-    const resp = await api.post(`/projects/`, project);
+    const resp = await Api.post(`/projects/`, project);
     return resp.data;
   } catch (err) {
     return err.message;
@@ -101,7 +101,7 @@ export const editProject = createAsyncThunk('projects/editProject', async projec
   formData.append('statement', project.statement);
   formData.append('user_id', 1);
   try {
-    const resp = await api.put(`/projects/${project.id}`, project);
+    const resp = await Api.put(`/projects/${project.id}`, project);
     return resp.data;
   } catch (err) {
     return err.message;
@@ -110,7 +110,7 @@ export const editProject = createAsyncThunk('projects/editProject', async projec
 
 export const deleteProject = createAsyncThunk('projects/deleteProject', async payload => {
   try {
-    await api.delete(`/projects/${payload.id}`);
+    await Api.delete(`/projects/${payload.id}`);
     return { id: payload.id };
   } catch (err) {
     return err.message;
