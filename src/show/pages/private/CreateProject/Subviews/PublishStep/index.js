@@ -1,6 +1,6 @@
 import { BsArrowBarLeft } from 'react-icons/bs';
 
-import { ProgressBar, Button } from '../../../../../components';
+import { ProgressBar, Button } from 'show/components';
 
 const PublishStep = ({ createNewProject, previousStep }) => {
   return (

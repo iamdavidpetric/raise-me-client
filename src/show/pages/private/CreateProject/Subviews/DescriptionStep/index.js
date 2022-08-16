@@ -1,6 +1,6 @@
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
-import { Button, ProgressBar, TextField } from '../../../../../components';
+import { Button, ProgressBar, TextField } from 'show/components';
 
 const DescriptionStep = ({ nextStep, previousStep, project, setProject }) => {
   return (

@@ -1,5 +1,5 @@
-import { ProgressBar } from '../../../../../components';
-import { categories } from '../../../../../../process/constants';
+import { ProgressBar } from 'show/components';
+import { categories } from 'process/constants';
 
 const CategoryStep = ({ nextStep, project, setProject }) => {
   const setCategory = category => {

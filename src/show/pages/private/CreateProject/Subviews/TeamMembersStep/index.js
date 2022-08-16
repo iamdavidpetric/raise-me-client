@@ -1,7 +1,7 @@
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
-import { teamMembersLabels } from '../../../../../../process/constants';
-import { Button, ProgressBar, TextField } from '../../../../../components';
+import { teamMembersLabels } from 'process/constants';
+import { Button, ProgressBar, TextField } from 'show/components';
 
 const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
   const setName = (e, index, member) => {

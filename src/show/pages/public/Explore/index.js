@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { categories } from '../../../../process/constants';
-import { PROJECT_PATH } from '../../../../process/routes/paths';
-import { Button, ProgressBar, TextField } from '../../../components';
+import { categories } from 'process/constants';
+import { PROJECT_PATH } from 'process/routes/paths';
+import { Button, ProgressBar, TextField } from 'show/components';
 
 const Explore = () => {
   const [search, setSearch] = useState('');

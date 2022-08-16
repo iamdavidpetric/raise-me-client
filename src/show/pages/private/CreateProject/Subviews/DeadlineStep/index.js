@@ -1,7 +1,7 @@
 import ReactDatePicker from 'react-datepicker';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
-import { Button, ProgressBar } from '../../../../../components';
+import { Button, ProgressBar } from 'show/components';
 
 import 'react-datepicker/dist/react-datepicker.css';
 

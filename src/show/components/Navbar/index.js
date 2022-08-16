@@ -14,7 +14,7 @@ import {
   EXPLORE_PATH,
   HOME_PATH,
   MY_PROJECTS_PATH
-} from '../../../process/routes/paths';
+} from 'process/routes/paths';
 
 const Navbar = () => {
   const navigate = useNavigate();

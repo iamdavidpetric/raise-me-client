@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Button, ProgressBar } from '../../components';
+import { Button, ProgressBar } from 'show/components';
 
 const Card = ({ percentage, price, reversed, src, title }) => {
   const ifReversed = reversed ? 'flex-row' : 'flex-row-reverse';

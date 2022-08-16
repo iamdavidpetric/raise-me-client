@@ -14,7 +14,7 @@ import {
   TeamMembersStep,
   TitleStep
 } from './Subviews';
-import { createProject } from '../../../../process/redux/projectSlice';
+import { createProject } from 'process/redux/projectSlice';
 
 const CreateProject = () => {
   const [project, setProject] = useState({

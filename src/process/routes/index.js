@@ -1,5 +1,5 @@
 import * as Paths from './paths';
-import Pages from '../../show/pages';
+import Pages from 'show/pages';
 
 const CreateProject = {
   element: Pages.CreateProject,
