@@ -3,6 +3,8 @@ import StepWizard from 'react-step-wizard';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { editProject, getProject, setSelectedProject } from 'process/redux/projectSlice';
+
 import {
   CategoryStep,
   DeadlineStep,
@@ -15,7 +17,6 @@ import {
   TeamMembersStep,
   TitleStep
 } from '../CreateProject/Subviews';
-import { editProject, getProject, setSelectedProject } from 'process/redux/projectSlice';
 
 const EditProject = () => {
   const { id } = useParams();
