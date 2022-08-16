@@ -19,6 +19,7 @@ export const categories = [
   { name: 'office', icon: <ImOffice size='5rem' /> },
   { name: 'tech', icon: <MdComputer size='5rem' /> }
 ];
+
 export const teamMembersLabels = [
   { name: 'Project Leader', avatar: 'Project Leader Avatar URL' },
   { name: 'First Member', avatar: 'First Member Avatar URL' },

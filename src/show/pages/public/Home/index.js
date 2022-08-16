@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Button, Card, ProgressBar } from '../../../components';
-import { PROJECT_PATH } from '../../../../process/routes/paths';
 import {
   getFeaturedProject,
   getMostInvested,
   getQuickInfo
-} from '../../../../process/redux/projectSlice';
+} from 'process/redux/projectSlice';
+import { PROJECT_PATH } from 'process/routes/paths';
+import { Button, Card, ProgressBar } from 'show/components';
 
 const Home = () => {
   const dispatch = useDispatch();

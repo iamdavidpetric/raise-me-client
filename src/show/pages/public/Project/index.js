@@ -5,8 +5,8 @@ import { AiOutlineLink } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
-import { Button, ProgressBar } from '../../../components';
-import { getProject } from '../../../../process/redux/projectSlice';
+import { Button, ProgressBar } from 'show/components';
+import { getProject } from 'process/redux/projectSlice';
 
 const Project = () => {
   const { id } = useParams();

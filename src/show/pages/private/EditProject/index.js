@@ -3,11 +3,8 @@ import StepWizard from 'react-step-wizard';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  editProject,
-  getProject,
-  setSelectedProject
-} from '../../../../process/redux/projectSlice';
+import { editProject, getProject, setSelectedProject } from 'process/redux/projectSlice';
+
 import {
   CategoryStep,
   DeadlineStep,
@@ -28,7 +25,7 @@ const EditProject = () => {
 
   const dispatch = useDispatch();
 
-  const editProject = e => {
+  const patchProject = e => {
     e?.preventDefault();
     dispatch(editProject(selectedProject));
   };
@@ -56,7 +53,7 @@ const EditProject = () => {
         <PublishStep
           project={selectedProject}
           setProject={setProject}
-          createNewProject={editProject}
+          createNewProject={patchProject}
         />
       </StepWizard>
     </div>

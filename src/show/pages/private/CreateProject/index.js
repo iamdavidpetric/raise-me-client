@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import StepWizard from 'react-step-wizard';
 
+import { createProject } from 'process/redux/projectSlice';
+
 import {
   CategoryStep,
   DeadlineStep,
@@ -14,7 +16,6 @@ import {
   TeamMembersStep,
   TitleStep
 } from './Subviews';
-import { createProject } from '../../../../process/redux/projectSlice';
 
 const CreateProject = () => {
   const [project, setProject] = useState({
