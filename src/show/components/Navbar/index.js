@@ -8,13 +8,14 @@ import { IoConstructOutline } from 'react-icons/io5';
 import { CgArrowsExpandRight } from 'react-icons/cg';
 import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
-import { Button, Modal, TextField } from '../';
 import {
   CREATE_PROJECT_PATH,
   EXPLORE_PATH,
   HOME_PATH,
   MY_PROJECTS_PATH
 } from 'process/routes/paths';
+
+import { Button, Modal, TextField } from '../';
 
 const Navbar = () => {
   const navigate = useNavigate();
