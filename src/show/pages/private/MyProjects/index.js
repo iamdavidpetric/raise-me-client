@@ -3,8 +3,8 @@ import { Fragment, useState, useEffect } from 'react';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Paths from 'process/routes/paths';
 import { Button, ProgressBar, Modal } from 'show/components';
-import { EDIT_PROJECT_PATH, PROJECT_PATH } from 'process/routes/paths';
 import { deleteProject, getMyProjects } from 'process/redux/projectSlice';
 
 const MyProjects = () => {
@@ -44,7 +44,9 @@ const MyProjects = () => {
                 <div className='bg-primary-600 rounded-lg border shadow-md'>
                   <div className='relative'>
                     <img
-                      onClick={() => navigate(PROJECT_PATH.replace(':id', project.id))}
+                      onClick={() =>
+                        navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
+                      }
                       src={project.images[0]}
                       alt='main'
                       className='object-cover rounded-t-lg h-72 w-full'
@@ -52,7 +54,7 @@ const MyProjects = () => {
                     <div className='flex items-center bg-green-500 w-10 h-10 rounded-full absolute -top-5 -right-4 hover:scale-110 transition-all duration-300'>
                       <Button
                         onClick={() =>
-                          navigate(EDIT_PROJECT_PATH.replace(':id', project.id))
+                          navigate(Paths.private.PROJECT_PATH.replace(':id', project.id))
                         }
                         label={<FaPencilAlt size='1.5rem' />}
                         className='flex items-center justify-center w-16 h-16 text-white hover:text-green-900 hover:scale-110'

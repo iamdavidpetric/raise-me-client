@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Paths from 'process/routes/paths';
 import { categories } from 'process/constants';
-import { PROJECT_PATH } from 'process/routes/paths';
 import { Button, ProgressBar, TextField } from 'show/components';
 
 const Explore = () => {
@@ -57,7 +57,9 @@ const Explore = () => {
         <div className='grid grid-cols-3'>
           {projects.map((project, index) => (
             <div
-              onClick={() => navigate(PROJECT_PATH.replace(':id', project.id))}
+              onClick={() =>
+                navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
+              }
               className='rounded-lg h-96 mt-5 ml-5 mr-5 cursor-pointer'
               key={index}>
               <div className='bg-primary-600 rounded-lg border shadow-md'>

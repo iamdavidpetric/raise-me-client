@@ -8,12 +8,7 @@ import { CgArrowsExpandRight } from 'react-icons/cg';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
-import {
-  CREATE_PROJECT_PATH,
-  EXPLORE_PATH,
-  HOME_PATH,
-  MY_PROJECTS_PATH
-} from 'process/routes/paths';
+import Paths from 'process/routes/paths';
 import { signIn, signOut, signUp } from 'process/redux/userSlice';
 
 import { Button, Modal, TextField } from '../';
@@ -25,38 +20,34 @@ const Navbar = () => {
   const [openLogOutModal, setOpenLogOutModal] = useState(false);
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
 
-  const [signInUser, setSignInUser] = useState({
-    email: '',
-    password: ''
-  });
-
-  const [signUpUser, setSignUpUser] = useState({
-    username: '',
-    email: '',
-    password: '',
-    first_name: '',
-    last_name: ''
-  });
+  const [payload, setPayload] = useState({});
 
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.user);
 
+  const onFieldChange = (keyName, value) => setPayload({ ...payload, [keyName]: value });
+
   const submitSignIn = e => {
     e.preventDefault();
-    dispatch(signIn(signInUser));
+    dispatch(signIn(payload));
     setOpenLogInModal(false);
   };
 
   const submitSignUp = e => {
     e.preventDefault();
-    dispatch(signUp(signUpUser));
+    dispatch(signUp(payload));
     setOpenSignUpModal(false);
   };
 
   const handleDeleteClick = e => {
     e.preventDefault();
     setOpenLogOutModal(false);
-    dispatch(signOut({}));
+    dispatch(signOut());
+  };
+
+  const switchModals = () => {
+    setOpenLogInModal(false);
+    setOpenSignUpModal(true);
   };
 
   return (
@@ -64,7 +55,7 @@ const Navbar = () => {
       <div className='flex flex-row h-12 justify-between bg-primary-600 sticky top-0 py-2 z-10'>
         <div className='flex flex-row mx-2 items-center w-1/3'>
           <div
-            onClick={() => navigate(EXPLORE_PATH)}
+            onClick={() => navigate(Paths.public.EXPLORE_PATH)}
             className='flex text-white transition duration-200 items-center'>
             <Button
               variant='secondary'
@@ -73,7 +64,7 @@ const Navbar = () => {
             />
           </div>
           {currentUser?.isLoggedIn && (
-            <div onClick={() => navigate(MY_PROJECTS_PATH)}>
+            <div onClick={() => navigate(Paths.private.MY_PROJECTS_PATH)}>
               <Button
                 variant='secondary'
                 iconLeft={<TbStairsUp className='mx-1' size='1.5rem' />}
@@ -84,7 +75,7 @@ const Navbar = () => {
         </div>
 
         <div
-          onClick={() => navigate(HOME_PATH)}
+          onClick={() => navigate(Paths.public.HOME_PATH)}
           className='text-white flex items-center text-2xl cursor-pointer hover:hover:scale-110 transition-all duration-300'>
           <CgArrowsExpandRight /> raise.me
         </div>
@@ -100,7 +91,7 @@ const Navbar = () => {
               />
               <div className='flex border-2 border-primary-600 items-center hover:border-2 hover:rounded-full hover:border-white transition-all duration-300 hover:px-2 hover:py-1'>
                 <Button
-                  onClick={() => navigate(CREATE_PROJECT_PATH)}
+                  onClick={() => navigate(Paths.private.CREATE_PROJECT_PATH)}
                   variant='secondary'
                   iconLeft={<TbStairsUp className='px-0 mx-0' size='1.5rem' />}
                   label='raise it'
@@ -132,45 +123,37 @@ const Navbar = () => {
             <form className='mt-8 space-y-6'>
               <div className='rounded-md shadow-sm -space-y-px'>
                 <TextField
-                  onChange={e =>
-                    setSignUpUser({ ...signUpUser, username: e.target.value })
-                  }
-                  value={signUpUser.username}
+                  onChange={e => onFieldChange('username', e.target.value)}
+                  value={payload.username}
                   required
                   type='text'
                   placeholder='Username'
                   className='rounded-t-md'
                 />
                 <TextField
-                  onChange={e =>
-                    setSignUpUser({ ...signUpUser, first_name: e.target.value })
-                  }
-                  value={signUpUser.first_name}
+                  onChange={e => onFieldChange('first_name', e.target.value)}
+                  value={payload.first_name}
                   required
                   type='text'
                   placeholder='First Name'
                 />
                 <TextField
-                  onChange={e =>
-                    setSignUpUser({ ...signUpUser, last_name: e.target.value })
-                  }
-                  value={signUpUser.last_name}
+                  onChange={e => onFieldChange('last_name', e.target.value)}
+                  value={payload.last_name}
                   required
                   type='text'
                   placeholder='Last Name'
                 />
                 <TextField
-                  onChange={e => setSignUpUser({ ...signUpUser, email: e.target.value })}
-                  value={signUpUser.email}
+                  onChange={e => onFieldChange('email', e.target.value)}
+                  value={payload.email}
                   required
                   type='email'
                   placeholder='Email'
                 />
                 <TextField
-                  onChange={e =>
-                    setSignUpUser({ ...signUpUser, password: e.target.value })
-                  }
-                  value={signUpUser.password}
+                  onChange={e => onFieldChange('password', e.target.value)}
+                  value={payload.password}
                   required
                   type='password'
                   placeholder='Password'
@@ -215,18 +198,16 @@ const Navbar = () => {
                   type='email'
                   placeholder='Email'
                   className='rounded-t-md'
-                  onChange={e => setSignInUser({ ...signInUser, email: e.target.value })}
-                  value={signInUser.email}
+                  onChange={e => onFieldChange('email', e.target.value)}
+                  value={payload.email}
                 />
                 <TextField
                   required
                   type='password'
                   placeholder='Confirm Password'
                   className='rounded-b-md'
-                  onChange={e =>
-                    setSignInUser({ ...signInUser, password: e.target.value })
-                  }
-                  value={signInUser.password}
+                  onChange={e => onFieldChange('password', e.target.value)}
+                  value={payload.password}
                 />
               </div>
 
@@ -247,10 +228,7 @@ const Navbar = () => {
                 </div>
               </div>
               <div
-                onClick={() => {
-                  setOpenLogInModal(false);
-                  setOpenSignUpModal(true);
-                }}
+                onClick={switchModals}
                 className='text-gray-500 text-sm hover:text-gray-700 cursor-pointer hover:underline'>
                 Don't have an account? Sign up.
               </div>

@@ -7,7 +7,7 @@ import {
   getMostInvested,
   getQuickInfo
 } from 'process/redux/projectSlice';
-import { PROJECT_PATH } from 'process/routes/paths';
+import Paths from 'process/routes/paths';
 import { Button, Card, ProgressBar } from 'show/components';
 
 const Home = () => {
@@ -44,7 +44,9 @@ const Home = () => {
       </div>
       <div className='flex'>
         <div
-          onClick={() => navigate(PROJECT_PATH.replace(':id', featuredProject.id))}
+          onClick={() =>
+            navigate(Paths.public.PROJECT_PATH.replace(':id', featuredProject.id))
+          }
           className='flex flex-col w-1/3 h-128 mt-5 mr-2 cursor-pointer'>
           <div className='h-112 ml-5'>
             {featuredProject?.images &&
@@ -84,7 +86,9 @@ const Home = () => {
         <div className='w-full mr-5 mt-5'>
           {mostInvested?.map((project, index) => (
             <div
-              onClick={() => navigate(PROJECT_PATH.replace(':id', project.id))}
+              onClick={() =>
+                navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
+              }
               className='mb-2 flex flex-col content-start cursor-pointer'
               key={project.id}
               id={project.id}>

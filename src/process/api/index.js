@@ -11,7 +11,9 @@ const api = axios.create({
 });
 
 const Api = {
-  catchError: error => error,
+  catchError: error => {
+    return error.response.data;
+  },
 
   setHeaders: headers => {
     api.defaults.headers.common = headers;
