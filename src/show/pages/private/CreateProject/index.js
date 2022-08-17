@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import StepWizard from 'react-step-wizard';
 
 import { createProject } from 'process/redux/projectSlice';
@@ -18,6 +18,8 @@ import {
 } from './Subviews';
 
 const CreateProject = () => {
+  const currentUser = useSelector(state => state.user);
+
   const [project, setProject] = useState({
     category: '',
     name: '',
@@ -27,8 +29,10 @@ const CreateProject = () => {
     deadline: '',
     images: ['', '', '', '', '', '', '', ''],
     team_members: [{}, {}, {}, {}, {}, {}, {}],
-    user_id: 1
+    user_id: currentUser.id
   });
+
+  console.log(currentUser.id);
 
   const dispatch = useDispatch();
 

@@ -31,6 +31,5 @@ const Project = {
   path: Paths.PROJECT_PATH
 };
 
-const routes = [CreateProject, EditProject, Explore, Home, MyProjects, Project];
-
-export default routes;
+export const publicRoutes = [Explore, Home, Project];
+export const privateRoutes = [CreateProject, EditProject, MyProjects];
