@@ -28,9 +28,11 @@ export const signUp = createAsyncThunk('user/signUp', async payload => {
   }
 });
 
+const initialState = { isLoggedIn: false };
+
 const userSlice = createSlice({
   name: 'user',
-  initialState: { isLoggedIn: false },
+  initialState,
   reducers: {},
   extraReducers: {
     [signIn.fulfilled]: (state, { payload }) => {
@@ -38,12 +40,12 @@ const userSlice = createSlice({
       return { ...payload, isLoggedIn: true };
     },
 
-    [signOut.fulfilled]: state => {
-      return { state };
+    [signOut.fulfilled]: () => {
+      return initialState;
     },
 
-    [signOut.fulfilled]: state => {
-      return { state };
+    [signUp.fulfilled]: () => {
+      return initialState;
     }
   }
 });

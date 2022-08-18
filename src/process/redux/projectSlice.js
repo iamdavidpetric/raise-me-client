@@ -117,22 +117,22 @@ export const deleteProject = createAsyncThunk('projects/deleteProject', async pa
   }
 });
 
+const initialState = {
+  featuredProject: {},
+  mostInvested: [],
+  projects: [],
+  quickInfo: {},
+  selectedProject: {}
+};
+
 const projectSlice = createSlice({
   name: 'projects',
-  initialState: {
-    featuredProject: {},
-    mostInvested: [],
-    projects: [],
-    quickInfo: {},
-    selectedProject: {}
-  },
-
+  initialState,
   reducers: {
     setSelectedProject: (state, action) => {
       return { ...state.projects, selectedProject: action.payload };
     }
   },
-
   extraReducers: {
     [getProject.fulfilled]: (state, { payload }) => {
       return { ...state, selectedProject: payload };
