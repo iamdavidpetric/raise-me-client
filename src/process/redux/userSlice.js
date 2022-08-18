@@ -38,8 +38,8 @@ const userSlice = createSlice({
       return { ...payload, isLoggedIn: true };
     },
 
-    [signUp.fulfilled]: (state, { payload }) => {
-      return { ...payload };
+    [signOut.fulfilled]: state => {
+      return { state };
     },
 
     [signOut.fulfilled]: state => {

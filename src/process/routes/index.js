@@ -1,5 +1,4 @@
 import Pages from 'show/pages';
-
 import Paths from 'process/routes/paths';
 
 const CreateProject = {
