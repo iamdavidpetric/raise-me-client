@@ -26,8 +26,7 @@ const CreateProject = () => {
     fee: undefined,
     deadline: '',
     images: ['', '', '', '', '', '', '', ''],
-    team_members: [{}, {}, {}, {}, {}, {}, {}],
-    user_id: 1
+    team_members: [{}, {}, {}, {}, {}, {}, {}]
   });
 
   const dispatch = useDispatch();
