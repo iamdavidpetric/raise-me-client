@@ -46,7 +46,7 @@ const EditProject = () => {
         <DescriptionStep project={selectedProject} setProject={setProject} />
         <GoalStep project={selectedProject} setProject={setProject} />
         <FeeStep project={selectedProject} setProject={setProject} />
-        {/* <DeadlineStep project={selectedProject} setProject={setProject} /> */}
+        <DeadlineStep project={selectedProject} setProject={setProject} />
         <StatementStep project={selectedProject} setProject={setProject} />
         <ImagesStep project={selectedProject} setProject={setProject} />
         <TeamMembersStep project={selectedProject} setProject={setProject} />

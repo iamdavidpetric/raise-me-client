@@ -34,20 +34,20 @@ const MyProjects = () => {
   return (
     <Fragment>
       <div className='h-full w-full'>
-        {projects.length > 0 ? (
+        {projects?.length > 0 ? (
           <div className='grid grid-cols-3 mt-5'>
             {projects?.map(project => (
               <div
                 className='rounded-lg h-96 mt-5 ml-5 mr-5 cursor-pointer'
-                key={project.id}
-                id={project.id}>
+                key={project?.id}
+                id={project?.id}>
                 <div className='bg-primary-600 rounded-lg border shadow-md'>
                   <div className='relative'>
                     <img
                       onClick={() =>
                         navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
                       }
-                      src={project.images[0]}
+                      src={project?.images[0]}
                       alt='main'
                       className='object-cover rounded-t-lg h-72 w-full'
                     />

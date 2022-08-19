@@ -139,7 +139,7 @@ const projectSlice = createSlice({
     },
 
     [getMyProjects.fulfilled]: (state, { payload }) => {
-      return { ...state, projects: payload };
+      return { ...state, projects: typeof payload === 'string' ? [] : payload };
     },
 
     [getFeaturedProject.fulfilled]: (state, { payload }) => {

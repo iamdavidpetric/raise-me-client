@@ -57,7 +57,7 @@ const Project = () => {
           <div className='mr-5 h-28 mt-5'>
             <div className='no-scrollbar flex ml-4 h-[112px] no-scrollbar overflow-x-scroll'>
               {restPictures &&
-                restPictures.map((item, index) => (
+                restPictures?.map((item, index) => (
                   <img
                     key={index}
                     src={item}
@@ -143,7 +143,7 @@ const Project = () => {
                 <div className='flex flex-col w-96 px-0 mx-0'>
                   <div className='flex justify-center items-center'>
                     {restMembers &&
-                      restMembers.map(member => (
+                      restMembers?.map(member => (
                         <div className='flex flex-col items-center' key={member.id}>
                           <img
                             src={member?.avatar_url}
