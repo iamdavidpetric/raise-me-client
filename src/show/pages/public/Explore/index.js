@@ -53,9 +53,9 @@ const Explore = () => {
           </div>
         ))}
       </div>
-      {projects.length > 0 ? (
+      {projects?.length > 0 ? (
         <div className='grid grid-cols-3'>
-          {projects.map((project, index) => (
+          {projects?.map((project, index) => (
             <div
               onClick={() =>
                 navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
