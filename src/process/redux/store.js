@@ -20,9 +20,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-const logger = createLogger({
-  collapsed: true
-});
+const logger = createLogger({ collapsed: true });
 
 export const store = configureStore({
   reducer: persistedReducer,
