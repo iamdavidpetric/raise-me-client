@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { BsArrowBarLeft } from 'react-icons/bs';
 
 import { ProgressBar, Button } from 'show/components';
@@ -31,6 +32,16 @@ const PublishStep = ({ createNewProject, previousStep }) => {
       </div>
     </div>
   );
+};
+
+PublishStep.defaultProps = {
+  createNewProject: () => {},
+  previousStep: () => {}
+};
+
+PublishStep.propTypes = {
+  createNewProject: PropTypes.func,
+  previousStep: PropTypes.func
 };
 
 export default PublishStep;

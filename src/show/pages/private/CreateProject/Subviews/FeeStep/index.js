@@ -1,18 +1,25 @@
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
+import { updateProps } from 'process/redux/transientSlice';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
+const FeeStep = ({ nextStep, previousStep }) => {
+  const fee = useSelector(state => state.transient.fee);
+  const dispatch = useDispatch();
+
   const setFee = e =>
-    setProject({
-      ...project,
-      fee:
-        e.target.value < 0
-          ? Math.abs(e.target.value)
-          : e.target.value > 999999
-          ? 999999
-          : e.target.value
-    });
+    dispatch(
+      updateProps({
+        fee:
+          e.target.value < 0
+            ? Math.abs(e.target.value)
+            : e.target.value > 999999
+            ? 999999
+            : e.target.value
+      })
+    );
 
   return (
     <div className='mt-18 px-20'>
@@ -24,7 +31,7 @@ const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
           <TextField
             required
             type='number'
-            value={project?.fee}
+            value={fee}
             className='flex rounded-2xl mt-2 items-center text-center w-36'
             onChange={e => setFee(e)}
           />
@@ -37,7 +44,7 @@ const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project?.fee}
+          disabled={!fee}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'
@@ -48,6 +55,16 @@ const FeeStep = ({ nextStep, previousStep, project, setProject }) => {
       </div>
     </div>
   );
+};
+
+FeeStep.defaultProps = {
+  nextStep: () => {},
+  previousStep: () => {}
+};
+
+FeeStep.propTypes = {
+  nextStep: PropTypes.func,
+  previousStep: PropTypes.func
 };
 
 export default FeeStep;

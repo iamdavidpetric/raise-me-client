@@ -1,22 +1,33 @@
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
 import { teamMembersLabels } from 'process/constants';
+import { updateProps } from 'process/redux/transientSlice';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
+const TeamMembersStep = ({ nextStep, previousStep }) => {
+  const transient = useSelector(state => state.transient);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateProps({ team_members: [{}, {}, {}, {}, {}, {}, {}] }));
+  }, [dispatch]);
+
   const setName = (e, index, member) => {
-    let newTeamMembers = project.team_members;
+    let newTeamMembers = [...transient.team_members];
     newTeamMembers[index] = { ...member, name: e.target.value };
-    setProject({ ...project, team_members: newTeamMembers });
+    dispatch(updateProps({ team_members: newTeamMembers }));
   };
 
   const setAvatarURL = (e, index, member) => {
-    let newTeamMembers = project.team_members;
+    let newTeamMembers = [...transient.team_members];
     newTeamMembers[index] = { ...member, avatar_url: e.target.value };
-    setProject({ ...project, team_members: newTeamMembers });
+    dispatch(updateProps({ team_members: newTeamMembers }));
   };
 
-  const disableNext = !project?.team_members?.filter(
+  const disableNext = !transient?.team_members?.filter(
     member => Object.entries(member).length >= 2
   ).length;
 
@@ -26,7 +37,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
       <div className='flex w-full mt-4'>
         <div className='flex w-1/2 h-full'>
           <div className='w-3/4 px-2'>
-            {project?.team_members?.map((member, index) => (
+            {transient?.team_members?.map((member, index) => (
               <TextField
                 label={teamMembersLabels[index].name}
                 key={index}
@@ -39,7 +50,7 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
         </div>
         <div className='flex w-1/2 h-full justify-end'>
           <div className='w-full px-2'>
-            {project?.team_members?.map((member, index) => (
+            {transient?.team_members?.map((member, index) => (
               <TextField
                 label={teamMembersLabels[index].avatar}
                 key={index}
@@ -69,6 +80,16 @@ const TeamMembersStep = ({ nextStep, previousStep, project, setProject }) => {
       </div>
     </div>
   );
+};
+
+TeamMembersStep.defaultProps = {
+  nextStep: () => {},
+  previousStep: () => {}
+};
+
+TeamMembersStep.propTypes = {
+  nextStep: PropTypes.func,
+  previousStep: PropTypes.func
 };
 
 export default TeamMembersStep;

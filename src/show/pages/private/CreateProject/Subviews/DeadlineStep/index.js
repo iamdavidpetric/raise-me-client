@@ -1,11 +1,17 @@
+import PropTypes from 'prop-types';
 import ReactDatePicker from 'react-datepicker';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
 import { Button, ProgressBar } from 'show/components';
+import { updateProps } from 'process/redux/transientSlice';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
+const DeadlineStep = ({ nextStep, previousStep }) => {
+  const deadline = useSelector(state => state.transient.deadline);
+  const dispatch = useDispatch();
+
   return (
     <div className='mt-18 px-20'>
       <div className='mt-60'>
@@ -17,8 +23,8 @@ const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
             <ReactDatePicker
               required
               className='flex justify-center text-center w-full '
-              selected={project.deadline ? new Date(project.deadline) : new Date()}
-              onChange={deadline => setProject({ ...project, deadline: deadline })}
+              selected={deadline ? new Date(deadline) : new Date()}
+              onChange={deadline => dispatch(updateProps({ deadline: deadline }))}
               dateFormat='dd/MM/yyyy'
               minDate={new Date()}
               withPortal
@@ -33,7 +39,7 @@ const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project?.deadline}
+          disabled={!deadline}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'
@@ -44,6 +50,16 @@ const DeadlineStep = ({ nextStep, previousStep, project, setProject }) => {
       </div>
     </div>
   );
+};
+
+DeadlineStep.defaultProps = {
+  nextStep: () => {},
+  previousStep: () => {}
+};
+
+DeadlineStep.propTypes = {
+  nextStep: PropTypes.func,
+  previousStep: PropTypes.func
 };
 
 export default DeadlineStep;

@@ -1,12 +1,23 @@
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
+import { updateProps } from 'process/redux/transientSlice';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const ImagesStep = ({ nextStep, previousStep, project, setProject }) => {
+const ImagesStep = ({ nextStep, previousStep }) => {
+  const transient = useSelector(state => state.transient);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateProps({ images: ['', '', '', '', '', '', '', ''] }));
+  }, [dispatch]);
+
   const setImage = (e, index) => {
-    let newImages = project.images;
-    newImages[index] = e.target.value;
-    setProject({ ...project, images: newImages });
+    let newImages = [...transient.images];
+    newImages[index] = e.target?.value;
+    dispatch(updateProps({ images: newImages }));
   };
 
   return (
@@ -15,7 +26,7 @@ const ImagesStep = ({ nextStep, previousStep, project, setProject }) => {
         Enter your project photos URL
       </div>
       <div className='h-full mt-6'>
-        {project?.images?.map((image, index) => (
+        {transient?.images?.map((image, index) => (
           <TextField
             key={index}
             value={image}
@@ -31,7 +42,7 @@ const ImagesStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project?.images?.filter(image => image.length > 0).length}
+          disabled={!transient?.images?.filter(image => image.length > 0).length}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'
@@ -42,6 +53,16 @@ const ImagesStep = ({ nextStep, previousStep, project, setProject }) => {
       </div>
     </div>
   );
+};
+
+ImagesStep.defaultProps = {
+  nextStep: () => {},
+  previousStep: () => {}
+};
+
+ImagesStep.propTypes = {
+  nextStep: PropTypes.func,
+  previousStep: PropTypes.func
 };
 
 export default ImagesStep;
