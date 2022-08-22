@@ -3,9 +3,7 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import userReducer from './userSlice';
-import projectReducer from './projectSlice';
-import transientReducer from './transientSlice';
+import { projectReducer, transientReducer, userReducer } from 'process/slice';
 
 const reducer = combineReducers({
   projects: projectReducer,
@@ -16,7 +14,6 @@ const reducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'projects'],
   blacklist: ['transient'],
   timeout: null
 };

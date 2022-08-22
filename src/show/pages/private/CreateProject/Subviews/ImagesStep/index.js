@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
+import { mock } from 'process/helpers';
 import { updateProps } from 'process/redux/transientSlice';
 import { Button, ProgressBar, TextField } from 'show/components';
 
@@ -56,8 +57,8 @@ const ImagesStep = ({ nextStep, previousStep }) => {
 };
 
 ImagesStep.defaultProps = {
-  nextStep: () => {},
-  previousStep: () => {}
+  nextStep: mock,
+  previousStep: mock
 };
 
 ImagesStep.propTypes = {

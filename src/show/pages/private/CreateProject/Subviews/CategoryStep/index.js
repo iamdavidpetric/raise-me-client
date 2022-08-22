@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
+import { mock } from 'process/helpers';
 import { ProgressBar } from 'show/components';
 import { categories } from 'process/constants';
 import { updateProps } from 'process/redux/transientSlice';
@@ -39,7 +40,7 @@ const CategoryStep = ({ nextStep }) => {
 };
 
 CategoryStep.defaultProps = {
-  nextStep: () => {}
+  nextStep: mock
 };
 
 CategoryStep.propTypes = {

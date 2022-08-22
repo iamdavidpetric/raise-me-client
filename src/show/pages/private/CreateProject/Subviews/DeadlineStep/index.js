@@ -3,6 +3,7 @@ import ReactDatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
+import { mock } from 'process/helpers';
 import { Button, ProgressBar } from 'show/components';
 import { updateProps } from 'process/redux/transientSlice';
 
@@ -53,8 +54,8 @@ const DeadlineStep = ({ nextStep, previousStep }) => {
 };
 
 DeadlineStep.defaultProps = {
-  nextStep: () => {},
-  previousStep: () => {}
+  nextStep: mock,
+  previousStep: mock
 };
 
 DeadlineStep.propTypes = {
