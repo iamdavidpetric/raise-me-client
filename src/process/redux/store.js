@@ -3,7 +3,7 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { projectReducer, transientReducer, userReducer } from 'process/slice';
+import { projectReducer, transientReducer, userReducer } from 'process/slices';
 
 const reducer = combineReducers({
   projects: projectReducer,

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Paths from 'process/routes/paths';
 import { Button, ProgressBar, Modal } from 'show/components';
-import { deleteProject, getMyProjects } from 'process/redux/projectSlice';
+import { deleteProject, getMyProjects } from 'process/slices/projectSlice';
 
 const MyProjects = () => {
   const [projectId, setProjectId] = useState(null);

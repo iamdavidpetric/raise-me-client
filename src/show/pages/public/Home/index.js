@@ -6,7 +6,7 @@ import {
   getFeaturedProject,
   getMostInvested,
   getQuickInfo
-} from 'process/redux/projectSlice';
+} from 'process/slices/projectSlice';
 import Paths from 'process/routes/paths';
 import { Button, Card, ProgressBar } from 'show/components';
 

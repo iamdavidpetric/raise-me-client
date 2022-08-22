@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
 import Paths from 'process/routes/paths';
-import { signIn, signOut, signUp } from 'process/redux/userSlice';
+import { signIn, signOut, signUp } from 'process/slices/userSlice';
 
 import { Button, Modal, TextField } from '../';
 

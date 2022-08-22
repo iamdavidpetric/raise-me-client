@@ -1,7 +1,7 @@
 import StepWizard from 'react-step-wizard';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createProject } from 'process/redux/projectSlice';
+import { createProject } from 'process/slices/projectSlice';
 
 import {
   CategoryStep,

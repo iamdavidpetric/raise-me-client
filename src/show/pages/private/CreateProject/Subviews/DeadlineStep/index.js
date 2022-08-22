@@ -5,7 +5,7 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
 import { mock } from 'process/helpers';
 import { Button, ProgressBar } from 'show/components';
-import { updateProps } from 'process/redux/transientSlice';
+import { updateProps } from 'process/slices/transientSlice';
 
 import 'react-datepicker/dist/react-datepicker.css';
 

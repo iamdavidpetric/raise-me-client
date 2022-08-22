@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { mock } from 'process/helpers';
 import { ProgressBar } from 'show/components';
 import { categories } from 'process/constants';
-import { updateProps } from 'process/redux/transientSlice';
+import { updateProps } from 'process/slices/transientSlice';
 
 const CategoryStep = ({ nextStep }) => {
   const dispatch = useDispatch();

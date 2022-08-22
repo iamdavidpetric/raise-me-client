@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import { Button, ProgressBar } from 'show/components';
-import { getProject } from 'process/redux/projectSlice';
+import { getProject } from 'process/slices/projectSlice';
 
 const Project = () => {
   const { id } = useParams();
