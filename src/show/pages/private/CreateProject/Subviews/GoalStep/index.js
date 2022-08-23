@@ -1,18 +1,26 @@
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 
+import { mock } from 'process/helpers';
+import { updateProps } from 'process/slices/transientSlice';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const GoalStep = ({ nextStep, previousStep, project, setProject }) => {
+const GoalStep = ({ nextStep, previousStep }) => {
+  const goal = useSelector(state => state.transient.goal);
+  const dispatch = useDispatch();
+
   const setGoal = e =>
-    setProject({
-      ...project,
-      goal:
-        e.target.value < 0
-          ? Math.abs(e.target.value)
-          : e.target.value > 999999
-          ? 999999
-          : e.target.value
-    });
+    dispatch(
+      updateProps({
+        goal:
+          e.target.value < 0
+            ? Math.abs(e.target.value)
+            : e.target.value > 999999
+            ? 999999
+            : e.target.value
+      })
+    );
 
   return (
     <div className='mt-20 px-20'>
@@ -24,7 +32,7 @@ const GoalStep = ({ nextStep, previousStep, project, setProject }) => {
           <TextField
             required
             type='number'
-            value={project?.goal}
+            value={goal}
             className='flex rounded-2xl mt-2 items-center text-center w-36'
             onChange={e => setGoal(e)}
           />
@@ -37,7 +45,7 @@ const GoalStep = ({ nextStep, previousStep, project, setProject }) => {
           label='Back'
         />
         <Button
-          disabled={!project?.goal}
+          disabled={!goal}
           onClick={() => nextStep()}
           iconRight={<BsArrowBarRight size='2rem' />}
           label='Next'
@@ -48,6 +56,16 @@ const GoalStep = ({ nextStep, previousStep, project, setProject }) => {
       </div>
     </div>
   );
+};
+
+GoalStep.defaultProps = {
+  nextStep: mock,
+  previousStep: mock
+};
+
+GoalStep.propTypes = {
+  nextStep: PropTypes.func,
+  previousStep: PropTypes.func
 };
 
 export default GoalStep;

@@ -1,10 +1,17 @@
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { mock } from 'process/helpers';
 import { ProgressBar } from 'show/components';
 import { categories } from 'process/constants';
+import { updateProps } from 'process/slices/transientSlice';
 
-const CategoryStep = ({ nextStep, project, setProject }) => {
+const CategoryStep = ({ nextStep }) => {
+  const dispatch = useDispatch();
+
   const setCategory = category => {
     nextStep();
-    setProject({ ...project, category: category?.name });
+    dispatch(updateProps({ category: category?.name }));
   };
 
   return (
@@ -30,6 +37,14 @@ const CategoryStep = ({ nextStep, project, setProject }) => {
       </div>
     </div>
   );
+};
+
+CategoryStep.defaultProps = {
+  nextStep: mock
+};
+
+CategoryStep.propTypes = {
+  nextStep: PropTypes.func
 };
 
 export default CategoryStep;

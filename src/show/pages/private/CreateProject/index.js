@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import StepWizard from 'react-step-wizard';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { createProject } from 'process/redux/projectSlice';
+import { createProject } from 'process/slices/projectSlice';
 
 import {
   CategoryStep,
@@ -18,41 +17,27 @@ import {
 } from './Subviews';
 
 const CreateProject = () => {
-  const [project, setProject] = useState({
-    category: '',
-    name: '',
-    description: '',
-    goal: undefined,
-    fee: undefined,
-    deadline: '',
-    images: ['', '', '', '', '', '', '', ''],
-    team_members: [{}, {}, {}, {}, {}, {}, {}]
-  });
-
   const dispatch = useDispatch();
+  const transient = useSelector(state => state.transient);
 
   const createNewProject = e => {
     e?.preventDefault();
-    dispatch(createProject(project));
+    dispatch(createProject(transient));
   };
 
   return (
     <div className='h-full w-full'>
       <StepWizard>
-        <CategoryStep project={project} setProject={setProject} />
-        <TitleStep project={project} setProject={setProject} />
-        <DescriptionStep project={project} setProject={setProject} />
-        <GoalStep project={project} setProject={setProject} />
-        <FeeStep project={project} setProject={setProject} />
-        <DeadlineStep project={project} setProject={setProject} />
-        <StatementStep project={project} setProject={setProject} />
-        <ImagesStep project={project} setProject={setProject} />
-        <TeamMembersStep project={project} setProject={setProject} />
-        <PublishStep
-          project={project}
-          setProject={setProject}
-          createNewProject={createNewProject}
-        />
+        <CategoryStep />
+        <TitleStep />
+        <DescriptionStep />
+        <GoalStep />
+        <FeeStep />
+        <DeadlineStep />
+        <StatementStep />
+        <ImagesStep />
+        <TeamMembersStep />
+        <PublishStep createNewProject={createNewProject} />
       </StepWizard>
     </div>
   );

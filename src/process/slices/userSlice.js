@@ -50,6 +50,4 @@ const userSlice = createSlice({
   }
 });
 
-export const { setSelectedProject } = userSlice.actions;
-
 export default userSlice.reducer;

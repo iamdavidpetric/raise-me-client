@@ -128,11 +128,7 @@ const initialState = {
 const projectSlice = createSlice({
   name: 'projects',
   initialState,
-  reducers: {
-    setSelectedProject: (state, action) => {
-      return { ...state.projects, selectedProject: action.payload };
-    }
-  },
+
   extraReducers: {
     [getProject.fulfilled]: (state, { payload }) => {
       return { ...state, selectedProject: payload };
@@ -173,7 +169,5 @@ const projectSlice = createSlice({
     }
   }
 });
-
-export const { setSelectedProject } = projectSlice.actions;
 
 export default projectSlice.reducer;

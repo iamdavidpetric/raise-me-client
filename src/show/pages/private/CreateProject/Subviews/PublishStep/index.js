@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import { BsArrowBarLeft } from 'react-icons/bs';
 
+import { mock } from 'process/helpers';
 import { ProgressBar, Button } from 'show/components';
 
 const PublishStep = ({ createNewProject, previousStep }) => {
@@ -31,6 +33,16 @@ const PublishStep = ({ createNewProject, previousStep }) => {
       </div>
     </div>
   );
+};
+
+PublishStep.defaultProps = {
+  createNewProject: mock,
+  previousStep: mock
+};
+
+PublishStep.propTypes = {
+  createNewProject: PropTypes.func,
+  previousStep: PropTypes.func
 };
 
 export default PublishStep;
