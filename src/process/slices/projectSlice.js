@@ -130,7 +130,7 @@ const projectSlice = createSlice({
   initialState,
   reducers: {
     setSelectedProject: (state, action) => {
-      return { ...state.projects, selectedProject: action.payload };
+      return { ...state, selectedProject: action.payload };
     }
   },
   extraReducers: {

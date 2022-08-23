@@ -31,6 +31,15 @@ const MyProjects = () => {
     setProjectId(project.id);
   };
 
+  useEffect(() => {
+    async function getProjectId() {
+      let response = await fetch(`/projects/${projectId}`);
+      response = await response.json();
+      setProjectId(response);
+    }
+    getProjectId();
+  }, [projectId]);
+
   return (
     <Fragment>
       <div className='h-full w-full'>
@@ -45,7 +54,7 @@ const MyProjects = () => {
                   <div className='relative'>
                     <img
                       onClick={() =>
-                        navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
+                        navigate(Paths.public.PROJECT_PATH.replace(':id', projectId))
                       }
                       src={project?.images[0]}
                       alt='main'
@@ -53,11 +62,11 @@ const MyProjects = () => {
                     />
                     <div className='flex items-center bg-green-500 w-10 h-10 rounded-full absolute -top-5 -right-4 hover:scale-110 transition-all duration-300'>
                       <Button
-                        onClick={() =>
+                        onClick={() => {
                           navigate(
                             Paths.private.EDIT_PROJECT_PATH.replace(':id', project.id)
-                          )
-                        }
+                          );
+                        }}
                         label={<FaPencilAlt size='1.5rem' />}
                         className='flex items-center justify-center w-16 h-16 text-white hover:text-green-900 hover:scale-110'
                       />
