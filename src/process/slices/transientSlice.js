@@ -6,11 +6,11 @@ const transientSlice = createSlice({
   name: 'transient',
   initialState,
   reducers: {
-    updateProps: (state, action) => {
-      return { ...state, ...action.payload };
-    },
     resetState: () => {
       return initialState;
+    },
+    updateProps: (state, action) => {
+      return { ...state, ...action.payload };
     }
   }
 });
