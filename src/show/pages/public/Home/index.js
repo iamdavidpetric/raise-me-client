@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import Home from './view';
-
 import {
   getFeaturedProject,
   getMostInvested,
   getQuickInfo
 } from 'process/slices/projectSlice';
+
+import Home from './view';
 
 export default connect(
   state => ({

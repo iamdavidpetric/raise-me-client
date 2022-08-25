@@ -34,7 +34,7 @@ const EditProject = ({
   useEffect(() => {
     getProject({ id });
     updateProps({ ...selectedProject });
-  }, [id, updateProps, selectedProject]);
+  }, [getProject, id, selectedProject, updateProps]);
 
   return (
     <div className='h-full w-full'>

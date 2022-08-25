@@ -8,31 +8,29 @@ import { MdOutlineExplore } from 'react-icons/md';
 import { CgArrowsExpandRight } from 'react-icons/cg';
 import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
-import { mock } from 'process/helpers';
 import Paths from 'process/routes/paths';
+import { mock, onFieldChange } from 'process/helpers';
 
 import { Button, Modal, TextField } from '../';
 
-const Navbar = ({ currentUser, signIn, signOut, signUp }) => {
+const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }) => {
   const navigate = useNavigate();
 
   const [openLogInModal, setOpenLogInModal] = useState(false);
   const [openLogOutModal, setOpenLogOutModal] = useState(false);
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
 
-  const [payload, setPayload] = useState({});
-
-  const onFieldChange = (keyName, value) => setPayload({ ...payload, [keyName]: value });
+  const dipatchUpdateProps = payload => updateProps(payload);
 
   const submitSignIn = e => {
     e.preventDefault();
-    signIn(payload);
+    signIn(transient);
     setOpenLogInModal(false);
   };
 
   const submitSignUp = e => {
     e.preventDefault();
-    signUp(payload);
+    signUp(transient);
     setOpenSignUpModal(false);
   };
 
@@ -120,37 +118,47 @@ const Navbar = ({ currentUser, signIn, signOut, signUp }) => {
             <form className='mt-8 space-y-6'>
               <div className='rounded-md shadow-sm -space-y-px'>
                 <TextField
-                  onChange={e => onFieldChange('username', e.target.value)}
-                  value={payload.username}
+                  onChange={e =>
+                    onFieldChange('username', e.target.value, dipatchUpdateProps)
+                  }
+                  value={transient.username}
                   required
                   type='text'
                   placeholder='Username'
                   className='rounded-t-md'
                 />
                 <TextField
-                  onChange={e => onFieldChange('first_name', e.target.value)}
-                  value={payload.first_name}
+                  onChange={e =>
+                    onFieldChange('first_name', e.target.value, dipatchUpdateProps)
+                  }
+                  value={transient.first_name}
                   required
                   type='text'
                   placeholder='First Name'
                 />
                 <TextField
-                  onChange={e => onFieldChange('last_name', e.target.value)}
-                  value={payload.last_name}
+                  onChange={e =>
+                    onFieldChange('last_name', e.target.value, dipatchUpdateProps)
+                  }
+                  value={transient.last_name}
                   required
                   type='text'
                   placeholder='Last Name'
                 />
                 <TextField
-                  onChange={e => onFieldChange('email', e.target.value)}
-                  value={payload.email}
+                  onChange={e =>
+                    onFieldChange('email', e.target.value, dipatchUpdateProps)
+                  }
+                  value={transient.email}
                   required
                   type='email'
                   placeholder='Email'
                 />
                 <TextField
-                  onChange={e => onFieldChange('password', e.target.value)}
-                  value={payload.password}
+                  onChange={e =>
+                    onFieldChange('password', e.target.value, dipatchUpdateProps)
+                  }
+                  value={transient.password}
                   required
                   type='password'
                   placeholder='Password'
@@ -195,16 +203,20 @@ const Navbar = ({ currentUser, signIn, signOut, signUp }) => {
                   type='email'
                   placeholder='Email'
                   className='rounded-t-md'
-                  onChange={e => onFieldChange('email', e.target.value)}
-                  value={payload.email}
+                  onChange={e =>
+                    onFieldChange('email', e.target.value, dipatchUpdateProps)
+                  }
+                  value={transient.email}
                 />
                 <TextField
                   required
                   type='password'
                   placeholder='Confirm Password'
                   className='rounded-b-md'
-                  onChange={e => onFieldChange('password', e.target.value)}
-                  value={payload.password}
+                  onChange={e =>
+                    onFieldChange('password', e.target.value, dipatchUpdateProps)
+                  }
+                  value={transient.password}
                 />
               </div>
 
@@ -272,14 +284,18 @@ Navbar.defaultProps = {
   currentUser: {},
   signIn: mock,
   signOut: mock,
-  signUp: mock
+  signUp: mock,
+  transient: {},
+  updateProps: mock
 };
 
 Navbar.propTypes = {
   currentUser: PropTypes.object,
   signIn: PropTypes.func,
   signOut: PropTypes.func,
-  signUp: PropTypes.func
+  signUp: PropTypes.func,
+  transient: PropTypes.object,
+  updateProps: PropTypes.func
 };
 
 export default Navbar;
