@@ -6,12 +6,15 @@ const transientSlice = createSlice({
   name: 'transient',
   initialState,
   reducers: {
+    resetState: () => {
+      return initialState;
+    },
     updateProps: (state, action) => {
       return { ...state, ...action.payload };
     }
   }
 });
 
-export const { updateProps } = transientSlice.actions;
+export const { resetState, updateProps } = transientSlice.actions;
 
 export default transientSlice.reducer;
