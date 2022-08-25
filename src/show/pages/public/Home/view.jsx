@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
+import { mock } from 'process/helpers';
 import Paths from 'process/routes/paths';
 import { Button, Card, ProgressBar } from 'show/components';
-import { mock } from 'process/helpers';
 
 const Home = ({
   featuredProject,
