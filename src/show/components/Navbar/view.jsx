@@ -13,36 +13,56 @@ import { mock, onFieldChange } from 'process/helpers';
 
 import { Button, Modal, TextField } from '../';
 
-const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }) => {
+const Navbar = ({
+  currentUser,
+  resetState,
+  signIn,
+  signOut,
+  signUp,
+  transient,
+  updateProps
+}) => {
   const navigate = useNavigate();
 
   const [openLogInModal, setOpenLogInModal] = useState(false);
   const [openLogOutModal, setOpenLogOutModal] = useState(false);
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
 
-  const dipatchUpdateProps = payload => updateProps(payload);
+  const toggleSignInModal = () => {
+    setOpenLogInModal(!openLogInModal);
+    resetState();
+  };
+
+  const toggleSignUpModal = () => {
+    setOpenSignUpModal(!openSignUpModal);
+    resetState();
+  };
+
+  const toggleLogOutModal = () => {
+    setOpenLogOutModal(!openLogOutModal);
+  };
 
   const submitSignIn = e => {
     e.preventDefault();
+    toggleSignInModal();
     signIn(transient);
-    setOpenLogInModal(false);
   };
 
   const submitSignUp = e => {
     e.preventDefault();
+    toggleSignUpModal();
     signUp(transient);
-    setOpenSignUpModal(false);
   };
 
   const handleDeleteClick = e => {
     e.preventDefault();
-    setOpenLogOutModal(false);
+    toggleLogOutModal();
     signOut();
   };
 
   const switchModals = () => {
-    setOpenLogInModal(false);
-    setOpenSignUpModal(true);
+    toggleSignInModal();
+    toggleSignUpModal();
   };
 
   return (
@@ -79,7 +99,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
           {currentUser?.isLoggedIn ? (
             <div className='flex transition-all duration-300 items-center hover:px-2 hover:py-1'>
               <Button
-                onClick={() => setOpenLogOutModal(true)}
+                onClick={() => toggleLogOutModal()}
                 variant='secondary'
                 iconLeft={<BsArrowBarLeft className='mx-1' size='1.5rem' />}
                 label='log out'
@@ -96,7 +116,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
           ) : (
             <div className='flex transition-all duration-300 items-center hover:px-2 hover:py-1'>
               <Button
-                onClick={() => setOpenLogInModal(true)}
+                onClick={() => toggleSignInModal()}
                 variant='secondary'
                 iconLeft={<FiUnlock className='mx-1' size='1.5rem' />}
                 label='sign in'
@@ -106,7 +126,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
         </div>
       </div>
 
-      <Modal setVisible={setOpenSignUpModal} visible={openSignUpModal}>
+      <Modal setVisible={toggleSignUpModal} visible={openSignUpModal}>
         <div className='min-h-full flex items-center justify-center py-8 px-6'>
           <div className='max-w-md w-full space-y-8'>
             <div className='flex flex-col justify-center items-center'>
@@ -118,9 +138,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
             <form className='mt-8 space-y-6'>
               <div className='rounded-md shadow-sm -space-y-px'>
                 <TextField
-                  onChange={e =>
-                    onFieldChange('username', e.target.value, dipatchUpdateProps)
-                  }
+                  onChange={e => onFieldChange('username', e.target.value, updateProps)}
                   value={transient.username}
                   required
                   type='text'
@@ -128,36 +146,28 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
                   className='rounded-t-md'
                 />
                 <TextField
-                  onChange={e =>
-                    onFieldChange('first_name', e.target.value, dipatchUpdateProps)
-                  }
+                  onChange={e => onFieldChange('first_name', e.target.value, updateProps)}
                   value={transient.first_name}
                   required
                   type='text'
                   placeholder='First Name'
                 />
                 <TextField
-                  onChange={e =>
-                    onFieldChange('last_name', e.target.value, dipatchUpdateProps)
-                  }
+                  onChange={e => onFieldChange('last_name', e.target.value, updateProps)}
                   value={transient.last_name}
                   required
                   type='text'
                   placeholder='Last Name'
                 />
                 <TextField
-                  onChange={e =>
-                    onFieldChange('email', e.target.value, dipatchUpdateProps)
-                  }
+                  onChange={e => onFieldChange('email', e.target.value, updateProps)}
                   value={transient.email}
                   required
                   type='email'
                   placeholder='Email'
                 />
                 <TextField
-                  onChange={e =>
-                    onFieldChange('password', e.target.value, dipatchUpdateProps)
-                  }
+                  onChange={e => onFieldChange('password', e.target.value, updateProps)}
                   value={transient.password}
                   required
                   type='password'
@@ -175,7 +185,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
-                    onClick={() => setOpenSignUpModal(false)}
+                    onClick={() => toggleSignUpModal()}
                     label='Close'
                     variant='tertiary'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
@@ -187,7 +197,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
         </div>
       </Modal>
 
-      <Modal setVisible={setOpenLogInModal} visible={openLogInModal}>
+      <Modal setVisible={toggleSignInModal} visible={openLogInModal}>
         <div className='min-h-full flex items-center justify-center py-6 px-6'>
           <div className='max-w-md w-full space-y-8'>
             <div className='flex flex-col justify-center items-center'>
@@ -203,9 +213,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
                   type='email'
                   placeholder='Email'
                   className='rounded-t-md'
-                  onChange={e =>
-                    onFieldChange('email', e.target.value, dipatchUpdateProps)
-                  }
+                  onChange={e => onFieldChange('email', e.target.value, updateProps)}
                   value={transient.email}
                 />
                 <TextField
@@ -213,9 +221,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
                   type='password'
                   placeholder='Confirm Password'
                   className='rounded-b-md'
-                  onChange={e =>
-                    onFieldChange('password', e.target.value, dipatchUpdateProps)
-                  }
+                  onChange={e => onFieldChange('password', e.target.value, updateProps)}
                   value={transient.password}
                 />
               </div>
@@ -229,7 +235,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
-                    onClick={() => setOpenLogInModal(false)}
+                    onClick={() => toggleSignInModal()}
                     variant='tertiary'
                     label='Close'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
@@ -246,7 +252,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
         </div>
       </Modal>
 
-      <Modal setVisible={setOpenLogOutModal} visible={openLogOutModal}>
+      <Modal setVisible={toggleLogOutModal} visible={openLogOutModal}>
         <div className='min-h-full flex items-center justify-center py-8 px-6'>
           <div className='max-w-md w-full space-y-8'>
             <div className='flex flex-col justify-center items-center'>
@@ -265,7 +271,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
-                    onClick={() => setOpenLogOutModal(false)}
+                    onClick={() => toggleLogOutModal()}
                     variant='tertiary'
                     label='Close'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
@@ -282,6 +288,7 @@ const Navbar = ({ currentUser, signIn, signOut, signUp, transient, updateProps }
 
 Navbar.defaultProps = {
   currentUser: {},
+  resetState: mock,
   signIn: mock,
   signOut: mock,
   signUp: mock,
@@ -291,6 +298,7 @@ Navbar.defaultProps = {
 
 Navbar.propTypes = {
   currentUser: PropTypes.object,
+  resetState: PropTypes.func,
   signIn: PropTypes.func,
   signOut: PropTypes.func,
   signUp: PropTypes.func,

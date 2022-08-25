@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { updateProps } from 'process/slices/transientSlice';
 import { signIn, signOut, signUp } from 'process/slices/userSlice';
+import { resetState, updateProps } from 'process/slices/transientSlice';
 
 import Navbar from './view';
 
@@ -14,6 +14,7 @@ export default connect(
     signIn: signIn,
     signOut: signOut,
     signUp: signUp,
-    updateProps: updateProps
+    updateProps: updateProps,
+    resetState: resetState
   }
 )(Navbar);

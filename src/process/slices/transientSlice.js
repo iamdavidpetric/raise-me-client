@@ -8,10 +8,13 @@ const transientSlice = createSlice({
   reducers: {
     updateProps: (state, action) => {
       return { ...state, ...action.payload };
+    },
+    resetState: () => {
+      return initialState;
     }
   }
 });
 
-export const { updateProps } = transientSlice.actions;
+export const { updateProps, resetState } = transientSlice.actions;
 
 export default transientSlice.reducer;
