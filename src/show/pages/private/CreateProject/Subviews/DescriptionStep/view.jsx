@@ -38,17 +38,17 @@ const DescriptionStep = ({ description, nextStep, previousStep, updateProps }) =
 };
 
 DescriptionStep.defaultProps = {
+  description: '',
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  description: ''
+  updateProps: mock
 };
 
 DescriptionStep.propTypes = {
+  description: PropTypes.string,
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  description: PropTypes.string
+  updateProps: PropTypes.func
 };
 
 export default DescriptionStep;

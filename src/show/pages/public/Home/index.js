@@ -10,9 +10,9 @@ import {
 
 export default connect(
   state => ({
-    quickInfo: state.projects.quickInfo,
+    featuredProject: state.projects.featuredProject,
     mostInvested: state.projects.mostInvested,
-    featuredProject: state.projects.featuredProject
+    quickInfo: state.projects.quickInfo
   }),
   {
     getFeaturedProject: getFeaturedProject,

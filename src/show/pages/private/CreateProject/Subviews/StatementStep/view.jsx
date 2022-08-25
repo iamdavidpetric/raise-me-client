@@ -40,15 +40,15 @@ const StatementStep = ({ nextStep, previousStep, statement, updateProps }) => {
 StatementStep.defaultProps = {
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  statement: ''
+  statement: '',
+  updateProps: mock
 };
 
 StatementStep.propTypes = {
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  statement: PropTypes.string
+  statement: PropTypes.string,
+  updateProps: PropTypes.func
 };
 
 export default StatementStep;

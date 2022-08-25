@@ -52,17 +52,17 @@ const GoalStep = ({ goal, nextStep, previousStep, updateProps }) => {
 };
 
 GoalStep.defaultProps = {
+  goal: '',
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  goal: ''
+  updateProps: mock
 };
 
 GoalStep.propTypes = {
+  goal: PropTypes.string,
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  goal: PropTypes.string
+  updateProps: PropTypes.func
 };
 
 export default GoalStep;

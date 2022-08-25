@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Paths from 'process/routes/paths';
 import { Button, Card, ProgressBar } from 'show/components';
+import { mock } from 'process/helpers';
 
 const Home = ({
   featuredProject,
@@ -105,15 +106,21 @@ const Home = ({
 };
 
 Home.defaultProps = {
-  quickInfo: {},
+  featuredProject: {},
+  getFeaturedProject: mock,
+  getMostInvested: mock,
+  getQuickInfo: mock,
   mostInvested: [],
-  featuredProject: {}
+  quickInfo: {}
 };
 
 Home.propTypes = {
-  quickInfo: PropTypes.object,
+  featuredProject: PropTypes.object,
+  getFeaturedProject: PropTypes.func,
+  getMostInvested: PropTypes.func,
+  getQuickInfo: PropTypes.func,
   mostInvested: PropTypes.array,
-  featuredProject: PropTypes.object
+  quickInfo: PropTypes.object
 };
 
 export default Home;

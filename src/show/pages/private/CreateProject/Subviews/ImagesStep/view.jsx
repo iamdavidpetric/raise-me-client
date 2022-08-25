@@ -54,15 +54,15 @@ const ImagesStep = ({ nextStep, previousStep, transient, updateProps }) => {
 ImagesStep.defaultProps = {
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  transient: {}
+  transient: {},
+  updateProps: mock
 };
 
 ImagesStep.propTypes = {
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  transient: PropTypes.object
+  transient: PropTypes.object,
+  updateProps: PropTypes.func
 };
 
 export default ImagesStep;

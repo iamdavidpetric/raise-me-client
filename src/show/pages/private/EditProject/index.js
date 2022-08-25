@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { updateProps } from 'process/slices/transientSlice';
+import { editProject, getProject } from 'process/slices/projectSlice';
 
 import EditProject from './view';
 
@@ -10,6 +11,8 @@ export default connect(
     transient: state.transient
   }),
   {
+    editProject: editProject,
+    getProject: getProject,
     updateProps: updateProps
   }
 )(EditProject);

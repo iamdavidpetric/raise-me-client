@@ -37,17 +37,17 @@ const TitleStep = ({ name, nextStep, previousStep, updateProps }) => {
 };
 
 TitleStep.defaultProps = {
+  name: '',
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  name: ''
+  updateProps: mock
 };
 
 TitleStep.propTypes = {
+  name: PropTypes.string,
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  name: PropTypes.string
+  updateProps: PropTypes.func
 };
 
 export default TitleStep;

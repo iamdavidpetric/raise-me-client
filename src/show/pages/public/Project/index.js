@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import { getProject } from 'process/slices/projectSlice';
 
 import Project from './view';

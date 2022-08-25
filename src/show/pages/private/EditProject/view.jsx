@@ -4,8 +4,6 @@ import { mock } from 'process/helpers';
 import StepWizard from 'react-step-wizard';
 import { useParams } from 'react-router-dom';
 
-import { editProject, getProject } from 'process/slices/projectSlice';
-
 import {
   CategoryStep,
   DeadlineStep,
@@ -19,7 +17,13 @@ import {
   TitleStep
 } from '../CreateProject/Subviews';
 
-const EditProject = ({ selectedProject, transient, updateProps }) => {
+const EditProject = ({
+  editProject,
+  getProject,
+  selectedProject,
+  transient,
+  updateProps
+}) => {
   const { id } = useParams();
 
   const patchProject = e => {
@@ -51,15 +55,19 @@ const EditProject = ({ selectedProject, transient, updateProps }) => {
 };
 
 EditProject.defaultProps = {
+  editProject: mock,
+  getProject: mock,
   selectedProject: mock,
-  updateProps: mock,
-  transient: {}
+  transient: {},
+  updateProps: mock
 };
 
 EditProject.propTypes = {
+  editProject: PropTypes.func,
+  getProject: PropTypes.func,
   createProject: PropTypes.func,
-  updateProps: PropTypes.func,
-  transient: PropTypes.object
+  transient: PropTypes.object,
+  updateProps: PropTypes.func
 };
 
 export default EditProject;

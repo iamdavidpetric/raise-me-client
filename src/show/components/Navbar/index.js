@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import { signIn, signOut, signUp } from 'process/slices/userSlice';
 
 import Navbar from './view';

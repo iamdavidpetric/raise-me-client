@@ -52,17 +52,17 @@ const FeeStep = ({ fee, nextStep, previousStep, updateProps }) => {
 };
 
 FeeStep.defaultProps = {
+  fee: '',
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  fee: ''
+  updateProps: mock
 };
 
 FeeStep.propTypes = {
+  fee: PropTypes.string,
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  fee: PropTypes.string
+  updateProps: PropTypes.func
 };
 
 export default FeeStep;

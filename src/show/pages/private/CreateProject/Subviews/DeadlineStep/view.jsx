@@ -49,17 +49,17 @@ const DeadlineStep = ({ deadline, nextStep, previousStep, updateProps }) => {
 };
 
 DeadlineStep.defaultProps = {
+  deadline: new Date(),
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  deadline: new Date()
+  updateProps: mock
 };
 
 DeadlineStep.propTypes = {
+  deadline: PropTypes.instanceOf(Date),
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  deadline: PropTypes.instanceOf(Date)
+  updateProps: PropTypes.func
 };
 
 export default DeadlineStep;

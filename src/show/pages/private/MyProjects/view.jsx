@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Fragment, useState, useEffect } from 'react';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 
+import { mock } from 'process/helpers';
 import Paths from 'process/routes/paths';
 import { Button, ProgressBar, Modal } from 'show/components';
 
@@ -116,10 +117,14 @@ const MyProjects = ({ deleteProject, getMyProjects, projects }) => {
 };
 
 MyProjects.defaultProps = {
+  deleteProject: mock,
+  getMyProjects: mock,
   projects: []
 };
 
 MyProjects.propTypes = {
+  deleteProject: PropTypes.func,
+  getMyProjects: PropTypes.func,
   projects: PropTypes.array
 };
 

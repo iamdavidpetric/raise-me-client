@@ -81,15 +81,15 @@ const TeamMembersStep = ({ nextStep, previousStep, transient, updateProps }) => 
 TeamMembersStep.defaultProps = {
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock,
-  transient: {}
+  transient: {},
+  updateProps: mock
 };
 
 TeamMembersStep.propTypes = {
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func,
-  transient: PropTypes.object
+  transient: PropTypes.object,
+  updateProps: PropTypes.func
 };
 
 export default TeamMembersStep;
