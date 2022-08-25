@@ -11,10 +11,10 @@ export default connect(
     transient: state.transient
   }),
   {
+    resetState: resetState,
     signIn: signIn,
     signOut: signOut,
     signUp: signUp,
-    updateProps: updateProps,
-    resetState: resetState
+    updateProps: updateProps
   }
 )(Navbar);

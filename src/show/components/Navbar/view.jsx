@@ -99,7 +99,7 @@ const Navbar = ({
           {currentUser?.isLoggedIn ? (
             <div className='flex transition-all duration-300 items-center hover:px-2 hover:py-1'>
               <Button
-                onClick={() => toggleLogOutModal()}
+                onClick={toggleLogOutModal}
                 variant='secondary'
                 iconLeft={<BsArrowBarLeft className='mx-1' size='1.5rem' />}
                 label='log out'
@@ -116,7 +116,7 @@ const Navbar = ({
           ) : (
             <div className='flex transition-all duration-300 items-center hover:px-2 hover:py-1'>
               <Button
-                onClick={() => toggleSignInModal()}
+                onClick={toggleSignInModal}
                 variant='secondary'
                 iconLeft={<FiUnlock className='mx-1' size='1.5rem' />}
                 label='sign in'
@@ -185,7 +185,7 @@ const Navbar = ({
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
-                    onClick={() => toggleSignUpModal()}
+                    onClick={toggleSignUpModal}
                     label='Close'
                     variant='tertiary'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
@@ -235,7 +235,7 @@ const Navbar = ({
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
-                    onClick={() => toggleSignInModal()}
+                    onClick={toggleSignInModal}
                     variant='tertiary'
                     label='Close'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'
@@ -271,7 +271,7 @@ const Navbar = ({
                     className='bg-primary-500 hover:bg-primary-600'
                   />
                   <Button
-                    onClick={() => toggleLogOutModal()}
+                    onClick={toggleLogOutModal}
                     variant='tertiary'
                     label='Close'
                     className='bg-primary-200 hover:bg-primary-400 mt-2'

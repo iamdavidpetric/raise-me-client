@@ -15,6 +15,6 @@ const transientSlice = createSlice({
   }
 });
 
-export const { updateProps, resetState } = transientSlice.actions;
+export const { resetState, updateProps } = transientSlice.actions;
 
 export default transientSlice.reducer;
