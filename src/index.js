@@ -4,11 +4,13 @@ import ReactDOM from 'react-dom/client';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import Api from 'process/api';
-import Application from 'show/Application';
-import { persistedStore, store } from 'process/redux/store';
+import Application from './show/Application';
+// import { persistedStore } from 'process/redux/store';
+import { store as generateStore } from 'process/redux';
 
 import './index.css';
 
+const { store, persistor } = generateStore();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -16,7 +18,8 @@ root.render(
       <PersistGate
         loading={null}
         onBeforeLift={() => Api.setHeaders(store.getState().user.headers)}
-        persistor={persistedStore}>
+        // onBeforeLift={() => {}}
+        persistor={persistor}>
         <Application />
       </PersistGate>
     </Provider>

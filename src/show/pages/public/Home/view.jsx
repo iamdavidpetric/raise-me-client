@@ -22,6 +22,8 @@ const Home = ({
     getQuickInfo();
   }, [getFeaturedProject, getMostInvested, getQuickInfo]);
 
+  // return <button onClick={() => updateTransientProps({ key: 'value' })}>cevas</button>;
+  console.log({ featuredProject });
   return (
     <div className='bg-primary-600 flex flex-col h-full w-full'>
       <div className='bg-white'>
