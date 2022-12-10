@@ -1,3 +1,4 @@
+import { updateProps } from 'process/helpers';
 import { createActions, createReducer } from 'reduxsauce';
 
 export const { Types, Creators } = createActions(
@@ -6,7 +7,7 @@ export const { Types, Creators } = createActions(
     getFeaturedProject: null,
     getMostInvested: null,
     getQuickInfo: null,
-    getProject: null
+    getProject: ['id']
   },
   { prefix: 'project/' }
 );
@@ -19,14 +20,11 @@ const initialState = {
   selectedProject: {}
 };
 
-const updateProps = (state, { props }) => {
-  return { ...state, ...props };
+const getProject = (state, { payload }) => {
+  return { ...state, selectedProject: payload };
 };
 
-// const getProject = (state, { props }) => {
-//   return { ...state, selectedProject: props };
-// };
-
 export default createReducer(initialState, {
-  [Types.UPDATE_PROPS]: updateProps
+  [Types.UPDATE_PROPS]: updateProps,
+  [Types.GET_PROJECT]: getProject
 });

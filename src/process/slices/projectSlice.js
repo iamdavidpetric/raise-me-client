@@ -20,35 +20,35 @@ export const getMyProjects = createAsyncThunk('projects/getMyProjects', async ()
   }
 });
 
-export const getFeaturedProject = createAsyncThunk(
-  'projects/getFeaturedProject',
-  async () => {
-    try {
-      const response = await Api.get(`/todays_project/null`);
-      return response.data;
-    } catch (err) {
-      return err.message;
-    }
-  }
-);
+// export const getFeaturedProject = createAsyncThunk(
+//   'projects/getFeaturedProject',
+//   async () => {
+//     try {
+//       const response = await Api.get(`/todays_project/null`);
+//       return response.data;
+//     } catch (err) {
+//       return err.message;
+//     }
+//   }
+// );
 
-export const getMostInvested = createAsyncThunk('projects/getMostInvested', async () => {
-  try {
-    const response = await Api.get(`/todays_project/`);
-    return response.data;
-  } catch (err) {
-    return err.message;
-  }
-});
+// export const getMostInvested = createAsyncThunk('projects/getMostInvested', async () => {
+//   try {
+//     const response = await Api.get(`/todays_project/`);
+//     return response.data;
+//   } catch (err) {
+//     return err.message;
+//   }
+// });
 
-export const getQuickInfo = createAsyncThunk('projects/getQuickInfo', async () => {
-  try {
-    const response = await Api.get(`/todays_project/quick_info`);
-    return response.data;
-  } catch (err) {
-    return err.message;
-  }
-});
+// export const getQuickInfo = createAsyncThunk('projects/getQuickInfo', async () => {
+//   try {
+//     const response = await Api.get(`/todays_project/quick_info`);
+//     return response.data;
+//   } catch (err) {
+//     return err.message;
+//   }
+// });
 
 export const createProject = createAsyncThunk('projects/createProject', async project => {
   const formData = new FormData();
@@ -138,17 +138,17 @@ const projectSlice = createSlice({
       return { ...state, projects: typeof payload === 'string' ? [] : payload };
     },
 
-    [getFeaturedProject.fulfilled]: (state, { payload }) => {
-      return { ...state, featuredProject: payload };
-    },
+    // [getFeaturedProject.fulfilled]: (state, { payload }) => {
+    //   return { ...state, featuredProject: payload };
+    // },
 
-    [getMostInvested.fulfilled]: (state, { payload }) => {
-      return { ...state, mostInvested: payload };
-    },
+    // [getMostInvested.fulfilled]: (state, { payload }) => {
+    //   return { ...state, mostInvested: payload };
+    // },
 
-    [getQuickInfo.fulfilled]: (state, { payload }) => {
-      return { ...state, quickInfo: payload };
-    },
+    // [getQuickInfo.fulfilled]: (state, { payload }) => {
+    //   return { ...state, quickInfo: payload };
+    // },
 
     [createProject.fulfilled]: (state, { payload }) => {
       return { ...state, projects: [...state.projects, payload] };

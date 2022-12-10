@@ -2,6 +2,6 @@ const onFieldChange = (key, value, updateProps) => updateProps({ [key]: value })
 
 const mock = () => {};
 
-const updateProps = (state, { payload }) => {};
+const updateProps = (state, { payload }) => ({ ...state, ...payload });
 
 export { mock, onFieldChange, updateProps };

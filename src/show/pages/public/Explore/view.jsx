@@ -6,7 +6,7 @@ import Paths from 'process/routes/paths';
 import { categories } from 'process/constants';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const Explore = () => {
+const Explore = ({ getProject }) => {
   const [search, setSearch] = useState('');
   const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -15,8 +15,8 @@ const Explore = () => {
 
   const toggleSelectedCategoryStyle = category =>
     selectedCategory === category
-      ? 'bg-primary-50 text-white'
-      : 'border border-primary-50 text-primary-50';
+      ? 'bg-primary-600 text-white'
+      : 'border border-primary-600 text-primary-600';
 
   const toggleSelectedCategory = category =>
     selectedCategory === category
@@ -57,9 +57,10 @@ const Explore = () => {
         <div className='grid grid-cols-3'>
           {projects?.map((project, index) => (
             <div
-              onClick={() =>
-                navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
-              }
+              // onClick={() =>
+              //   navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
+              // }
+              onClick={() => getProject(project.id)}
               className='rounded-lg h-96 mt-5 ml-5 mr-5 cursor-pointer'
               key={index}>
               <div className='bg-primary-600 rounded-lg border shadow-md'>

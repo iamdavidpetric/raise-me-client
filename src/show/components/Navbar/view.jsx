@@ -212,7 +212,7 @@ const Navbar = ({
                   required
                   type='email'
                   placeholder='Email'
-                  className='rounded-t-md'
+                  className='rounded-t-md text-center'
                   onChange={e => onFieldChange('email', e.target.value, updateProps)}
                   value={transient.email}
                 />
@@ -220,7 +220,7 @@ const Navbar = ({
                   required
                   type='password'
                   placeholder='Confirm Password'
-                  className='rounded-b-md'
+                  className='rounded-b-md text-center'
                   onChange={e => onFieldChange('password', e.target.value, updateProps)}
                   value={transient.password}
                 />
