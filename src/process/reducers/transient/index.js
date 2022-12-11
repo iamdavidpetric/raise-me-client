@@ -1,3 +1,4 @@
+import { updateProps } from 'process/helpers';
 import { createActions, createReducer } from 'reduxsauce';
 
 export const { Types, Creators } = createActions(
@@ -10,9 +11,6 @@ export const { Types, Creators } = createActions(
 
 const initialState = {};
 
-const updateProps = (state, { props }) => {
-  return { ...state, ...props };
-};
 const reset = () => {
   return { ...initialState };
 };

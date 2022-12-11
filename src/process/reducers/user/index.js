@@ -1,17 +1,17 @@
+import { updateProps } from 'process/helpers';
 import { createActions, createReducer } from 'reduxsauce';
 
 export const { Types, Creators } = createActions(
   {
+    signIn: ['body'],
+    signOut: null,
+    signUp: ['body'],
     updateProps: ['props']
   },
   { prefix: 'user/' }
 );
 
 const initialState = { isLoggedIn: false };
-
-const updateProps = (state, { props }) => {
-  return { ...state, ...props };
-};
 
 export default createReducer(initialState, {
   [Types.UPDATE_PROPS]: updateProps
