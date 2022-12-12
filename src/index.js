@@ -5,7 +5,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import Api from 'process/api';
 import Application from './show/Application';
-// import { persistedStore } from 'process/redux/store';
 import { store as generateStore } from 'process/redux';
 
 import './index.css';
@@ -18,7 +17,6 @@ root.render(
       <PersistGate
         loading={null}
         onBeforeLift={() => Api.setHeaders(store.getState().user.headers)}
-        // onBeforeLift={() => {}}
         persistor={persistor}>
         <Application />
       </PersistGate>

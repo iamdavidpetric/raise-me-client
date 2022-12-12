@@ -6,7 +6,11 @@ import Api from 'process/api';
 export const signIn = function* ({ body }) {
   try {
     const res = yield call(Api.post, `/auth/sign_in/`, body);
-    yield put({ type: UserTypes.UPDATE_PROPS, props: { ...res.data, isLoggedIn: true } });
+    Api.setHeaders(res.headers);
+    yield put({
+      type: UserTypes.UPDATE_PROPS,
+      props: { ...res.data, isLoggedIn: true, headers: res.headers }
+    });
   } catch (e) {
     alert('Something went wrong');
   }

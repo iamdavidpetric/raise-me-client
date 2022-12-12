@@ -5,6 +5,7 @@ export const { Types, Creators } = createActions(
   {
     updateProps: ['props'],
     getFeaturedProject: null,
+    getMyProjects: null,
     getMostInvested: null,
     getQuickInfo: null,
     getProject: ['payload']

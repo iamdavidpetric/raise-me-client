@@ -12,6 +12,15 @@ export const getFeaturedProject = function* () {
   }
 };
 
+export const getMyProjects = function* () {
+  try {
+    const res = yield call(Api.get, '/projects/my_projects/');
+    yield put({ type: ProjectTypes.UPDATE_PROPS, props: { projects: res.data } });
+  } catch (e) {
+    alert('Something went wrong');
+  }
+};
+
 export const getMostInvested = function* () {
   try {
     const res = yield call(Api.get, '/todays_project/');
@@ -45,6 +54,7 @@ export const getProject = function* ({ payload }) {
 const projectSagas = [
   takeLatest(ProjectTypes.GET_FEATURED_PROJECT, getFeaturedProject),
   takeLatest(ProjectTypes.GET_MOST_INVESTED, getMostInvested),
+  takeLatest(ProjectTypes.GET_MY_PROJECTS, getMyProjects),
   takeLatest(ProjectTypes.GET_QUICK_INFO, getQuickInfo),
   takeLatest(ProjectTypes.GET_PROJECT, getProject)
 ];

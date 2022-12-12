@@ -83,7 +83,7 @@ const Navbar = ({
               <Button
                 variant='secondary'
                 iconLeft={<TbStairsUp className='mx-1' size='1.5rem' />}
-                label='my Projects'
+                label='my projects'
               />
             </div>
           )}

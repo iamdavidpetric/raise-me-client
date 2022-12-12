@@ -14,7 +14,7 @@ const Application = ({ currentUser }) => {
           {privateRoutes.map(route => (
             <Route
               path={route.path}
-              key={route.path}
+              key={route?.path}
               element={
                 currentUser.isLoggedIn ? (
                   <route.element />
@@ -26,7 +26,7 @@ const Application = ({ currentUser }) => {
           ))}
 
           {publicRoutes.map(route => (
-            <Route path={route.path} key={route.path} element={<route.element />} />
+            <Route path={route.path} key={route?.path} element={<route.element />} />
           ))}
         </Routes>
       </div>
