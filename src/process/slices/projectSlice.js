@@ -91,25 +91,9 @@ const projectSlice = createSlice({
   initialState,
 
   extraReducers: {
-    // [getProject.fulfilled]: (state, { payload }) => {
-    //   return { ...state, selectedProject: payload };
-    // },
-
     [getMyProjects.fulfilled]: (state, { payload }) => {
       return { ...state, projects: typeof payload === 'string' ? [] : payload };
     },
-
-    // [getFeaturedProject.fulfilled]: (state, { payload }) => {
-    //   return { ...state, featuredProject: payload };
-    // },
-
-    // [getMostInvested.fulfilled]: (state, { payload }) => {
-    //   return { ...state, mostInvested: payload };
-    // },
-
-    // [getQuickInfo.fulfilled]: (state, { payload }) => {
-    //   return { ...state, quickInfo: payload };
-    // },
 
     [createProject.fulfilled]: (state, { payload }) => {
       return { ...state, projects: [...state.projects, payload] };

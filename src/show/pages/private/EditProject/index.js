@@ -12,7 +12,6 @@ export default connect(
   }),
   {
     editProject: editProject,
-    // getProject: getProject,
     updateProps: updateProps
   }
 )(EditProject);

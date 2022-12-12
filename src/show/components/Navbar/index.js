@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { Creators as transientActions } from 'process/reducers/transient';
 import { Creators as userActions } from 'process/reducers/user';
+import { Creators as transientActions } from 'process/reducers/transient';
 
 import Navbar from './view';
 

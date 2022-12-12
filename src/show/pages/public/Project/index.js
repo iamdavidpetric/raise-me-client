@@ -12,8 +12,5 @@ export default connect(
   {
     getProject: projectActions.getProject,
     updateTransientProps: transientActions.updateProps
-    // getProject: getProject
-    // getProject: projectActions.updateProps,
-    // getFeaturedProject: projectActions.getFeaturedProject
   }
 )(Project);

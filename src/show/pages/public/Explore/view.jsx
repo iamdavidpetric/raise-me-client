@@ -6,7 +6,7 @@ import Paths from 'process/routes/paths';
 import { categories } from 'process/constants';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const Explore = ({}) => {
+const Explore = () => {
   const [search, setSearch] = useState('');
   const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
