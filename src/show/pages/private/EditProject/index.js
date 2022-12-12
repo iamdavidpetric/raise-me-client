@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { updateProps } from 'process/slices/transientSlice';
-import { editProject, getProject } from 'process/slices/projectSlice';
+import { editProject } from 'process/slices/projectSlice';
 
 import EditProject from './view';
 
@@ -12,7 +12,7 @@ export default connect(
   }),
   {
     editProject: editProject,
-    getProject: getProject,
+    // getProject: getProject,
     updateProps: updateProps
   }
 )(EditProject);

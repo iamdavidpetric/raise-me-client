@@ -6,7 +6,7 @@ import Paths from 'process/routes/paths';
 import { categories } from 'process/constants';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const Explore = ({ getProject }) => {
+const Explore = ({}) => {
   const [search, setSearch] = useState('');
   const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -57,10 +57,9 @@ const Explore = ({ getProject }) => {
         <div className='grid grid-cols-3'>
           {projects?.map((project, index) => (
             <div
-              // onClick={() =>
-              //   navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
-              // }
-              onClick={() => getProject(project.id)}
+              onClick={() =>
+                navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))
+              }
               className='rounded-lg h-96 mt-5 ml-5 mr-5 cursor-pointer'
               key={index}>
               <div className='bg-primary-600 rounded-lg border shadow-md'>

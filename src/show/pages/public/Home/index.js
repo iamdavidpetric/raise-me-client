@@ -14,7 +14,6 @@ export default connect(
     quickInfo: quickInfo(state)
   }),
   {
-    getProject: projectActions.getProject,
     getQuickInfo: projectActions.getQuickInfo,
     getMostInvested: projectActions.getMostInvested,
     updateTransientProps: transientActions.updateProps,

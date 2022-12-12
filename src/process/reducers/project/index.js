@@ -7,7 +7,7 @@ export const { Types, Creators } = createActions(
     getFeaturedProject: null,
     getMostInvested: null,
     getQuickInfo: null,
-    getProject: ['id']
+    getProject: ['payload']
   },
   { prefix: 'project/' }
 );
@@ -20,11 +20,6 @@ const initialState = {
   selectedProject: {}
 };
 
-const getProject = (state, { payload }) => {
-  return { ...state, selectedProject: payload };
-};
-
 export default createReducer(initialState, {
-  [Types.UPDATE_PROPS]: updateProps,
-  [Types.GET_PROJECT]: getProject
+  [Types.UPDATE_PROPS]: updateProps
 });

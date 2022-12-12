@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 
-import { signIn, signOut, signUp } from 'process/slices/userSlice';
-
 import { Creators as transientActions } from 'process/reducers/transient';
 import { Creators as userActions } from 'process/reducers/user';
 
@@ -15,8 +13,8 @@ export default connect(
   {
     resetState: transientActions.reset,
     signIn: userActions.signIn,
-    signOut: signOut,
-    signUp: signUp,
+    signOut: userActions.signOut,
+    signUp: userActions.signUp,
     updateTransientProps: transientActions.updateProps
   }
 )(Navbar);
