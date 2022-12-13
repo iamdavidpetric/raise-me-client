@@ -1,4 +1,4 @@
-import { put, takeLatest, call, select } from 'redux-saga/effects';
+import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 
 import { Types as ProjectTypes } from 'process/reducers/project';
 import { Types as TransientTypes } from 'process/reducers/transient';
@@ -9,6 +9,19 @@ export const getFeaturedProject = function* () {
   try {
     const res = yield call(Api.get, '/todays_project/null');
     yield put({ type: ProjectTypes.UPDATE_PROPS, props: { featuredProject: res.data } });
+  } catch (e) {
+    alert('Something went wrong');
+  }
+};
+
+export const searchProject = function* ({ selectedCategory, search }) {
+  try {
+    yield delay(200);
+    const res = yield call(
+      Api.get,
+      `/projects?category=${selectedCategory}&search=${search}`
+    );
+    yield put({ type: ProjectTypes.UPDATE_PROPS, props: { searchResults: res.data } });
   } catch (e) {
     alert('Something went wrong');
   }
@@ -124,6 +137,7 @@ export const createProject = function* ({ project }) {
 const projectSagas = [
   takeLatest(ProjectTypes.CREATE_PROJECT, createProject),
   takeLatest(ProjectTypes.EDIT_PROJECT, editProject),
+  takeLatest(ProjectTypes.SEARCH_PROJECT, searchProject),
   takeLatest(ProjectTypes.DELETE_PROJECT, deleteProject),
   takeLatest(ProjectTypes.GET_FEATURED_PROJECT, getFeaturedProject),
   takeLatest(ProjectTypes.GET_MOST_INVESTED, getMostInvested),

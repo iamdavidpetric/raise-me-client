@@ -11,7 +11,8 @@ export const { Types, Creators } = createActions(
     getProject: ['payload'],
     createProject: ['project'],
     editProject: ['project'],
-    deleteProject: ['payload']
+    deleteProject: ['payload'],
+    searchProject: ['search', 'selectedCategory']
   },
   { prefix: 'project/' }
 );
@@ -22,7 +23,8 @@ const initialState = {
   projects: [],
   project: {},
   quickInfo: {},
-  selectedProject: {}
+  selectedProject: {},
+  searchResults: []
 };
 
 export default createReducer(initialState, {
