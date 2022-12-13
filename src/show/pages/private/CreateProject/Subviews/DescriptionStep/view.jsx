@@ -4,7 +4,12 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const DescriptionStep = ({ description, nextStep, previousStep, updateProps }) => {
+const DescriptionStep = ({
+  description,
+  nextStep,
+  previousStep,
+  updateTransientProps
+}) => {
   return (
     <div className='mt-20 px-20'>
       <div className='text-center text-3xl text-gray-500'>Describe your project</div>
@@ -14,7 +19,7 @@ const DescriptionStep = ({ description, nextStep, previousStep, updateProps }) =
           area={true}
           value={description}
           className='flex items-start rounded-2xl mt-2 text-start h-72'
-          onChange={e => updateProps({ description: e.target.value })}
+          onChange={e => updateTransientProps({ description: e.target.value })}
         />
       </div>
       <div className='flex mt-28 justify-between'>
@@ -41,14 +46,14 @@ DescriptionStep.defaultProps = {
   description: '',
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 DescriptionStep.propTypes = {
   description: PropTypes.string,
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default DescriptionStep;

@@ -2,7 +2,7 @@ const CREATE_PROJECT_PATH = '/create-project';
 const EDIT_PROJECT_PATH = '/edit-project/:id';
 const EXPLORE_PATH = '/explore';
 const HOME_PATH = '/';
-const MY_PROJECTS_PATH = 'my-projects';
+const MY_PROJECTS_PATH = '/my-projects';
 const PROJECT_PATH = '/project/:id';
 
 const privatePaths = {

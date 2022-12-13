@@ -9,7 +9,7 @@ import { CgArrowsExpandRight } from 'react-icons/cg';
 import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
 import Paths from 'process/routes/paths';
-import { mock, onFieldChange } from 'process/helpers';
+import { capitalize, mock, onFieldChange } from 'process/helpers';
 
 import { Button, Modal, TextField } from '../';
 
@@ -20,7 +20,7 @@ const Navbar = ({
   signOut,
   signUp,
   transient,
-  updateProps
+  updateTransientProps
 }) => {
   const navigate = useNavigate();
 
@@ -83,7 +83,7 @@ const Navbar = ({
               <Button
                 variant='secondary'
                 iconLeft={<TbStairsUp className='mx-1' size='1.5rem' />}
-                label='my Projects'
+                label='my projects'
               />
             </div>
           )}
@@ -138,7 +138,9 @@ const Navbar = ({
             <form className='mt-8 space-y-6'>
               <div className='rounded-md shadow-sm -space-y-px'>
                 <TextField
-                  onChange={e => onFieldChange('username', e.target.value, updateProps)}
+                  onChange={e =>
+                    onFieldChange('username', e.target.value, updateTransientProps)
+                  }
                   value={transient.username}
                   required
                   type='text'
@@ -146,28 +148,36 @@ const Navbar = ({
                   className='rounded-t-md'
                 />
                 <TextField
-                  onChange={e => onFieldChange('first_name', e.target.value, updateProps)}
-                  value={transient.first_name}
+                  onChange={e =>
+                    onFieldChange('first_name', e.target.value, updateTransientProps)
+                  }
+                  value={capitalize(transient.first_name)}
                   required
                   type='text'
                   placeholder='First Name'
                 />
                 <TextField
-                  onChange={e => onFieldChange('last_name', e.target.value, updateProps)}
-                  value={transient.last_name}
+                  onChange={e =>
+                    onFieldChange('last_name', e.target.value, updateTransientProps)
+                  }
+                  value={capitalize(transient.last_name)}
                   required
                   type='text'
                   placeholder='Last Name'
                 />
                 <TextField
-                  onChange={e => onFieldChange('email', e.target.value, updateProps)}
+                  onChange={e =>
+                    onFieldChange('email', e.target.value, updateTransientProps)
+                  }
                   value={transient.email}
                   required
                   type='email'
                   placeholder='Email'
                 />
                 <TextField
-                  onChange={e => onFieldChange('password', e.target.value, updateProps)}
+                  onChange={e =>
+                    onFieldChange('password', e.target.value, updateTransientProps)
+                  }
                   value={transient.password}
                   required
                   type='password'
@@ -212,16 +222,20 @@ const Navbar = ({
                   required
                   type='email'
                   placeholder='Email'
-                  className='rounded-t-md'
-                  onChange={e => onFieldChange('email', e.target.value, updateProps)}
+                  className='rounded-t-md text-center'
+                  onChange={e =>
+                    onFieldChange('email', e.target.value, updateTransientProps)
+                  }
                   value={transient.email}
                 />
                 <TextField
                   required
                   type='password'
                   placeholder='Confirm Password'
-                  className='rounded-b-md'
-                  onChange={e => onFieldChange('password', e.target.value, updateProps)}
+                  className='rounded-b-md text-center'
+                  onChange={e =>
+                    onFieldChange('password', e.target.value, updateTransientProps)
+                  }
                   value={transient.password}
                 />
               </div>
@@ -293,7 +307,7 @@ Navbar.defaultProps = {
   signOut: mock,
   signUp: mock,
   transient: {},
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 Navbar.propTypes = {
@@ -303,7 +317,7 @@ Navbar.propTypes = {
   signOut: PropTypes.func,
   signUp: PropTypes.func,
   transient: PropTypes.object,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default Navbar;

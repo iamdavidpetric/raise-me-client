@@ -1,31 +1,28 @@
 import { createLogger } from 'redux-logger';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, persistStore } from 'redux-persist';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { persistStore, persistReducer } from 'redux-persist';
+import { legacy_createStore, compose, applyMiddleware } from 'redux';
 
-import { projectReducer, transientReducer, userReducer } from 'process/slices';
+import sagas from '../sagas';
+import { storeConfig } from './config';
+import rootReducer from './rootReducer';
 
-const reducer = combineReducers({
-  projects: projectReducer,
-  user: userReducer,
-  transient: transientReducer
+const loggerMiddleware = createLogger({
+  collapsed: (_getState, _action, logEntry) => !logEntry.error,
+  diff: true
 });
+const sagaMiddleware = createSagaMiddleware();
 
-const persistConfig = {
-  key: 'root',
-  storage,
-  blacklist: ['transient'],
-  timeout: null
-};
+let middlewares = [sagaMiddleware];
+middlewares.push(loggerMiddleware);
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const enhancer = compose(...[], applyMiddleware(...middlewares));
 
-const logger = createLogger({ collapsed: true });
+const persistedReducer = persistReducer(storeConfig, rootReducer);
+const store = legacy_createStore(persistedReducer, enhancer);
+const persistor = persistStore(store, {}, () => {});
 
-export const store = configureStore({
-  reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(logger)
-});
+sagaMiddleware.run(sagas);
+const reduxStore = () => ({ store, persistor });
 
-export const persistedStore = persistStore(store);
+export default reduxStore;

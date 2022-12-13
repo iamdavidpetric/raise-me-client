@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,17 +5,16 @@ import Paths from 'process/routes/paths';
 import { categories } from 'process/constants';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const Explore = () => {
+const Explore = ({ searchProject, searchResults }) => {
   const [search, setSearch] = useState('');
-  const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const navigate = useNavigate();
 
   const toggleSelectedCategoryStyle = category =>
     selectedCategory === category
-      ? 'bg-primary-50 text-white'
-      : 'border border-primary-50 text-primary-50';
+      ? 'bg-primary-600 text-white'
+      : 'border border-primary-600 text-primary-600';
 
   const toggleSelectedCategory = category =>
     selectedCategory === category
@@ -24,13 +22,8 @@ const Explore = () => {
       : setSelectedCategory(category);
 
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:3000/v1/projects?category=${selectedCategory}&search=${search}`
-      )
-      .then(res => setProjects(res.data))
-      .catch(err => err);
-  }, [selectedCategory, search]);
+    searchProject(search, selectedCategory);
+  }, [selectedCategory, searchProject, search]);
 
   return (
     <div className='h-full w-full mt-2'>
@@ -53,9 +46,9 @@ const Explore = () => {
           </div>
         ))}
       </div>
-      {projects?.length > 0 ? (
+      {searchResults?.length > 0 ? (
         <div className='grid grid-cols-3'>
-          {projects?.map((project, index) => (
+          {searchResults?.map((project, index) => (
             <div
               onClick={() =>
                 navigate(Paths.public.PROJECT_PATH.replace(':id', project.id))

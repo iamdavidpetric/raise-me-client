@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 
-import CreateProject from './view';
-
 import { Creators as projectActions } from 'process/reducers/project';
+
+import Explore from './view';
 
 export default connect(
   state => ({
-    transient: state.transient
+    searchResults: state.project.searchResults
   }),
   {
-    createProject: projectActions.createProject
+    searchProject: projectActions.searchProject
   }
-)(CreateProject);
+)(Explore);
