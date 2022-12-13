@@ -8,7 +8,10 @@ export const { Types, Creators } = createActions(
     getMyProjects: null,
     getMostInvested: null,
     getQuickInfo: null,
-    getProject: ['payload']
+    getProject: ['payload'],
+    createProject: ['project'],
+    editProject: ['project'],
+    deleteProject: ['payload']
   },
   { prefix: 'project/' }
 );
@@ -17,6 +20,7 @@ const initialState = {
   featuredProject: {},
   mostInvested: [],
   projects: [],
+  project: {},
   quickInfo: {},
   selectedProject: {}
 };

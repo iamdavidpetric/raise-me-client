@@ -19,7 +19,11 @@ export const signIn = function* ({ body }) {
 export const signUp = function* ({ body }) {
   try {
     const res = yield call(Api.post, `/auth`, body);
-    yield put({ type: UserTypes.UPDATE_PROPS, props: { signUp: res.data } });
+    yield put({
+      type: UserTypes.UPDATE_PROPS,
+      props: { ...res.data, isLoggedIn: true, headers: res.headers }
+    });
+    alert('Account activated successfully');
   } catch (e) {
     alert('Something went wrong');
   }

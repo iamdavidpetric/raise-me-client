@@ -6,21 +6,21 @@ import { mock } from 'process/helpers';
 import { teamMembersLabels } from 'process/constants';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const TeamMembersStep = ({ nextStep, previousStep, transient, updateProps }) => {
+const TeamMembersStep = ({ nextStep, previousStep, transient, updateTransientProps }) => {
   useEffect(() => {
-    updateProps({ team_members: [{}, {}, {}, {}, {}, {}, {}] });
-  }, [updateProps]);
+    updateTransientProps({ team_members: [{}, {}, {}, {}, {}, {}, {}] });
+  }, [updateTransientProps]);
 
   const setName = (e, index, member) => {
     let newTeamMembers = [...transient.team_members];
     newTeamMembers[index] = { ...member, name: e.target.value };
-    updateProps({ team_members: newTeamMembers });
+    updateTransientProps({ team_members: newTeamMembers });
   };
 
   const setAvatarURL = (e, index, member) => {
     let newTeamMembers = [...transient.team_members];
     newTeamMembers[index] = { ...member, avatar_url: e.target.value };
-    updateProps({ team_members: newTeamMembers });
+    updateTransientProps({ team_members: newTeamMembers });
   };
 
   const disableNext = !transient?.team_members?.filter(
@@ -82,14 +82,14 @@ TeamMembersStep.defaultProps = {
   nextStep: mock,
   previousStep: mock,
   transient: {},
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 TeamMembersStep.propTypes = {
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
   transient: PropTypes.object,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default TeamMembersStep;

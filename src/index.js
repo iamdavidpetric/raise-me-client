@@ -16,7 +16,9 @@ root.render(
     <Provider store={store}>
       <PersistGate
         loading={null}
-        onBeforeLift={() => Api.setHeaders(store.getState().user.headers)}
+        onBeforeLift={() => {
+          Api.setHeaders(store.getState().user.headers);
+        }}
         persistor={persistor}>
         <Application />
       </PersistGate>

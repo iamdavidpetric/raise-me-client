@@ -4,9 +4,9 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const GoalStep = ({ goal, nextStep, previousStep, updateProps }) => {
+const GoalStep = ({ goal, nextStep, previousStep, updateTransientProps }) => {
   const setGoal = e =>
-    updateProps({
+    updateTransientProps({
       goal:
         e.target.value < 0
           ? Math.abs(e.target.value)
@@ -55,14 +55,14 @@ GoalStep.defaultProps = {
   goal: '',
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 GoalStep.propTypes = {
   goal: PropTypes.string,
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default GoalStep;

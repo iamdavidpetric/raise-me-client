@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { mock } from 'process/helpers';
 import StepWizard from 'react-step-wizard';
 import { useParams } from 'react-router-dom';
+
+import { mock } from 'process/helpers';
 
 import {
   CategoryStep,
@@ -13,7 +14,6 @@ import {
   ImagesStep,
   PublishStep,
   StatementStep,
-  TeamMembersStep,
   TitleStep
 } from '../CreateProject/Subviews';
 
@@ -22,7 +22,7 @@ const EditProject = ({
   getProject,
   selectedProject,
   transient,
-  updateProps
+  updateTransientProps
 }) => {
   const { id } = useParams();
 
@@ -33,8 +33,9 @@ const EditProject = ({
 
   useEffect(() => {
     getProject({ id });
-    updateProps({ ...selectedProject });
-  }, [getProject, id, selectedProject, updateProps]);
+    updateTransientProps({ ...selectedProject });
+    // eslint-disable-next-line
+  }, [getProject, id, updateTransientProps]);
 
   return (
     <div className='h-full w-full'>
@@ -47,7 +48,6 @@ const EditProject = ({
         <DeadlineStep />
         <StatementStep />
         <ImagesStep />
-        <TeamMembersStep />
         <PublishStep createNewProject={patchProject} />
       </StepWizard>
     </div>
@@ -59,7 +59,7 @@ EditProject.defaultProps = {
   getProject: mock,
   selectedProject: mock,
   transient: {},
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 EditProject.propTypes = {
@@ -67,7 +67,7 @@ EditProject.propTypes = {
   getProject: PropTypes.func,
   createProject: PropTypes.func,
   transient: PropTypes.object,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default EditProject;

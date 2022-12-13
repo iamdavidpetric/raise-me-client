@@ -4,7 +4,7 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const TitleStep = ({ name, nextStep, previousStep, updateProps }) => {
+const TitleStep = ({ name, nextStep, previousStep, updateTransientProps }) => {
   return (
     <div className='mt-36 px-20'>
       <div className='text-center text-3xl text-gray-500'>Name your project</div>
@@ -13,7 +13,7 @@ const TitleStep = ({ name, nextStep, previousStep, updateProps }) => {
           required
           value={name}
           className='rounded-2xl mt-2 items-center text-center'
-          onChange={e => updateProps({ name: e.target.value })}
+          onChange={e => updateTransientProps({ name: e.target.value })}
         />
       </div>
       <div className='flex mt-20 justify-between'>
@@ -40,14 +40,14 @@ TitleStep.defaultProps = {
   name: '',
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 TitleStep.propTypes = {
   name: PropTypes.string,
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default TitleStep;

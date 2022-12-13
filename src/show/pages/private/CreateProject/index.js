@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 
 import CreateProject from './view';
 
-import { createProject } from 'process/slices/projectSlice';
+import { Creators as projectActions } from 'process/reducers/project';
 
 export default connect(
   state => ({
     transient: state.transient
   }),
   {
-    createProject: createProject
+    createProject: projectActions.createProject
   }
 )(CreateProject);

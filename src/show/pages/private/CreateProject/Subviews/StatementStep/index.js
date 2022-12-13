@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateProps } from 'process/slices/transientSlice';
+import { Creators as transientActions } from 'process/reducers/transient';
 
 import StatementStep from './view';
 
@@ -9,6 +9,6 @@ export default connect(
     statement: state.transient.statement
   }),
   {
-    updateProps: updateProps
+    updateTransientProps: transientActions.updateProps
   }
 )(StatementStep);

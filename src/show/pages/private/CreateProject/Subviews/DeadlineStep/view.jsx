@@ -7,7 +7,7 @@ import { Button, ProgressBar } from 'show/components';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DeadlineStep = ({ deadline, nextStep, previousStep, updateProps }) => {
+const DeadlineStep = ({ deadline, nextStep, previousStep, updateTransientProps }) => {
   return (
     <div className='mt-18 px-20'>
       <div className='mt-60'>
@@ -20,7 +20,7 @@ const DeadlineStep = ({ deadline, nextStep, previousStep, updateProps }) => {
               required
               className='flex justify-center text-center w-full '
               selected={deadline ? new Date(deadline) : new Date()}
-              onChange={deadline => updateProps({ deadline: deadline })}
+              onChange={deadline => updateTransientProps({ deadline: deadline })}
               dateFormat='dd/MM/yyyy'
               minDate={new Date()}
               withPortal
@@ -52,14 +52,14 @@ DeadlineStep.defaultProps = {
   deadline: new Date(),
   nextStep: mock,
   previousStep: mock,
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 DeadlineStep.propTypes = {
   deadline: PropTypes.instanceOf(Date),
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default DeadlineStep;

@@ -9,7 +9,7 @@ import { CgArrowsExpandRight } from 'react-icons/cg';
 import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
 import Paths from 'process/routes/paths';
-import { mock, onFieldChange } from 'process/helpers';
+import { mock, onFieldChange, capitalize } from 'process/helpers';
 
 import { Button, Modal, TextField } from '../';
 
@@ -151,7 +151,7 @@ const Navbar = ({
                   onChange={e =>
                     onFieldChange('first_name', e.target.value, updateTransientProps)
                   }
-                  value={transient.first_name}
+                  value={capitalize(transient.first_name)}
                   required
                   type='text'
                   placeholder='First Name'
@@ -160,7 +160,7 @@ const Navbar = ({
                   onChange={e =>
                     onFieldChange('last_name', e.target.value, updateTransientProps)
                   }
-                  value={transient.last_name}
+                  value={capitalize(transient.last_name)}
                   required
                   type='text'
                   placeholder='Last Name'

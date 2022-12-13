@@ -5,15 +5,15 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const ImagesStep = ({ nextStep, previousStep, transient, updateProps }) => {
+const ImagesStep = ({ nextStep, previousStep, transient, updateTransientProps }) => {
   useEffect(() => {
-    updateProps({ images: ['', '', '', '', '', '', '', ''] });
-  }, [updateProps]);
+    updateTransientProps({ images: ['', '', '', '', '', '', '', ''] });
+  }, [updateTransientProps]);
 
   const setImage = (e, index) => {
     let newImages = [...transient.images];
     newImages[index] = e.target?.value;
-    updateProps({ images: newImages });
+    updateTransientProps({ images: newImages });
   };
 
   return (
@@ -55,14 +55,14 @@ ImagesStep.defaultProps = {
   nextStep: mock,
   previousStep: mock,
   transient: {},
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 ImagesStep.propTypes = {
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
   transient: PropTypes.object,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default ImagesStep;

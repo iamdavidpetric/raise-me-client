@@ -4,10 +4,10 @@ import { mock } from 'process/helpers';
 import { ProgressBar } from 'show/components';
 import { categories } from 'process/constants';
 
-const CategoryStep = ({ nextStep, updateProps }) => {
+const CategoryStep = ({ nextStep, updateTransientProps }) => {
   const setCategory = category => {
     nextStep();
-    updateProps({ category: category?.name });
+    updateTransientProps({ category: category?.name });
   };
 
   return (
@@ -37,12 +37,12 @@ const CategoryStep = ({ nextStep, updateProps }) => {
 
 CategoryStep.defaultProps = {
   nextStep: mock,
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 CategoryStep.propTypes = {
   nextStep: PropTypes.func,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default CategoryStep;

@@ -4,7 +4,7 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, TextField } from 'show/components';
 
-const StatementStep = ({ nextStep, previousStep, statement, updateProps }) => {
+const StatementStep = ({ nextStep, previousStep, statement, updateTransientProps }) => {
   return (
     <div className='mt-36 px-20'>
       <div className='text-center text-3xl text-gray-500'>
@@ -14,7 +14,7 @@ const StatementStep = ({ nextStep, previousStep, statement, updateProps }) => {
         <TextField
           value={statement}
           className='rounded-2xl mt-2 items-center text-center'
-          onChange={e => updateProps({ statement: e.target.value })}
+          onChange={e => updateTransientProps({ statement: e.target.value })}
         />
       </div>
       <div className='flex mt-20 justify-between'>
@@ -41,14 +41,14 @@ StatementStep.defaultProps = {
   nextStep: mock,
   previousStep: mock,
   statement: '',
-  updateProps: mock
+  updateTransientProps: mock
 };
 
 StatementStep.propTypes = {
   nextStep: PropTypes.func,
   previousStep: PropTypes.func,
   statement: PropTypes.string,
-  updateProps: PropTypes.func
+  updateTransientProps: PropTypes.func
 };
 
 export default StatementStep;

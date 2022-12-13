@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 
-import { updateProps } from 'process/slices/transientSlice';
-import { editProject } from 'process/slices/projectSlice';
+import { Creators as projectActions } from 'process/reducers/project';
+import { Creators as transientActions } from 'process/reducers/transient';
 
 import EditProject from './view';
 
 export default connect(
   state => ({
-    selectedProject: state.projects.selectedProject,
+    selectedProject: state.project.selectedProject,
     transient: state.transient
   }),
   {
-    editProject: editProject,
-    updateProps: updateProps
+    getProject: projectActions.getProject,
+    editProject: projectActions.editProject,
+    updateTransientProps: transientActions.updateProps
   }
 )(EditProject);
