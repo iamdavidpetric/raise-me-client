@@ -136,14 +136,14 @@ export const createProject = function* ({ project }) {
 
 const projectSagas = [
   takeLatest(ProjectTypes.CREATE_PROJECT, createProject),
-  takeLatest(ProjectTypes.EDIT_PROJECT, editProject),
-  takeLatest(ProjectTypes.SEARCH_PROJECT, searchProject),
   takeLatest(ProjectTypes.DELETE_PROJECT, deleteProject),
+  takeLatest(ProjectTypes.EDIT_PROJECT, editProject),
   takeLatest(ProjectTypes.GET_FEATURED_PROJECT, getFeaturedProject),
   takeLatest(ProjectTypes.GET_MOST_INVESTED, getMostInvested),
   takeLatest(ProjectTypes.GET_MY_PROJECTS, getMyProjects),
   takeLatest(ProjectTypes.GET_PROJECT, getProject),
-  takeLatest(ProjectTypes.GET_QUICK_INFO, getQuickInfo)
+  takeLatest(ProjectTypes.GET_QUICK_INFO, getQuickInfo),
+  takeLatest(ProjectTypes.SEARCH_PROJECT, searchProject)
 ];
 
 export default projectSagas;

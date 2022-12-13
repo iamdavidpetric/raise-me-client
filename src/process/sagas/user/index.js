@@ -1,7 +1,7 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 
-import { Types as UserTypes } from 'process/reducers/user';
 import Api from 'process/api';
+import { Types as UserTypes } from 'process/reducers/user';
 
 export const signIn = function* ({ body }) {
   try {
@@ -41,8 +41,8 @@ export const signOut = function* () {
 
 const userSaga = [
   takeLatest(UserTypes.SIGN_IN, signIn),
-  takeLatest(UserTypes.SIGN_UP, signUp),
-  takeLatest(UserTypes.SIGN_OUT, signOut)
+  takeLatest(UserTypes.SIGN_OUT, signOut),
+  takeLatest(UserTypes.SIGN_UP, signUp)
 ];
 
 export default userSaga;

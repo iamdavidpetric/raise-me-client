@@ -9,7 +9,7 @@ import { CgArrowsExpandRight } from 'react-icons/cg';
 import { BsArrowBarLeft, BsFillPersonLinesFill, BsPersonCircle } from 'react-icons/bs';
 
 import Paths from 'process/routes/paths';
-import { mock, onFieldChange, capitalize } from 'process/helpers';
+import { capitalize, mock, onFieldChange } from 'process/helpers';
 
 import { Button, Modal, TextField } from '../';
 

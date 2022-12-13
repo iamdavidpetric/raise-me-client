@@ -25,7 +25,6 @@ const Explore = ({ searchProject, searchResults }) => {
     searchProject(search, selectedCategory);
   }, [selectedCategory, searchProject, search]);
 
-  console.log(searchResults);
   return (
     <div className='h-full w-full mt-2'>
       <div className='flex items-end justify-end'>
