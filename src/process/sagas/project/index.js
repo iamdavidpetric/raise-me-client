@@ -1,9 +1,9 @@
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 
-import { Types as ProjectTypes } from 'process/reducers/project';
-import { Types as TransientTypes } from 'process/reducers/transient';
 import Api from 'process/api';
 import Paths from 'process/routes/paths';
+import { Types as ProjectTypes } from 'process/reducers/project';
+import { Types as TransientTypes } from 'process/reducers/transient';
 
 export const getFeaturedProject = function* () {
   try {

@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 
 import { Creators as projectActions } from 'process/reducers/project';
 import { Creators as transientActions } from 'process/reducers/transient';
-
 import { featuredProject, mostInvested, quickInfo } from 'process/selectors';
 
 import Home from './view';
