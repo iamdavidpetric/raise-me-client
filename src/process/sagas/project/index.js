@@ -15,7 +15,7 @@ export const getFeaturedProject = function* () {
       growls: [
         {
           type: 'info',
-          content: 'Top project loaded'
+          content: 'Feature project loaded'
         }
       ]
     });
@@ -97,7 +97,7 @@ export const getMostInvested = function* () {
       growls: [
         {
           type: 'info',
-          content: 'Projects loaded'
+          content: 'Top projects loaded'
         }
       ]
     });
@@ -123,7 +123,7 @@ export const getQuickInfo = function* () {
       growls: [
         {
           type: 'info',
-          content: 'Projects loaded'
+          content: 'Projects info loaded'
         }
       ]
     });

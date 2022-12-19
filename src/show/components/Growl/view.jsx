@@ -9,13 +9,13 @@ const variatGrowl = {
   info: 'bg-slate-700'
 };
 
-const growlsIncon = {
+const growlsIcon = {
   success: <BsFillCheckCircleFill size='1.5rem' />,
   fail: <RiAlertFill size='1.5rem' />,
   info: <AiFillInfoCircle size='1.5rem' />
 };
 
-const growlsInconColor = {
+const growlsIconColor = {
   success: 'text-emerald-600',
   fail: 'text-red-600',
   info: 'text-slate-600'
@@ -33,8 +33,8 @@ const Growl = ({ messages, popGrowls }) => {
         className={`${variatGrowl[message.type]} h-full w-4 rounded-l-lg bg-opacity-75`}>
         &#8203;
       </div>
-      <div className={`ml-2 ${growlsInconColor[message.type]}`}>
-        {growlsIncon[message.type]}
+      <div className={`ml-2 ${growlsIconColor[message.type]}`}>
+        {growlsIcon[message.type]}
       </div>
       <div className='flex ml-3 w-full'>{message.content}</div>
       <div

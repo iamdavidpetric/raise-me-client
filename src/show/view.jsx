@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { Navbar, Growl } from 'show/components';
 import Paths from 'process/routes/paths';
+import { Growl, Navbar } from 'show/components';
 import { privateRoutes, publicRoutes } from 'process/routes';
 
 const Application = ({ currentUser }) => {
