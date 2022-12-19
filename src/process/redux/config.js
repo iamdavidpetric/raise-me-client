@@ -3,7 +3,7 @@ import storage from 'redux-persist/lib/storage';
 const storeConfig = {
   key: 'root',
   storage,
-  blacklist: ['transient'],
+  blacklist: ['transient', 'growl'],
   timeout: null
 };
 

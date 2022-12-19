@@ -2,7 +2,7 @@ import { createActions } from 'reduxsauce';
 import { persistCombineReducers } from 'redux-persist';
 
 import { storeConfig } from './config';
-import { project, transient, user } from '../reducers';
+import { growl, project, transient, user } from '../reducers';
 
 export const { Types } = createActions(
   {
@@ -12,17 +12,19 @@ export const { Types } = createActions(
 );
 
 const appReducers = persistCombineReducers(storeConfig, {
+  growl,
+  project,
   transient,
-  user,
-  project
+  user
 });
 
 const rootReducer = (state, action) => {
   if (action && action.type === 'state/RESET') {
     state = {
+      growl: undefined,
+      project: undefined,
       transient: undefined,
-      user: undefined,
-      project: undefined
+      user: undefined
     };
   }
 
