@@ -4,9 +4,9 @@ import { AiFillInfoCircle } from 'react-icons/ai';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 const variatGrowl = {
-  success: 'bg-green-500',
-  fail: 'bg-red-500',
-  info: 'bg-blue-500'
+  success: 'bg-emerald-700',
+  fail: 'bg-red-700',
+  info: 'bg-slate-700'
 };
 
 const growlsIncon = {
@@ -16,9 +16,9 @@ const growlsIncon = {
 };
 
 const growlsInconColor = {
-  success: 'text-green-500',
-  fail: 'text-red-500',
-  info: 'text-blue-500'
+  success: 'text-emerald-600',
+  fail: 'text-red-600',
+  info: 'text-slate-600'
 };
 
 const Growl = ({ messages, popGrowls }) => {

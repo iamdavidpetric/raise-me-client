@@ -49,7 +49,6 @@ const MyProjects = ({ deleteProject, getMyProjects, projects }) => {
                       className='object-cover rounded-t-lg h-72 w-full'
                     />
                     <div className='flex items-center bg-green-500 w-10 h-10 rounded-full absolute -top-5 -right-4 hover:scale-110 transition-all duration-300'>
-                      {console.log(project.id)}
                       <Button
                         onClick={() =>
                           navigate(
