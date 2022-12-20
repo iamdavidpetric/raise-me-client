@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { Navbar } from 'show/components';
 import Paths from 'process/routes/paths';
+import { Growl, Navbar } from 'show/components';
 import { privateRoutes, publicRoutes } from 'process/routes';
 
 const Application = ({ currentUser }) => {
@@ -10,6 +10,7 @@ const Application = ({ currentUser }) => {
     <BrowserRouter>
       <div className='flex flex-col justify-between min-h-screen h-screen w-screen'>
         <Navbar />
+        <Growl />
         <Routes>
           {privateRoutes.map(route => (
             <Route

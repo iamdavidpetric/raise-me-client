@@ -2,6 +2,7 @@ import { put, takeLatest, call } from 'redux-saga/effects';
 
 import Api from 'process/api';
 import { Types as UserTypes } from 'process/reducers/user';
+import { Types as GrowlTypes } from 'process/reducers/growl';
 
 export const signIn = function* ({ body }) {
   try {
@@ -11,8 +12,25 @@ export const signIn = function* ({ body }) {
       type: UserTypes.UPDATE_PROPS,
       props: { ...res.data, isLoggedIn: true, headers: res.headers }
     });
+    yield put({
+      type: GrowlTypes.CREATE_GROWLS,
+      growls: [
+        {
+          type: 'success',
+          content: 'Login successfully'
+        }
+      ]
+    });
   } catch (e) {
-    alert('Something went wrong');
+    yield put({
+      type: GrowlTypes.CREATE_GROWLS,
+      growls: [
+        {
+          type: 'fail',
+          content: 'Something went wrong'
+        }
+      ]
+    });
   }
 };
 
@@ -23,9 +41,25 @@ export const signUp = function* ({ body }) {
       type: UserTypes.UPDATE_PROPS,
       props: { ...res.data, isLoggedIn: true, headers: res.headers }
     });
-    alert('Account activated successfully');
+    yield put({
+      type: GrowlTypes.CREATE_GROWLS,
+      growls: [
+        {
+          type: 'success',
+          content: 'Sign up successfully'
+        }
+      ]
+    });
   } catch (e) {
-    alert('Something went wrong');
+    yield put({
+      type: GrowlTypes.CREATE_GROWLS,
+      growls: [
+        {
+          type: 'fail',
+          content: 'Something went wrong'
+        }
+      ]
+    });
   }
 };
 
@@ -34,8 +68,25 @@ export const signOut = function* () {
     yield put({
       type: UserTypes.RESET
     });
+    yield put({
+      type: GrowlTypes.CREATE_GROWLS,
+      growls: [
+        {
+          type: 'success',
+          content: 'Log out successfully'
+        }
+      ]
+    });
   } catch (e) {
-    alert('Something went wrong');
+    yield put({
+      type: GrowlTypes.CREATE_GROWLS,
+      growls: [
+        {
+          type: 'fail',
+          content: 'Something went wrong'
+        }
+      ]
+    });
   }
 };
 
