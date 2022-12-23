@@ -5,6 +5,7 @@ import ImagesStep from './ImagesStep';
 import PublishStep from './PublishStep';
 import CategoryStep from './CategoryStep';
 import DeadlineStep from './DeadlineStep';
+import StudentIDStep from './StudentIDStep';
 import StatementStep from './StatementStep';
 import TeamMembersStep from './TeamMembersStep';
 import DescriptionStep from './DescriptionStep';
@@ -18,6 +19,7 @@ export {
   ImagesStep,
   PublishStep,
   StatementStep,
+  StudentIDStep,
   TeamMembersStep,
   TitleStep
 };
