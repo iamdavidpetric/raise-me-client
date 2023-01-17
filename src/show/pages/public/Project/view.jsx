@@ -22,6 +22,9 @@ const Project = ({ getProject, selectedProject }) => {
   const firstMember = selectedProject?.team_members && selectedProject?.team_members[0];
   const restMembers =
     selectedProject?.team_members && selectedProject?.team_members.slice(1);
+  const restRestMembers = restMembers.filter(
+    member => member.name !== null || member.avatar_url !== null
+  );
 
   return (
     <div className='flex flex-col bg-white h-full w-full'>
@@ -65,12 +68,12 @@ const Project = ({ getProject, selectedProject }) => {
           </div>
         </div>
 
-        <div className='flex flex-col w-2/5 h-112 mx-10'>
+        <div className='flex flex-col w-2/5 h-112 mx-10 justify-center'>
           <div>
             <div className='flex flex-row h-12 text-2xl items-center justify-center'>
               {selectedProject?.name}
             </div>
-            <div className='px-5 mt-2 text-gray-500'>{selectedProject?.description}</div>
+            {/* <div className='px-5 mt-2 text-gray-500'>{selectedProject?.description}</div> */}
             <div className='mt-5 px-5 text-lg text-center'>
               {selectedProject?.amount_invested}$ / {selectedProject?.goal}$
             </div>
@@ -139,7 +142,7 @@ const Project = ({ getProject, selectedProject }) => {
                 <div className='flex flex-col w-96 px-0 mx-0'>
                   <div className='flex justify-center items-center'>
                     {restMembers &&
-                      restMembers?.map(member => (
+                      restRestMembers?.map(member => (
                         <div className='flex flex-col items-center' key={member.id}>
                           <img
                             src={member?.avatar_url}

@@ -225,28 +225,9 @@ export const editProject = function* ({ project }) {
 };
 
 export const createProject = function* ({ project }) {
-  const formData = new FormData();
-  project?.images.forEach(image => {
-    if (image.length !== 0) {
-      formData.append('images[]', image);
-    }
-  });
-  formData.append('name', project?.name);
-  formData.append('description', project?.description);
-  formData.append('goal', project?.goal);
-  formData.append('fee', project?.fee);
-  formData.append('deadline', project?.deadline);
-  project?.team_members.forEach(member => {
-    if (Object.entries(member).length) {
-      formData.append('team_members_attributes[][name]', member.name);
-      formData.append('team_members_attributes[][avatar_url]', member.avatar_url);
-    }
-  });
-  formData.append('category', project?.category);
-  formData.append('statement', project?.statement);
-  formData.append('user_id', project?.user_id);
+  const newProject = { ...project, team_members_attributes: project.team_members };
   try {
-    const res = yield call(Api.post, '/projects/', project);
+    const res = yield call(Api.post, '/projects/', newProject);
     yield put({ type: ProjectTypes.UPDATE_PROPS, props: { project: res.data } });
     yield put(window.location.replace(Paths.private.MY_PROJECTS_PATH));
   } catch (e) {
