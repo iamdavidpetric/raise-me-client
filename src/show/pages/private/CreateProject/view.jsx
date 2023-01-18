@@ -12,6 +12,7 @@ import {
   ImagesStep,
   PublishStep,
   StatementStep,
+  StudentIDStep,
   TeamMembersStep,
   TitleStep
 } from './Subviews';
@@ -33,6 +34,7 @@ const CreateProject = ({ createProject, transient }) => {
         <StatementStep />
         <ImagesStep />
         <TeamMembersStep />
+        <StudentIDStep />
         <PublishStep createNewProject={createNewProject} />
       </StepWizard>
     </div>
