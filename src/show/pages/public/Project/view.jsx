@@ -73,7 +73,6 @@ const Project = ({ getProject, selectedProject }) => {
             <div className='flex flex-row h-12 text-2xl items-center justify-center'>
               {selectedProject?.name}
             </div>
-            {/* <div className='px-5 mt-2 text-gray-500'>{selectedProject?.description}</div> */}
             <div className='mt-5 px-5 text-lg text-center'>
               {selectedProject?.amount_invested}$ / {selectedProject?.goal}$
             </div>
