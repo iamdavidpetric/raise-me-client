@@ -8,10 +8,6 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, ProductSlider } from 'show/components';
 
-import 'swiper/css';
-import 'swiper/css/thumbs';
-import 'swiper/css/navigation';
-
 const Project = ({ getProject, selectedProject }) => {
   const { id } = useParams();
 

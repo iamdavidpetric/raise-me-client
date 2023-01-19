@@ -1,8 +1,12 @@
 import './style.scss';
-import PropTypes from 'prop-types';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Thumbs } from 'swiper';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Navigation, Thumbs } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/thumbs';
+import 'swiper/css/navigation';
 
 const ProductSlider = props => {
   const [thumbsSwiper, setThumbsSwiper] = useState();
