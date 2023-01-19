@@ -6,7 +6,11 @@ import { AiOutlineLink } from 'react-icons/ai';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import { mock } from 'process/helpers';
-import { Button, ProgressBar } from 'show/components';
+import { Button, ProgressBar, ProductSlider } from 'show/components';
+
+import 'swiper/css';
+import 'swiper/css/thumbs';
+import 'swiper/css/navigation';
 
 const Project = ({ getProject, selectedProject }) => {
   const { id } = useParams();
@@ -15,10 +19,8 @@ const Project = ({ getProject, selectedProject }) => {
     getProject({ id });
   }, [getProject, id]);
 
-  const firstPicture = selectedProject?.images && selectedProject?.images[0];
+  const projectPictures = selectedProject?.images;
   const secondaryPicture = selectedProject?.images && selectedProject?.images[1];
-  const restPictures = selectedProject?.images && selectedProject?.images.slice(2);
-
   const firstMember = selectedProject?.team_members && selectedProject?.team_members[0];
   const restMembers =
     selectedProject?.team_members && selectedProject?.team_members.slice(1);
@@ -42,25 +44,19 @@ const Project = ({ getProject, selectedProject }) => {
 
       <div className='flex mt-5 mb-10'>
         <div className='flex flex-col h-112 w-3/5'>
-          <div className='flex justify-center items-center h-full w-full'>
-            <img
-              src={firstPicture}
-              alt='main'
-              className='object-cover rounded-lg h-full w-full mx-5 my-5'
-            />
-          </div>
-
-          <div className='mr-5 h-28 mt-5'>
-            <div className='no-scrollbar flex ml-4 h-[112px] no-scrollbar overflow-x-scroll'>
-              {restPictures &&
-                restPictures?.map((item, index) => (
-                  <img
-                    key={index}
-                    src={item}
-                    alt='...'
-                    className='h-28 mx-2 rounded-lg'
-                  />
-                ))}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            <div
+              style={{
+                width: '680px',
+                height: '500px',
+                padding: '10px'
+              }}>
+              <ProductSlider images={projectPictures} />
             </div>
           </div>
         </div>

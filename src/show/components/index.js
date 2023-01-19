@@ -5,5 +5,6 @@ import Navbar from './Navbar';
 import Button from './Button';
 import TextField from './TextField';
 import ProgressBar from './ProgressBar';
+import ProductSlider from './ProductSlider';
 
-export { Button, Card, Growl, Modal, Navbar, ProgressBar, TextField };
+export { Button, Card, Growl, Modal, Navbar, ProductSlider, ProgressBar, TextField };
