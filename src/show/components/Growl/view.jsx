@@ -25,7 +25,7 @@ const Growl = ({ messages, popGrowls }) => {
   return messages?.map((message, index) => (
     <div
       key={index}
-      className={`flex absolute bottom-5 left-0 ml-5 w-72 h-12 rounded-lg items-center border bg-white bg-opacity-75 `}
+      className={`flex absolute bottom-5 left-0 ml-5 w-72 h-12 rounded-lg items-center border bg-white bg-opacity-75 z-[2]`}
       style={{
         marginBottom: 50 * `${index}`
       }}>

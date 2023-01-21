@@ -6,7 +6,7 @@ import { AiOutlineLink } from 'react-icons/ai';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import { mock } from 'process/helpers';
-import { Button, ProgressBar } from 'show/components';
+import { Button, ProgressBar, ProductSlider } from 'show/components';
 
 const Project = ({ getProject, selectedProject }) => {
   const { id } = useParams();
@@ -15,10 +15,8 @@ const Project = ({ getProject, selectedProject }) => {
     getProject({ id });
   }, [getProject, id]);
 
-  const firstPicture = selectedProject?.images && selectedProject?.images[0];
+  const projectPictures = selectedProject?.images;
   const secondaryPicture = selectedProject?.images && selectedProject?.images[1];
-  const restPictures = selectedProject?.images && selectedProject?.images.slice(2);
-
   const firstMember = selectedProject?.team_members && selectedProject?.team_members[0];
   const restMembers =
     selectedProject?.team_members && selectedProject?.team_members.slice(1);
@@ -45,26 +43,8 @@ const Project = ({ getProject, selectedProject }) => {
 
       <div className='flex mt-5 mb-10'>
         <div className='flex flex-col h-112 w-3/5'>
-          <div className='flex justify-center items-center h-full w-full'>
-            <img
-              src={firstPicture}
-              alt='main'
-              className='object-cover rounded-lg h-full w-full mx-5 my-5'
-            />
-          </div>
-
-          <div className='mr-5 h-28 mt-5'>
-            <div className='no-scrollbar flex ml-4 h-[112px] no-scrollbar overflow-x-scroll'>
-              {restPictures &&
-                restPictures?.map((item, index) => (
-                  <img
-                    key={index}
-                    src={item}
-                    alt='...'
-                    className='h-28 mx-2 rounded-lg'
-                  />
-                ))}
-            </div>
+          <div className='h-64 w-5/6 mb-10 ml-5'>
+            <ProductSlider images={projectPictures} />
           </div>
         </div>
 
@@ -95,18 +75,28 @@ const Project = ({ getProject, selectedProject }) => {
             </div>
             <div className='flex px-5 mt-3 justify-center '>
               <Button
+                onClick={() =>
+                  (window.location.href = `https://facebook.com/sharer/sharer.php?u=www.facebook.com/david.petric.35/`)
+                }
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FaFacebook size='2rem' />}
               />
               <Button
+                onClick={() =>
+                  (window.location.href = 'https://www.instagram.com/david.petric35/')
+                }
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FaInstagram size='2rem' />}
               />
               <Button
+                onClick={() =>
+                  (window.location.href = 'https://github.com/iamdavidpetric')
+                }
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FiTwitter size='2rem' />}
               />
               <Button
+                onClick={() => navigator.clipboard.writeText(window.location.href)}
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<AiOutlineLink size='2rem' />}
               />
