@@ -21,7 +21,7 @@ const ProductSlider = props => {
         grabCursor={true}
         thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
         className='product-images-slider'>
-        {props.images.map((item, index) => (
+        {props.images?.map((item, index) => (
           <SwiperSlide key={index}>
             <img src={item} alt='product images' />
           </SwiperSlide>
@@ -34,7 +34,7 @@ const ProductSlider = props => {
         slidesPerView={4}
         modules={[Navigation, Thumbs]}
         className='product-images-slider-thumbs'>
-        {props.images.map((item, index) => (
+        {props.images?.map((item, index) => (
           <SwiperSlide key={index}>
             <div className='product-images-slider-thumbs-wrapper'>
               <img src={item} alt='product images' />

@@ -40,24 +40,12 @@ const Project = ({ getProject, selectedProject }) => {
 
       <div className='flex mt-5 mb-10'>
         <div className='flex flex-col h-112 w-3/5'>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-            <div
-              style={{
-                width: '680px',
-                height: '500px',
-                padding: '10px'
-              }}>
-              <ProductSlider images={projectPictures} />
-            </div>
+          <div className='h-64 w-5/6 mb-10 ml-5'>
+            <ProductSlider images={projectPictures} />
           </div>
         </div>
 
-        <div className='flex flex-col w-2/5 h-112 mx-10'>
+        <div className='flex flex-col w-2/5 h-112'>
           <div>
             <div className='flex flex-row h-12 text-2xl items-center justify-center'>
               {selectedProject?.name}
@@ -85,18 +73,28 @@ const Project = ({ getProject, selectedProject }) => {
             </div>
             <div className='flex px-5 mt-3 justify-center '>
               <Button
+                onClick={() =>
+                  (window.location.href = `https://facebook.com/sharer/sharer.php?u=www.facebook.com/david.petric.35/`)
+                }
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FaFacebook size='2rem' />}
               />
               <Button
+                onClick={() =>
+                  (window.location.href = 'https://www.instagram.com/david.petric35/')
+                }
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FaInstagram size='2rem' />}
               />
               <Button
+                onClick={() =>
+                  (window.location.href = 'https://github.com/iamdavidpetric')
+                }
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<FiTwitter size='2rem' />}
               />
               <Button
+                onClick={() => navigator.clipboard.writeText(window.location.href)}
                 className='text-primary-600 hover:text-primary-300'
                 iconLeft={<AiOutlineLink size='2rem' />}
               />
