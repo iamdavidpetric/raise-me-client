@@ -45,7 +45,7 @@ const Project = ({ getProject, selectedProject }) => {
           </div>
         </div>
 
-        <div className='flex flex-col w-2/5 h-112'>
+        <div className='flex flex-col w-2/5 h-112 mx-10 justify-center'>
           <div>
             <div className='flex flex-row h-12 text-2xl items-center justify-center'>
               {selectedProject?.name}
