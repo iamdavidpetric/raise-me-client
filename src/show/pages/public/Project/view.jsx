@@ -1,19 +1,24 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FiTwitter } from 'react-icons/fi';
+import { FaFacebook } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { AiOutlineLink } from 'react-icons/ai';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, ProductSlider } from 'show/components';
 
-const Project = ({ getProject, selectedProject }) => {
+const Project = ({ createGrowls, getProject, selectedProject }) => {
   const { id } = useParams();
 
   useEffect(() => {
     getProject({ id });
   }, [getProject, id]);
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    createGrowls([{ type: 'success', content: 'Link copied!' }]);
+  };
 
   const projectPictures = selectedProject?.images;
   const secondaryPicture = selectedProject?.images && selectedProject?.images[1];
@@ -70,47 +75,6 @@ const Project = ({ getProject, selectedProject }) => {
                 disabled={selectedProject?.achieved_goal_percentage >= 100}
               />
             </div>
-            <div className='flex px-5 justify-center mt-5'>
-              Share it with your friends
-            </div>
-            <div className='flex px-5 mt-3 justify-center '>
-              <Button
-                onClick={() =>
-                  (window.location.href = `https://facebook.com/sharer/sharer.php?u=www.facebook.com/david.petric.35/`)
-                }
-                className='text-primary-600 hover:text-primary-300'
-                iconLeft={<FaFacebook size='2rem' />}
-              />
-              <Button
-                onClick={() =>
-                  (window.location.href = 'https://www.instagram.com/david.petric35/')
-                }
-                className='text-primary-600 hover:text-primary-300'
-                iconLeft={<FaInstagram size='2rem' />}
-              />
-              <Button
-                onClick={() =>
-                  (window.location.href = 'https://github.com/iamdavidpetric')
-                }
-                className='text-primary-600 hover:text-primary-300'
-                iconLeft={<FiTwitter size='2rem' />}
-              />
-              <Button
-                onClick={() => navigator.clipboard.writeText(window.location.href)}
-                className='text-primary-600 hover:text-primary-300'
-                iconLeft={<AiOutlineLink size='2rem' />}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='flex h-128 px-10 mt-32'>
-        <div className='flex flex-col justify-center w-3/5'>
-          <div className='flex mt-5 mx-5 text-gray-500 '>
-            {selectedProject?.description}
-          </div>
-          <div className='flex justify-center'>
             <div className='flex flex-col'>
               <div className='flex justify-center text-2xl mt-3'>Team members</div>
               <div className='flex flex-col'>
@@ -145,6 +109,38 @@ const Project = ({ getProject, selectedProject }) => {
                 </div>
               </div>
             </div>
+            <div className='flex px-5 justify-center mt-5'>
+              Share it with your friends
+            </div>
+            <div className='flex px-5 mt-3 justify-center '>
+              <Button
+                onClick={() =>
+                  (window.location.href = `https://facebook.com/sharer/sharer.php?u=www.facebook.com/david.petric.35/`)
+                }
+                className='text-primary-600 hover:text-primary-300'
+                iconLeft={<FaFacebook size='2rem' />}
+              />
+              <Button
+                onClick={() =>
+                  (window.location.href = `https://twitter.com/intent/tweet?text=Look%20at%20this%20project%20${window.location.href}`)
+                }
+                className='text-primary-600 hover:text-primary-300'
+                iconLeft={<FiTwitter size='2rem' />}
+              />
+              <Button
+                onClick={copyLink}
+                className='text-primary-600 hover:text-primary-300'
+                iconLeft={<AiOutlineLink size='2rem' />}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='flex h-128 px-10 mt-32'>
+        <div className='flex flex-col justify-center w-3/5'>
+          <div className='flex mt-5 mx-5 text-gray-500 '>
+            {selectedProject?.description}
           </div>
         </div>
         <div className='flex w-2/5'>
