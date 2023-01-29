@@ -8,7 +8,7 @@ import { AiOutlineLink } from 'react-icons/ai';
 import { mock } from 'process/helpers';
 import { Button, ProgressBar, ProductSlider } from 'show/components';
 
-const Project = ({ createGrowls, getProject, selectedProject }) => {
+const Project = ({ createGrowls, getProject, selectedProject, getPaymentLink }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Project = ({ createGrowls, getProject, selectedProject }) => {
   const firstMember = selectedProject?.team_members && selectedProject?.team_members[0];
   const restMembers =
     selectedProject?.team_members && selectedProject?.team_members.slice(1);
-  const restRestMembers = restMembers.filter(
+  const restRestMembers = restMembers?.filter(
     member => member.name !== null || member.avatar_url !== null
   );
 
@@ -73,6 +73,7 @@ const Project = ({ createGrowls, getProject, selectedProject }) => {
                 variant='invert-outline'
                 label={`${selectedProject?.fee} $`}
                 disabled={selectedProject?.achieved_goal_percentage >= 100}
+                onClick={() => getPaymentLink({ id: selectedProject.id })}
               />
             </div>
             <div className='flex flex-col'>

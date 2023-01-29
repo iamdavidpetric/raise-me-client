@@ -11,6 +11,7 @@ export default connect(
     selectedProject: state.project.selectedProject
   }),
   {
+    getPaymentLink: projectActions.getPaymentLink,
     getProject: projectActions.getProject,
     createGrowls: growlActions.createGrowls,
     updateTransientProps: transientActions.updateProps
