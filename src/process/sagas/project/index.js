@@ -195,6 +195,23 @@ export const getProject = function* ({ payload }) {
   }
 };
 
+export const getPaymentLink = function* ({ payload }) {
+  try {
+    const res = yield call(Api.post, '/payment', payload);
+    window.location.replace(res.data.url);
+  } catch (e) {
+    yield put({
+      type: GrowlTypes.CREATE_GROWLS,
+      growls: [
+        {
+          type: 'fail',
+          content: 'Something went wrong'
+        }
+      ]
+    });
+  }
+};
+
 export const editProject = function* ({ project }) {
   const formData = new FormData();
   project?.images.forEach(image => {
@@ -244,6 +261,7 @@ const projectSagas = [
   takeLatest(ProjectTypes.GET_MY_PROJECTS, getMyProjects),
   takeLatest(ProjectTypes.GET_PROJECT, getProject),
   takeLatest(ProjectTypes.GET_QUICK_INFO, getQuickInfo),
+  takeLatest(ProjectTypes.GET_PAYMENT_LINK, getPaymentLink),
   takeLatest(ProjectTypes.SEARCH_PROJECT, searchProject)
 ];
 

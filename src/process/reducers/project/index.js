@@ -10,6 +10,7 @@ export const { Types, Creators } = createActions(
     getMostInvested: null,
     getQuickInfo: null,
     getProject: ['payload'],
+    getPaymentLink: ['payload'],
     createProject: ['project'],
     editProject: ['project'],
     deleteProject: ['payload'],
