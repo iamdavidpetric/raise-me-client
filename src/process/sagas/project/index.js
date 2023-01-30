@@ -205,7 +205,7 @@ export const getPaymentLink = function* ({ payload }) {
       growls: [
         {
           type: 'fail',
-          content: 'Nu merge'
+          content: 'Something went wrong'
         }
       ]
     });

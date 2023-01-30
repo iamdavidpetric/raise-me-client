@@ -61,7 +61,7 @@ const Project = ({ createGrowls, getProject, selectedProject, getPaymentLink }) 
             <div className='mt-5 px-5 text-lg text-center'>
               {selectedProject?.amount_invested}$ / {selectedProject?.goal}$
             </div>
-            <div className='px-5'>
+            <div className='px-24'>
               <ProgressBar
                 percentage={selectedProject?.achieved_goal_percentage}
                 color='bg-primary-600'
