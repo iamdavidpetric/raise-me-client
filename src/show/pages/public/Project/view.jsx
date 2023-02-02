@@ -20,7 +20,7 @@ const Project = ({ createGrowls, getProject, selectedProject, getPaymentLink }) 
     createGrowls([{ type: 'success', content: 'Link copied!' }]);
   };
 
-  const projectPictures = selectedProject?.images;
+  const projectPictures = selectedProject?.images.filter(image => image !== '');
   const secondaryPicture = selectedProject?.images && selectedProject?.images[1];
   const firstMember = selectedProject?.team_members && selectedProject?.team_members[0];
   const restMembers =
